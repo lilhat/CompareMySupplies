@@ -1,18 +1,5 @@
 TODOs
 
-1. Build the project
-    - creating the folder
-    - adding files
-    - connecting files
+1. Add product navigation bar
 
-2. Navbar
-    - 2 links
-    - Searchbar
-
-3. Main page
-    - Images
-    - Links for different categories of materials
-
-4. About page
-    - Image
-    - Text
+2. Add clickable links
