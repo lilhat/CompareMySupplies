@@ -10,49 +10,53 @@ body {
 }
 
 /* Nav Styles */
-.nav-wrapper{
+
+.nav-wrapper {
+    background:#333;
+    height:60px;
+
+}
+
+.menu {
+    float:left;
+}
+.menu ul {
     display: flex;
-    justify-content: space-between;
-    padding: 38px;
 }
 
-.left-side{
-    display: flex;
-
+.menu ul li {
+    display:inline-block;
 }
 
-.nav-wrapper > .left-side > div {
-    margin-right: 20px;
-    font-size: 0.9em;
-    text-transform: uppercase;
-}
-
-.nav-link-wrapper {
-    height: 22px;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom 0.5s; 
-}
-
-.nav-link-wrapper a {
-    color: #8a8a8a;
+.menu ul li a {
+    padding:22px;
+    line-height:25px;
     text-decoration: none;
-    transition: color 0.5s;
+    color: white;
+    transition:0.6s;
 }
 
-.nav-link-wrapper:hover {
-    border-bottom: 1px solid black;
+.menu ul li a:hover {
+    background:lightseagreen;
 }
 
-.nav-link-wrapper a:hover {
-    color: black;
+.active {
+    background: lightseagreen;
+}
+.search-box {
+    float: right;
+    display: flex;
+    margin: 10px 25px;
 }
 
-.active-nav-link {
-    border-bottom: 1px solid black;
+.tbox {
+    padding: 10px;
+    width: 250px;
 }
 
-.active-nav-link a {
-    color: black !important;
+.btn {
+    width: 50px;
+    background: lightseagreen;
 }
 
 /* Item Styles */
@@ -114,14 +118,41 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
-.profile-image-wrapper img{
+.profile-image-wrapper img {
     width: 100%;
+    padding: 40px;
 }
 
 .profile-content-wrapper {
-    padding: 30px;
+    padding-top: 100px;
+    padding-left: 30px;
 }
 
 .profile-content-wrapper h1 {
     color: lightseagreen;
+}
+
+.profile-content-wrapper b1 {
+    font-size: 20px;
+}
+
+/* Contact Page Styles */
+.contact-image-wrapper img {
+    width: 250px;
+    height: 250px;
+    padding-top: 250px;
+    padding-left: 400px;
+}
+
+.contact-content-wrapper {
+    padding-top: 100px;
+    padding-left: 30px;
+}
+
+.contact-content-wrapper h1{
+    color: lightseagreen;
+}
+
+.contact-content-wrapper b1{
+    font-size: 20px;
 }
