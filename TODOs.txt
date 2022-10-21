@@ -1,5 +1,5 @@
 TODOs
 
-1. Add product navigation bar
+1. Add products
 
-2. Add clickable links
+2. Start writing initial document
