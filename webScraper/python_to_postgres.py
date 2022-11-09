@@ -26,7 +26,7 @@ def to_database(name, *args):
 
         create_script = ''' CREATE TABLE IF NOT EXISTS ''' + name + ''' (
                                    id  BIGSERIAL NOT NULL PRIMARY KEY,
-                                   product_name VARCHAR(200) NOT NULL,
+                                   product_name VARCHAR(500) NOT NULL,
                                    supplier_name VARCHAR(50) NOT NULL,
                                    price   DECIMAL(10,2) NOT NULL) '''
         cur.execute(create_script)
