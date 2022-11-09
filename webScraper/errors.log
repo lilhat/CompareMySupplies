@@ -1,0 +1,57 @@
+2022-11-09 19:00:31,600 - suppliers - ERROR - Invalid URL 'www': No scheme supplied. Perhaps you meant http://www?
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 29, in scrape_bq
+    html_text = requests.get(link).text
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\venv\lib\site-packages\requests\sessions.py", line 573, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\venv\lib\site-packages\requests\sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\venv\lib\site-packages\requests\models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\venv\lib\site-packages\requests\models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'www': No scheme supplied. Perhaps you meant http://www?
+2022-11-09 19:04:01,309 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", attrs={"id": 'productTitle'}).text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:05:22,269 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", class_="a-size-large product-title-word-break").text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:06:11,227 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", class_="a-size-large product-title-word-break").text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:06:21,726 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", class_="a-size-large product-title-word-break").text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:08:37,812 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", attrs={"id": "productTitle"}).text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:08:46,728 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", attrs={"id": "productTitle"}).text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:13:47,818 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find("span", attrs={"id": "productTitle"}).text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-09 19:14:48,013 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
+    product_name = soup.find('h1', class_="a-size-large a-spacing-none").text.replace('\t', '').replace('\n', '').strip()
+AttributeError: 'NoneType' object has no attribute 'text'
