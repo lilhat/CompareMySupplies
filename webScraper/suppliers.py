@@ -243,8 +243,29 @@ def scrape_amazon(link):
         product_description = soup.find('h1', id='title')
         product_name = product_description.find('span', id='productTitle').text.replace('\t', '').replace('\n',
                                                                                                           '').strip()
-        price_description = soup.find('span', class_='a-offscreen')
-        primary_price = price_description.text.replace('\t', '').replace('\n', '')
+        primary_price = soup.find('span', class_='a-offscreen').text.replace('\t', '').replace('\n', '')
+        primary_price = float(primary_price[1:])
+        driver.quit()
+        final_data = (product_name, supplier, primary_price)
+    except Exception as error:
+        final_data = ("N/A", supplier, 0.00)
+        logger.exception(error)
+    return final_data
+
+
+# CEF
+def scrape_cef(link):
+    supplier = "CEF"
+    try:
+        supplier = "CEF"
+        options = Options()
+        options.headless = True
+        driver = webdriver.Chrome(options=options)
+        driver.get(link)
+        soup = BeautifulSoup(driver.page_source, 'lxml')
+        product_name = soup.find('h1', class_="details_page").text.replace('\t', '').replace('\n', '')
+        price_description = soup.find('div', class_='sub-value')
+        primary_price = price_description.select_one('span').text
         primary_price = float(primary_price[1:])
         driver.quit()
         final_data = (product_name, supplier, primary_price)

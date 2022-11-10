@@ -55,3 +55,18 @@ Traceback (most recent call last):
   File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 239, in scrape_amazon
     product_name = soup.find('h1', class_="a-size-large a-spacing-none").text.replace('\t', '').replace('\n', '').strip()
 AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-10 01:30:46,692 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 264, in scrape_cef
+    primary_price = soup.find('div', class_='sub-value').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2022-11-10 01:49:47,029 - suppliers - ERROR - 'NoneType' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 246, in scrape_amazon
+    primary_price = soup.find('span', class_='a-offscreen').replace('\t', '').replace('\n', '')
+TypeError: 'NoneType' object is not callable
+2022-11-10 01:50:13,519 - suppliers - ERROR - 'NoneType' object is not callable
+Traceback (most recent call last):
+  File "C:\Users\tahfi\PycharmProjects\CompareMyMaterials\webScraper\suppliers.py", line 246, in scrape_amazon
+    primary_price = soup.find('span', class_='a-offscreen').replace('\t', '').replace('\n', '')
+TypeError: 'NoneType' object is not callable
