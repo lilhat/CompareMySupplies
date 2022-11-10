@@ -2,9 +2,9 @@ from suppliers import *
 from python_to_postgres import *
 
 
-# Blue Circle MultiPurpose Cement 25kg
-def bluecircle_multi_cement_25():
-    to_database('bluecircle_multi_cement_25', [
+# Blue Circle Multipurpose Cement 25kg
+def bluecircle_multi_cement_25kg():
+    to_database('bluecircle_multi_cement_25kg', [
         scrape_bq(
             'https://www.diy.com/departments/blue-circle-multipurpose'
             '-cement-25kg-bag/35715_BQ.prd'),
@@ -22,8 +22,8 @@ def bluecircle_multi_cement_25():
 
 
 # Tarmac Kiln Dried Paving Sand 25kg
-def tarmac_kiln_dried_paving_sand_25():
-    to_database('tarmac_kiln_dried_paving_sand_25', [
+def tarmac_kiln_dried_paving_sand_25kg():
+    to_database('tarmac_kiln_dried_paving_sand_25kg', [
         scrape_bq(
             'https://www.diy.com/departments/tarmac-kiln-dried-paving-sand-large-bag/535484_BQ.prd'),
         scrape_travisperkins(
@@ -36,8 +36,8 @@ def tarmac_kiln_dried_paving_sand_25():
 
 
 # British Gypsum Thistle MultiFinish Finishing Plaster 25kg
-def thistle_multifinish_plaster_25():
-    to_database('thistle_multifinish_plaster_25', [
+def thistle_multifinish_plaster_25kg():
+    to_database('thistle_multifinish_plaster_25kg', [
         scrape_bq('https://www.diy.com/departments/thistle-multifinish-plaster-25kg-bag/35812_BQ.prd'),
         scrape_travisperkins(
             'https://www.travisperkins.co.uk/plaster/british-gypsum-thistle-multifinish-coat-plaster-25kg/p/848743'),
@@ -51,3 +51,96 @@ def thistle_multifinish_plaster_25():
         scrape_amazon('https://www.amazon.co.uk/Thistle-Multi-Finish-Plaster-British/dp/B07BN4FC1L')
     ])
 
+
+# Gyproc Square Edge Plasterboard (L)1.8m (W)0.9m (T)12.5mm
+def gyproc_square_edge_plasterboard_l1800_w900_t12p5():
+    to_database('gyproc_square_edge_plasterboard_l1800_w900_t12p5', [
+        scrape_bq(
+            'https://www.diy.com/departments/gyproc-standard-square-edge-plasterboard-l-1-8m-w-0-9m-t-12-5mm/35761_BQ'
+            '.prd'),
+        scrape_travisperkins(
+            'https://www.travisperkins.co.uk/standard-plasterboard/british-gypsum-gyproc-wallboard-square-edge-1800mm'
+            '-x-900mm-x-9-5mm/p/760041')
+    ])
+
+
+# Dense Concrete Block (H)100mm (L)440mm (W)100mm
+def dense_concrete_block_h100_l440_w100():
+    to_database('dense_concrete_block_h100_l440_w100', [
+        scrape_bq(
+            'https://www.diy.com/departments/dense-concrete-block-l-440mm-w-100mm-pack-of-72/47657_BQ.prd')
+    ])
+
+
+# Blue Circle Multipurpose Ready Mixed Concrete 20kg
+def bluecircle_multi_readymixed_concrete_20kg():
+    to_database('bluecircle_multi_readymixed_concrete_20kg', [
+        scrape_bq(
+            'https://www.diy.com/departments/blue-circle-multipurpose-ready-mixed-concrete-20kg-bag/135767_BQ.prd'),
+        scrape_travisperkins(
+            'https://www.travisperkins.co.uk/ready-mixed-concrete-and-mortar/blue-circle-multi-purpose-ready-to-use'
+            '-concrete-20kg/p/346658'),
+        scrape_wickes(
+            'https://www.wickes.co.uk/Blue-Circle-Multi-Purpose-Ready-To-Use-Concrete---20kg/p/133770'),
+        scrape_homebase('https://www.homebase.co.uk/tarmac-multipurpose-concrete-20kg/12811797.html'),
+        scrape_bradfords('https://www.bradfords.co.uk/blue-circle-multi-purpose-concrete-large')
+    ])
+
+
+# Metsa Wood Round Edge Whitewood CLS Timber (L)2.4m (W)63mm (T)38mm
+def metsa_roundedge_whitewood_cls_timber_l2400_w63_t38():
+    to_database('metsa_roundedge_whitewood_cls_timber_l2400_w63_t38', [
+        scrape_bq(
+            'https://www.diy.com/departments/metsa-wood-round-edge-whitewood-cls-timber-l-2-4m-w-63mm-t-38mm'
+            '/1798294_BQ.prd')
+    ])
+
+
+# NoNonsense White PVA Adhesive 5l
+def nononsense_white_pva_adhesive_5l():
+    to_database('nononsense_white_pva_adhesive_5l', [
+        scrape_bq(
+            'https://www.diy.com/departments/no-nonsense-white-pva-adhesive-5l/5059340110806_BQ.prd'),
+        scrape_screwfix('https://www.screwfix.com/p/no-nonsense-pva-5ltr/57248')
+    ])
+
+
+# Prysmian 6242Y 2.5mm Grey Twin & Earth cable, 100m
+def prysmian_6242y_2p5mm_grey_twinearth_100m():
+    to_database('prysmian_6242y_2p5mm_grey_twinearth_100m', [
+        scrape_bq(
+            'https://www.diy.com/departments/prysmian-6242y-2-5mm-grey-twin-earth-cable-100m/33833_BQ.prd'),
+        scrape_screwfix('https://www.screwfix.com/p/prysmian-6242y-grey-2-5mm-twin-earth-cable-100m-drum/20967')
+    ])
+
+
+# Off-Brand 2.5mm Grey Twin & Earth cable, 100m
+def offbrand_6242y_2p5mm_grey_twinearth_100m():
+    to_database('offbrand_6242y_2p5mm_grey_twinearth_100m', [
+        scrape_builderdepot(
+            'https://www.builderdepot.co.uk/2-5mm-twin-and-earth-cable-100m-drum-6242y'),
+        scrape_toolstation('https://www.toolstation.com/pitacs-twin-earth-cable-6242y-grey/p51466'),
+        scrape_wickes('https://www.wickes.co.uk/Wickes-Twin+Earth-Cable---2-5mm2-x-100m/p/156254'),
+        scrape_cef('https://www.cef.co.uk/catalogue/products/4116412-h6242y-2-5mm-pvc-twin-and-earth-cable-grey-100m'
+                   '-drum')
+    ])
+
+
+# FloPlast Ring Seal Black Single Socket Soil pipe, (D)110mm (L)3000mm
+def floplast_ringseal_black_singlesocket_soil_pipe_d110_l3000():
+    to_database('floplast_ringseal_black_singlesocket_soil_pipe_d110_l3000', [
+        scrape_bq('https://www.diy.com/departments/floplast-ring-seal-soil-black-single-socket-soil-pipe-dia-110mm-l'
+                  '-3000mm/80963_BQ.prd'),
+        scrape_screwfix('https://www.screwfix.com/p/floplast-push-fit-single-socket-soil-pipe-black-110mm-x-3m/49565'
+                        '#product_additional_details_container')
+    ])
+
+
+# MK Sentry 16-Module 8-Way Populated Dual RCD Consumer Unit with SPD
+def mk_sentry_16module_8way_populated_dual_rcd_consumer_unit_spd():
+    to_database('mk_sentry_16module_8way_populated_dual_rcd_consumer_unit_spd', [
+        scrape_screwfix('https://www.screwfix.com/p/mk-sentry-16-module-8-way-populated-dual-rcd-consumer-unit-with'
+                        '-spd/437pf'),
+        scrape_cef('https://www.cef.co.uk/catalogue/products/4911245-8-way-flexible-dual-100a-rcd-metal-clad-consumer'
+                   '-unit-with-spd-and-8-x-mcbs')
+    ])
