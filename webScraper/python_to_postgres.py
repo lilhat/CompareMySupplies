@@ -8,7 +8,7 @@ def to_database(name, *args):
     hostname = 'localhost'
     database = 'products'
     username = 'postgres'
-    pwd = 'admin123!'
+    pwd = 'admin123'
     port_id = 5432
     conn = None
     cur = None
