@@ -1,0 +1,154 @@
+/* Nav Styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    background: rgb(73, 73, 73);
+    height: 129px;
+
+}
+.nav-wrapper {
+    background:#333;
+    height:70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.brand-logo {
+    float:left;
+    display: flex;
+    width: 165px;
+    height: 98px;
+    margin-left: 40px;
+}
+
+.top-menu {
+    padding: 20px;
+}
+
+.top-links-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.top-link-item {
+    text-transform: capitalize;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+.top-link-item a {
+    padding:26px;
+    line-height:28px;
+    text-decoration: none;
+    color: white;
+    transition:0.6s;
+}
+
+.top-link-item a:hover {
+    background:orange;
+}
+
+.menu {
+    justify-content: center;
+    float: normal;
+}
+
+.links-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.link-item {
+    text-transform: capitalize;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+.link-item a {
+    padding:19.5px;
+    line-height:28px;
+    text-decoration: none;
+    color: white;
+    transition:0.6s;
+}
+
+.link-item a:hover {
+    background:orange;
+}
+
+.active {
+    background: orange;
+}
+
+.user-pic {
+    width: 40px;
+}
+
+.sign-in {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    margin-right: 40px;
+    transition: 0.6s;
+}
+
+.text-below {
+    display: block;
+    transition: 0.5s;
+}
+
+.sign-in a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.text-below:hover {
+    color: orange;
+}
+
+.search-box {
+    float: right;
+    display: flex;
+    width: 500px;
+    margin-right: 600px;
+}
+
+.tbox {
+    padding: 10px;
+    width: 80%;
+    height: 32px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    background: white;
+    color: #a9a9a9;
+    outline: none;
+}
+
+.tbox::placeholder{
+    color:#a9a9a9;
+}
+
+.btn {
+    width: 20%;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: orange;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
