@@ -1,0 +1,31 @@
+@import 'nav.css';
+
+.top-menu {
+    padding: 20px;
+    margin-left: 1165px;
+}
+
+.top-links-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.top-link-item {
+    text-transform: capitalize;
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+.top-link-item a {
+    padding:26px;
+    line-height:28px;
+    text-decoration: none;
+    color: white;
+    transition:0.6s;
+}
+
+.top-link-item a:hover {
+    background:orange;
+}

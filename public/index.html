@@ -6,30 +6,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/homenav.css">
     <script src="https://kit.fontawesome.com/ce98f0dc47.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
 </head>   
 <body>
     <div class="container">
-        <div class="nav-wrapper">
-            <div class="menu">
-                <ul>
-                    <li><a class="active" href="index.html">Home</a></li>
-                    <li><a href="categories.html">Categories</a> </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+        <nav class="navbar"></nav>
+
+        <header class="hero-section">
+            <div class="content">
+                <p class="sub-heading">Compare the prices of all your essential building materials!</p>
+                <div class="search-box">
+                    <input type="text" class="tbox" placeholder="What supplies are you looking for?" />
+                    <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
             </div>
-            <div class="search-box">
-                <input type="text" class="tbox" placeholder="Search..." />
-                <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </header>
+
+        <section class="product">
+            <h2 class="product-category">Top Sellers</h2>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cement.png" class="product-thumb" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Short Description</p>
+                        <span class="price">£20.00</span> 
+                    </div>
+                </div>
             </div>
-            <div class="sign-in">
-                <a href="signin.html">Sign In/Register</a>
-            </div>
-        </div>
+        </section>
+
 
         <div class="content-wrapper">
             <div class="items-wrapper">
@@ -84,6 +96,7 @@
             </div>
         </div>
     </div>
+    <script src="js/homenav.js"></script>
 </body>
 <script>
     const Items = document.querySelectorAll('.item-wrapper')

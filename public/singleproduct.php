@@ -7,34 +7,19 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Categories</title>
+    <title>Product</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/ce98f0dc47.js" crossorigin="anonymous"></script>
 </head>   
 <body>
     <div class="container">
-        <div class="nav-wrapper">
-            <div class="menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="categories.html">Categories</a> </li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="search-box">
-                <input type="text" class="tbox" placeholder="Search..." />
-                <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            <div class="sign-in">
-                <a href="signin.html">Sign In/Register</a>
-            </div>
-        </div>
+        <nav class="navbar"></nav>
+        <script src="js/nav.js"></script>
         <div class="single-product">
             <div class="row">
                 <div class="col-6">
@@ -143,7 +128,7 @@
             </table>
             </div>
         </div>
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
 
     </div>  
 </body>
