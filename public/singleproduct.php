@@ -19,7 +19,6 @@
 <body>
     <div class="container">
         <nav class="navbar"></nav>
-        <script src="js/nav.js"></script>
         <div class="single-product">
             <div class="row">
                 <div class="col-6">
@@ -128,8 +127,12 @@
             </table>
             </div>
         </div>
-        <script src="js/script.js"></script>
+
 
     </div>  
+    <footer></footer>
+    <script src="js/nav.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/footer.js"></script>
 </body>
 </html>
