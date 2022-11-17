@@ -1,4 +1,5 @@
 @import 'nav.css';
+@import 'styles.css';
 
 .top-menu {
     padding: 20px;
@@ -10,16 +11,16 @@
     display: flex;
     justify-content: center;
     list-style: none;
+    margin-left: 30px;
 }
 
 .top-link-item {
     text-transform: capitalize;
-    padding: 0 10px;
-    margin: 0 5px;
+
 }
 
 .top-link-item a {
-    padding:31px;
+    padding:32px;
     line-height:26px;
     text-decoration: none;
     color: white;
