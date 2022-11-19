@@ -1,9 +1,9 @@
 @import 'styles.css';
 @import 'footer.css';
-
+  
 .hero-section{
     width: 100%;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 300px);
     background-image: url('../images/header-background.png');
     background-size: cover;
     display: flex;
@@ -28,21 +28,30 @@
 }
 
 .product{
+    background-color: #efefef;
     position: relative;
     overflow: hidden;
     padding: 20px 0;
+    height: 600px;
 }
 
 .product-category{
     padding: 0 10vw;
     font-size: 30px;
     font-weight: 500;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-transform: capitalize;
 }
 
+.border-container {
+    border-top: 1px solid black;
+}
+
 .product-container {
-    padding: 0 10vw;
+    margin-left: 215px;
+    margin-right: 215px;
+    padding-top: 30px;
+    padding-bottom: 10px;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -53,6 +62,9 @@
 }
 
 .product-card{
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     flex: 0 0 auto;
     width: 250px;
     height: 450px;
@@ -154,4 +166,13 @@
 
 .pre-btn:hover img, .next-btn:hover img{
     opacity: 1;
+}
+
+@media only screen and (max-width: 768px){
+    .container, .hero-section, .product-container, .product-card{
+        width:100vw;
+    }
+    .hero-section .sub-heading{
+        font-size: 4vw;
+    }
 }

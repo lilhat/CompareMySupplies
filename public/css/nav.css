@@ -3,14 +3,16 @@
     position: sticky;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     z-index: 9;
     background: rgb(73, 73, 73);
     height: 129px;
 
 }
+
 .nav-wrapper {
     background:#333;
+    width: 100vw;
     height:70px;
     display: flex;
     justify-content: space-between;
@@ -27,7 +29,7 @@
 }
 
 .top-menu {
-    padding: 20px;
+    padding: 5vw;
 }
 
 .top-links-container{
@@ -44,7 +46,7 @@
 }
 
 .top-link-item a {
-    padding:26px;
+    padding:30.5px;
     line-height:28px;
     text-decoration: none;
     color: white;
@@ -61,7 +63,7 @@
 }
 
 .links-container{
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
     list-style: none;
@@ -126,7 +128,7 @@
 .tbox {
     padding: 10px;
     width: 80%;
-    height: 32px;
+    height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border: 1px solid #d1d1d1;
@@ -151,4 +153,14 @@
 }
 
 
+@media only screen and (max-width: 620px) {
+    /* For mobile phones: */
+    .body, .container {
+      width: 100vw;
+    }
+
+    .navbar, .nav-wrapper, .menu {
+        width: 100vw;
+    }
+  }
 
