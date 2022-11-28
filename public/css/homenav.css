@@ -1,4 +1,3 @@
-@import 'nav.css';
 @import 'styles.css';
 
 .top-menu {
@@ -20,7 +19,7 @@
 
 
 .top-link-item a {
-    padding:32px;
+    padding:31px;
     line-height:28px;
     text-decoration: none;
     color: white;
