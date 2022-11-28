@@ -2,7 +2,7 @@
 @import 'footer.css';
   
 .hero-section{
-    width: 100%;
+    width: 100vw;
     height: calc(100vh - 300px);
     background-image: url('../images/header-background.png');
     background-size: cover;
@@ -24,7 +24,7 @@
 .search-box {
     position: relative;
     display: block;
-    margin-left: 570px;
+    margin-left: 530px;
 }
 
 .product{
@@ -48,10 +48,10 @@
 }
 
 .product-container {
-    margin-left: 215px;
-    margin-right: 215px;
-    padding-top: 30px;
-    padding-bottom: 10px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding-top: 1.5vw;
+    padding-bottom: 1vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -169,10 +169,16 @@
 }
 
 @media only screen and (max-width: 768px){
-    .container, .hero-section, .product-container, .product-card{
-        width:100vw;
+    .container, .hero-section{
+        width: 100vw;
     }
     .hero-section .sub-heading{
         font-size: 4vw;
+    }
+    .product-container{
+        width: 100vw;
+    }
+    .product{
+        width: 100vw;
     }
 }
