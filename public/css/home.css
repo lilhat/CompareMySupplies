@@ -2,7 +2,7 @@
 @import 'footer.css';
   
 .hero-section{
-    width: 100%;
+    width: 100vw;
     height: calc(100vh - 300px);
     background-image: url('../images/header-background.png');
     background-size: cover;
@@ -168,7 +168,7 @@
     opacity: 1;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 871px){
     .container, .hero-section, .product-container, .product-card{
         width:100vw;
     }
