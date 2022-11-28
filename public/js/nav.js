@@ -14,7 +14,7 @@ const createNav = () => {
             </div>
             <div class="top-menu">
             <ul class="top-links-container">
-                <li class="top-link-item"><a href="index.html">Home</a></li>
+                <span class="first-link"><li class="top-link-item"><a href="index.html">Home</a></li></span>
                 <li class="top-link-item"><a href="categories.html">All Categories</a> </li>
             </ul>
             </div>
