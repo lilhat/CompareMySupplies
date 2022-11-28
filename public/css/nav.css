@@ -1,3 +1,5 @@
+@import 'searchbar.css';
+
 /* Nav Styles */
 .navbar {
     position: sticky;
@@ -12,7 +14,7 @@
 
 .nav-wrapper {
     background:#333;
-    width: 100vw;
+    width: 100%;
     height:70px;
     display: flex;
     justify-content: space-between;
@@ -23,9 +25,10 @@
 .brand-logo {
     float:left;
     display: flex;
-    width: 165px;
-    height: 98px;
-    margin-left: 40px;
+    width: 9vw;
+    height: 5vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
 .top-menu {
@@ -101,7 +104,7 @@
     vertical-align: top;
     display: inline-block;
     text-align: center;
-    margin-right: 40px;
+    margin-right: 2vw;
     transition: 0.6s;
 }
 
@@ -163,7 +166,15 @@
       width: 100vw;
     }
 
-    .navbar, .nav-wrapper, .menu {
+    .navbar, .nav-wrapper {
+        width: 100vw;
+    }
+    
+    .menu {
+        width: 100vw;
+    }
+
+    .search-box {
         width: 100vw;
     }
 
