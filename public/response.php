@@ -10,8 +10,8 @@ class Product {
     $this->conn = $connString;
   }
   
-  public function get_bluecircle_multi_cement_25kg() {
-    $sql = "SELECT * FROM bluecircle_multi_cement_25kg";
+  public function get_Product($string) {
+    $sql = "SELECT * FROM $string order by price ASC";
     $queryRecords = pg_query($this->conn, $sql) or die("error to fetch data");
     $data = pg_fetch_all($queryRecords);
     return $data;

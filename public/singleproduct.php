@@ -1,7 +1,7 @@
 <?php
     include("response.php");
     $newObj = new Product();
-    $prods = $newObj->get_bluecircle_multi_cement_25kg();
+    $prods = $newObj->get_Product("blue_circle_multi_cement_25kg");
 ?>
 <!DOCTYPE html>
 <html>
