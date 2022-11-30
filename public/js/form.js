@@ -30,7 +30,7 @@ signupBtn.addEventListener('click', () => {
             email: email.value,
             password: password.value,
             tac: tac.checked
-        })
+        });
     }
 })
 
