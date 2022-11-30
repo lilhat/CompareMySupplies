@@ -7,6 +7,15 @@
     text-decoration: underline;
 }
 
+.loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    display: none;
+}
+
 /* Alert */
 .alert-box{
     display: flex;
