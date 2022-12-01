@@ -2,7 +2,9 @@
 include("response.php");
 $newObj = new Product();
 $newObj2 = new Product();
-$prods = $newObj->get_Category();
+
+$id = $_GET['product'];
+$prods = $newObj->get_Category_id($id);
 
 ?>
 
@@ -11,7 +13,7 @@ $prods = $newObj->get_Category();
 
 <head>
     <meta charset="utf-8" />
-    <title>Products</title>
+    <title><?php echo $id?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
@@ -28,7 +30,7 @@ $prods = $newObj->get_Category();
 
     <nav class="navbar"></nav>
     <section class="product">
-            <h2 class="product-category">Products</h2>
+            <h2 class="product-category"><?php echo $id?></h2>
             <div class="border-container">
                 <div class="product-container">
                     <?php foreach ($prods as $prod): ?>
@@ -42,7 +44,7 @@ $prods = $newObj->get_Category();
                         <div class="product-info">
                             <h2 class="product-brand"><?php echo $prod['product_name'] ?></h2>
                             <p class="product-short-des"><?php echo $prod['category'] ?></p>
-                            <span class="price">£<?php echo $comp['price'] ?></span> 
+                            <span class="price"><?php echo $comp['price'] ?></span> 
                         </div>
                     </div>
                     <?php endforeach; ?>

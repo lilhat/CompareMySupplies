@@ -3,6 +3,7 @@
 }
 .product-container {
     height: 100vw;
+    margin-right: 3vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }

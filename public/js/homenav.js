@@ -4,13 +4,13 @@ const createNav = () => {
     nav.innerHTML = `
         <div class="nav-wrapper">
             <div class="main-logo">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="images/main-logo.png" class="brand-logo" alt="">
                 </a>
             </div>
             <div class="top-menu">
             <ul class="top-links-container">
-                <span class="first-link"><li class="top-link-item"><a href="index.html">Home</a></li></span>
+                <span class="first-link"><li class="top-link-item"><a href="index.php">Home</a></li></span>
                 <li class="top-link-item"><a href="products.php">All Categories</a> </li>
             </ul>
             </div>
@@ -28,12 +28,12 @@ const createNav = () => {
         </div>
         <div class="menu">
             <ul class="links-container">
-                <li class="link-item"><a href="index.html">Plaster</a></li>
-                <li class="link-item"><a href="categories.html">Concrete</a> </li>
-                <li class="link-item"><a href="about.html">Cement</a></li>
-                <li class="link-item"><a href="contact.html">Timber</a></li>
-                <li class="link-item"><a href="contact.html">Adhesives</a></li>
-                <li class="link-item"><a href="contact.html">Electricals</a></li>
+                <li class="link-item"><a href="categories.php?product=plaster">Plaster</a></li>
+                <li class="link-item"><a href="categories.php?product=concrete">Concrete</a> </li>
+                <li class="link-item"><a href="categories.php?product=cement">Cement</a></li>
+                <li class="link-item"><a href="categories.php?product=timber">Timber</a></li>
+                <li class="link-item"><a href="categories.php?product=adhesives">Adhesives</a></li>
+                <li class="link-item"><a href="categories.php?product=eletrical">Electricals</a></li>
             </ul>
         </div>
     `;

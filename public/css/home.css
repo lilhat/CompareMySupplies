@@ -26,7 +26,8 @@
     position: relative;
     overflow: hidden;
     padding: 20px 0;
-    height: 600px;
+    height: 650px;
+    
 }
 
 .product-category{
@@ -42,10 +43,10 @@
 }
 
 .product-container {
-    margin-left: 10vw;
-
+    padding-left: 10vw;
     padding-top: 1.5vw;
     padding-bottom: 1vw;
+    margin-right: 20vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -61,7 +62,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     flex: 0 0 auto;
     width: 250px;
-    height: 450px;
+    height: 500px;
     margin-right: 40px;
 }
 
@@ -151,7 +152,7 @@
 
 .next-btn{
     right: 0;
-
+    margin-right: 20vw;
 }
 
 .pre-btn img, .next-btn img{
