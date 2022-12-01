@@ -1,0 +1,13 @@
+.product{
+    height: 110vw;
+}
+.product-container {
+    height: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.product-card {
+    height: 500px;
+    margin-bottom: 50px;
+}

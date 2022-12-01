@@ -43,7 +43,7 @@
 
 .product-container {
     margin-left: 10vw;
-    margin-right: 10vw;
+
     padding-top: 1.5vw;
     padding-bottom: 1vw;
     display: flex;
@@ -150,8 +150,8 @@
 }
 
 .next-btn{
-    right: 1;
-    margin-left: 90vw;
+    right: 0;
+
 }
 
 .pre-btn img, .next-btn img{

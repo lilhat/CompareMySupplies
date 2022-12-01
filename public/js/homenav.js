@@ -11,7 +11,7 @@ const createNav = () => {
             <div class="top-menu">
             <ul class="top-links-container">
                 <span class="first-link"><li class="top-link-item"><a href="index.html">Home</a></li></span>
-                <li class="top-link-item"><a href="categories.html">All Categories</a> </li>
+                <li class="top-link-item"><a href="products.php">All Categories</a> </li>
             </ul>
             </div>
             <div class="sign-in">
