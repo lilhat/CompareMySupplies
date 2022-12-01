@@ -2,11 +2,13 @@
     include("response.php");
     $newObj = new Product();
     $newObj2 = new Product();
-
+    $newObj3 = new Product();
+    $newObj4 = new Product();
     $id = $_GET['product'];
     $comps = $newObj->get_Comparison($id);
     $prods = $newObj2->get_Price($id);
-
+    $extras = $newObj3->get_Category();
+    
     foreach($prods as $key =>$prod) :
         $name = $prod['product_name'];
         $price = $prod['price'];
@@ -46,10 +48,10 @@
             </div>
         </div>
         <div class="details">
-            <h2 class="product-brand"><?php echo $prod['product_name']?></h2>
+            <h2 class="product-brand"><?php echo $name?></h2>
             <p class="product-short-des"></p>
             <span class="compare-price">Compare prices from </span>
-            <span class="product-price"> £<?php echo $prod['price']?></span>
+            <span class="product-price"> £<?php echo $price?></span>
         </div>
     
     </section>
@@ -77,6 +79,31 @@
             </table>
         </div>
     </section>
+    <section class="product">
+            <h2 class="product-category">Top Sellers</h2>
+            <button class="pre-btn"><img src="images/arrow.png"></button>
+            <button class="next-btn"><img src="images/arrow.png"></button>
+            <div class="border-container">
+                <div class="product-container">
+                <?php foreach ($extras as $extra): ?>
+                    <?php $prices = $newObj4->get_Price($extra['product_code'])?>
+                    <?php foreach($prices as $price): ?>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/products/<?php echo $extra['product_code']?>.png" class="product-thumb" alt="">
+                            <a href="product.php?product=<?php echo $extra['product_code']?>"><button class="card-btn">Compare Prices</button></a>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-brand"><?php echo $extra['product_name']?></h2>
+                            <p class="product-short-des"><?php echo $extra['category']?></p>
+                            <span class="price">£<?php echo $price['price'] ?></span> 
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php endforeach; ?>
+                    
+            </div>
+        </section>
 
     <footer></footer>
 

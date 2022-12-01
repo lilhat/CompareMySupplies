@@ -136,3 +136,11 @@
 .supplier-btn:hover{
     opacity: 0.7;
 }
+
+.product-container {
+    margin-right: 0px;
+}
+
+.next-btn{
+    margin-right: 0px;
+}
