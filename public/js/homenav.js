@@ -33,7 +33,7 @@ const createNav = () => {
                 <li class="link-item"><a href="categories.php?product=cement">Cement</a></li>
                 <li class="link-item"><a href="categories.php?product=timber">Timber</a></li>
                 <li class="link-item"><a href="categories.php?product=adhesives">Adhesives</a></li>
-                <li class="link-item"><a href="categories.php?product=eletrical">Electricals</a></li>
+                <li class="link-item"><a href="categories.php?product=electrical">Electricals</a></li>
             </ul>
         </div>
     `;

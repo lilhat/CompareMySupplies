@@ -44,7 +44,7 @@ $prods = $newObj->get_Category_id($id);
                         <div class="product-info">
                             <h2 class="product-brand"><?php echo $prod['product_name'] ?></h2>
                             <p class="product-short-des"><?php echo $prod['category'] ?></p>
-                            <span class="price"><?php echo $comp['price'] ?></span> 
+                            <span class="price">£<?php echo $comp['price'] ?></span> 
                         </div>
                     </div>
                     <?php endforeach; ?>
