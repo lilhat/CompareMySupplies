@@ -19,10 +19,14 @@ const createNav = () => {
             </ul>
             </div>
             <div class="sign-in">
-                <a href="signin.html">
-                    <img src="images/user.png" class="user-pic">
-                <span class="text-below">Sign In</span>
+                <a>
+                    <img src="images/user.png" id="user-pic" class="user-pic">
+                    <div class="login-logout-popup hide">
+                        <p class="account-info">Logged in as, name</p>
+                        <button class="btn" id="user-btn">Log Out</button>
+                    </div>
                 </a>
+
             </div>
 
         </div>
@@ -42,3 +46,34 @@ const createNav = () => {
 }
 
 createNav();
+
+// nav popup
+
+const userImageButton = document.querySelector('#user-pic');
+const userPopup = document.querySelector('.login-logout-popup');
+const popuptext = document.querySelector('.account-info');
+const actionBtn = document.querySelector('#user-btn');
+
+userImageButton.addEventListener('click', () => {
+    userPopup.classList.toggle('hide');
+})
+
+window.onload = () => {
+    let user = JSON.parse(sessionStorage.user || null);
+    if(user != null){
+        // means user is logged in
+        popuptext.innerHTML = `Signed in as ${user.name}`;
+        actionBtn.innerHTML = 'Sign out';
+        actionBtn.addEventListener('click', () => {
+            sessionStorage.clear();
+            location.reload();
+        })
+    } else{
+        // user is logged out
+        popuptext.innerHTML = 'Not logged in';
+        actionBtn.innerHTML = 'Sign in';
+        actionBtn.addEventListener('click', () => {
+            location.href = '/signin';
+        })
+    }
+}
