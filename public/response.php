@@ -45,5 +45,4 @@ class Product {
     return $data;
   }
 }
-
 ?>
