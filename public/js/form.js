@@ -12,59 +12,42 @@ const loader = document.querySelector('.loader');
 
 // select inputs
 const signupBtn = document.querySelector('.signup-btn');
+const name = document.querySelector('#name');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
-const tac = document.querySelector('#terms-and-cond');
+const tac = document.querySelector('#terms-and-cond') || null;
 
 signupBtn.addEventListener('click', () => {
-    if(!email.value.length){
-        showAlert('Email is required');
-    } else if(password.value.length < 6){
-        showAlert('Password must be more than 6 characters');
-    } else if(!tac.checked){
-        showAlert('You must agree to the terms and conditions to sign up');
+    if(name != null){
+        if(!name.value.length){
+            showAlert('Name is required');
+        } else if(!email.value.length){
+            showAlert('Email is required');
+        } else if(password.value.length < 6){
+            showAlert('Password must be more than 6 characters');
+        } else if(!tac.checked){
+            showAlert('You must agree to the terms and conditions to sign up');
+        } else{
+            // sumbit form
+            loader.style.display = 'block';
+            sendData('/signup', {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+                tac: tac.checked
+            });
+        }
     } else{
-        // sumbit form
-        loader.style.display = 'block';
-        sendData('/signup', {
-            email: email.value,
-            password: password.value,
-            tac: tac.checked
-        });
+        // login page
+        if(!email.value.length || !password.value.length){
+            showAlert('Please fill all the fields');
+        } else{
+            loader.style.display = 'block';
+            sendData('/signin', {
+                email: email.value,
+                password: password.value
+            });
+        }
     }
+
 })
-
-// send data function
-const sendData = (path, data) => {
-    fetch(path, {
-        method: 'post',
-        headers: new Headers({'Content-Type': 'application/json'}),
-        body: JSON.stringify(data)
-    }).then((res) => res.json())
-    .then(response => {
-        processData(response);
-    })
-}
-
-const processData = (data) => {
-    loader.style.display = null;
-    if(data.alert){
-        showAlert(data.alert);
-    } else if(data.email){
-        //create authToken
-        data.authToken = generateToken(data.email);
-        sessionStorage.user = JSON.stringify(data);
-        location.replace('/');
-    }
-}
-
-// alert function
-const showAlert = (msg) => {
-    let alertBox = document.querySelector('.alert-box');
-    let alertMsg = document.querySelector('.alert-msg');
-    alertMsg.innerHTML = msg;
-    alertBox.classList.add('show');
-    setTimeout(() => {
-        alertBox.classList.remove('show');
-    }, 3000);
-}
