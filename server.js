@@ -4,6 +4,55 @@ const admin = require('firebase-admin');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
+// postgresql db
+const {Client} = require('pg');
+
+const client = new Client({
+    host: "localhost",
+    user: "postgres",
+    port: 5432,
+    password: "admin123",
+    database: "products"
+})
+
+
+client.connect();
+var product_codes = [];
+function codeQuery() {
+    client.query(`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'`, (err, res)=>{
+        if(!err){
+            var temp_codes = [];
+            for(let i = 0; i < res.rows.length; i++){
+                temp_codes.push(res.rows[i]);
+                var code_obj = temp_codes[i];
+                var code = code_obj[Object.keys(code_obj)[0]];
+                product_codes.push(code);
+
+            }
+            return product_codes;
+        } else {
+            console.log(err.message);
+        }
+
+    })
+}
+
+
+function tableQuery(code) {
+    client.query(`SELECT * FROM ` + code + ` order by price ASC`, (err, res)=>{
+        if(!err){
+            var result = res.rows;
+        } else {
+            console.log(err.message);
+        }
+        return result;
+
+    })
+}
+
+
+client.end;
+
 //firebase admin setup
 let serviceAccount = require("./comparemymaterials-a2047-firebase-adminsdk-v09n3-d86979368e.json");
 
@@ -104,6 +153,13 @@ app.post('/signin', (req, res) => {
         }
     })
 })
+
+app.post("/product.html",(req,res)=>{ 
+    product_codes = codeQuery();
+    tableQuery(product_codes[0]);
+    
+})
+
 
 // 404 route
 app.get('/404', (req, res) => {
