@@ -93,7 +93,7 @@ foreach($names as $name)
                     </div>
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="images/products/bluecircle_mixed_concrete_20kg.png" class="product-thumb" alt="">
+                            <img src="images/products/bluecircle_multi_readymixed_concrete_20kg.png" class="product-thumb" alt="">
                             <button class="card-btn">Compare Prices</button>
                         </div>
                         <div class="product-info">
