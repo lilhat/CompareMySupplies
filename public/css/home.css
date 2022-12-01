@@ -150,7 +150,8 @@
 }
 
 .next-btn{
-    right: 0;
+    right: 1;
+    margin-left: 90vw;
 }
 
 .pre-btn img, .next-btn img{
