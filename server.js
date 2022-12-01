@@ -37,10 +37,12 @@ app.get('/signup', (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-    let {email, password, tac} = req.body;
+    let {name, email, password, tac} = req.body;
 
     // form validations
-    if(!email.length){
+    if(!name.length){
+        return res.json({'alert': 'Name is required'});
+    } else if(!email.length){
         return res.json({'alert': 'Email is required'});
     } else if(password.length < 6){
         return res.json({'alert': 'Password must be more than 6 characters'});
@@ -48,7 +50,7 @@ app.post('/signup', (req, res) => {
         return res.json({'alert': 'You must agree to the terms and conditions to sign up'});
     } 
 
-    
+    // store user in db
     db.collection('comparemymaterials').doc(email).get()
     .then(user => {
         if(user.exists){
@@ -61,6 +63,7 @@ app.post('/signup', (req, res) => {
                     db.collection('comparemymaterials').doc(email).set(req.body)
                     .then(data => {
                         res.json({
+                            name: req.body.name,
                             email: req.body.email,
                         })
                     })
@@ -70,8 +73,37 @@ app.post('/signup', (req, res) => {
     });
 })
 
-// store user in db
+// login route
+app.get('/signin', (req, res) => {
+    res.sendFile(path.join(staticPath, "signin.html"))
+})
 
+app.post('/signin', (req, res) => {
+    let { email, password } = req.body;
+
+    if(!email.length || !password.length){
+        return res.json({'alert': 'Please fill all the fields'})
+    }
+
+    db.collection('comparemymaterials').doc(email).get()
+    .then(user => {
+        if(!user.exists){
+            return res.json({'alert': 'Provided email does not exist'})
+        } else{
+            bcrypt.compare(password, user.data().password, (err, result) => {
+                if(result){
+                    let data = user.data();
+                    return res.json({
+                        name: data.name,
+                        email: data.email,
+                    })
+                } else{
+                    return res.json({'alert': 'Incorrect password entered'});
+                }
+            })
+        }
+    })
+})
 
 // 404 route
 app.get('/404', (req, res) => {
