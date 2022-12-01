@@ -69,7 +69,7 @@ window.onload = () => {
         popuptext.innerHTML = 'Not logged in';
         actionBtn.innerHTML = 'Sign in';
         actionBtn.addEventListener('click', () => {
-            location.href = '/signin';
+            location.href = 'signin.php';
         })
     }
 }
