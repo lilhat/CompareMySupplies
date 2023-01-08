@@ -34,7 +34,7 @@ def scrape_bq(link):
         primary_price = float(primary_price)
         final_data = (product_name, supplier, primary_price, link)
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -52,7 +52,7 @@ def scrape_travisperkins(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -71,7 +71,7 @@ def scrape_wickes(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -90,7 +90,7 @@ def scrape_homebase(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -107,7 +107,7 @@ def scrape_buildersmerchant(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -125,7 +125,7 @@ def scrape_bradfords(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -142,7 +142,7 @@ def scrape_toolstation(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -172,7 +172,7 @@ def scrape_screwfix(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -189,7 +189,7 @@ def scrape_jewson(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -207,7 +207,7 @@ def scrape_materialsmarket(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -224,7 +224,7 @@ def scrape_builderdepot(link):
         final_data = (product_name, supplier, primary_price, link)
 
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -247,7 +247,7 @@ def scrape_amazon(link):
         driver.quit()
         final_data = (product_name, supplier, primary_price, link)
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
 
@@ -268,6 +268,6 @@ def scrape_cef(link):
         driver.quit()
         final_data = (product_name, supplier, primary_price, link)
     except Exception as error:
-        final_data = ("N/A", supplier, 0.00)
+        final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
