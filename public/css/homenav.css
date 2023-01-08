@@ -1,26 +1,25 @@
-@import 'nav.css';
 @import 'styles.css';
 
 .top-menu {
-    margin-left: 54vw;
+    width: 77vw;
+    margin-left: 53px;
 }
 
 .top-links-container{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     list-style: none;
 
 }
 
 .top-link-item {
     text-transform: capitalize;
-
 }
 
 
 .top-link-item a {
-    padding:32px;
+    padding:26px;
     line-height:28px;
     text-decoration: none;
     color: white;
@@ -31,14 +30,32 @@
     background:orange;
 }
 
-@media only screen and (max-width: 768px) {
+.search-box {
+    margin-right: 600px;
+}
+
+@media only screen and (max-width: 871px) {
     /* For mobile phones: */
     .top-menu {
         width: 100vw;
-        margin-left: 0px;
+        margin-left: 23vw;
     }
 
     .top-links-container{
         width: 30vw;
+    }
+    
+    .tbox{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    span.first-link {
+        display: none;
+    }
+    .top-menu {
+        width: 100vw;
+        margin-left: 15vw;
     }
 }
