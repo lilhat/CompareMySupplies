@@ -1,6 +1,8 @@
 import time
 from products import *
 
+# Main program to run the product functions that initiate the webscraper and enters data into database
+# Waits 10 minutes before scraping again
 
 while True:
     bluecircle_multi_cement_25kg()
@@ -15,6 +17,10 @@ while True:
     offbrand_6242y_2p5mm_grey_twinearth_100m()
     floplast_ringseal_black_singlesocket_soil_pipe_d110_l3000()
     mk_sentry_16module_8way_populated_dual_rcd_consumer_unit_spd()
+
+# Sending product list to database
+    to_product_database("product_list", prods)
+
     time_wait = 10
     print(f'Waiting {time_wait} minutes...')
     time.sleep(time_wait * 60)
