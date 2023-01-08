@@ -31,6 +31,7 @@
 .single-product{
     width: 1080px;
     position: relative;
+    margin-left: 20vw;
 }
 
 
@@ -228,11 +229,11 @@
     background-color: black;
 }
 
-.product-color .color-layout .red{
-    background-color: red;
+.product-color .color-layout .beige{
+    background-color: beige;
 }
-.product-color .color-layout .blue{
-    background-color: blue;
+.product-color .color-layout .brown{
+    background-color: brown;
 }
 
 .product-color .color-layout input[type="radio"]:checked + label{

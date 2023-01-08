@@ -1,7 +1,7 @@
 <?php
     include("response.php");
     $newObj = new Product();
-    $prods = $newObj->get_bluecircle_multi_cement_25kg();
+    $prods = $newObj->get_Product();
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
                 <div class="col-6">
                     <div class="product-image">
                         <div class="product-image-main">
-                            <img src="img/tshirt-1.png" alt="" id="product-main-image">
+                            <img src="images/cement.png" alt="" id="product-main-image">
                         </div>
                         <div class="product-image-slider">
                             <img src="img/tshirt-1.png" alt=""  class="image-list">
@@ -38,12 +38,12 @@
                     <div class="breadcrumb">
                         <span><a href="#">Home</a></span>
                         <span><a href="#">Product</a></span>
-                        <span class="active">T-shirt</span>
+                        <span class="active">Cement</span>
                     </div>
 
                     <div class="product">
                         <div class="product-title">
-                            <h2>Half Sleve T-shirt for Men</h2>
+                            <h2>Cement</h2>
                         </div>
                         <div class="product-rating">
                             <span><i class="bx bxs-star"></i></span>
@@ -65,20 +65,11 @@
                         <div class="product-size">
                             <h4>Size</h4>
                             <div class="size-layout">
-                                <input type="radio" name="size" value="S" id="1" class="size-input">
-                                <label for="1" class="size">S</label>
+                                <input type="radio" name="size" value="50M" id="1" class="size-input">
+                                <label for="1" class="size">50M</label>
 
-                                <input type="radio" name="size" value="M" id="2" class="size-input">
-                                <label for="2" class="size">M</label>
-
-                                <input type="radio" name="size" value="L" id="3" class="size-input">
-                                <label for="3" class="size">L</label>
-
-                                <input type="radio" name="size" value="XL" id="4" class="size-input">
-                                <label for="4" class="size">XL</label>
-
-                                <input type="radio" name="size" value="XXL" id="5" class="size-input">
-                                <label for="5" class="size">XXL</label>
+                                <input type="radio" name="size" value="100M" id="2" class="size-input">
+                                <label for="2" class="size">100M</label>
                             </div>
                         </div>
                         <div class="product-color">
@@ -86,11 +77,11 @@
                             <div class="color-layout">
                                 <input type="radio" name="color"  value="black" class="color-input">
                                 <label for="black" class="black"></label>
-                                <input type="radio" name="color"  value="red" class="color-input">
-                                <label for="red" class="red"></label>
+                                <input type="radio" name="color"  value="beige" class="color-input">
+                                <label for="beige" class="beige"></label>
 
-                                <input type="radio" name="color"  value="blue" class="color-input">
-                                <label for="blue" class="blue"></label>
+                                <input type="radio" name="color"  value="brown" class="color-input">
+                                <label for="brown" class="brown"></label>
                             </div>
                         </div>
                         <span class="divider"></span>
