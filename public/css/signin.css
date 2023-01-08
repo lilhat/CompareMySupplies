@@ -1,0 +1,73 @@
+/* Sign Up Styles */
+.sign-up-form {
+    width:300px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    background: #fff;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.input-box {
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 90%;
+    border: 1px solid #999;
+    outline: none;
+}
+
+.sign-up-form h1{
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.sign-up-form button{
+    color:#fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.sign-up-form a {
+    text-decoration: none;
+}
+
+.sign-up-form hr {
+    margin-top: 20px;
+    width: 80%;
+}
+.sign-up-form .or {
+    background: #fff;
+    width: 30px;
+    margin: -19px auto 10px;
+}
+.sign-up-form img {
+    width: 70px;
+    margin-top: -50px;
+}
+
+.signup-btn {
+    background-color: orange;
+}
+.facebook-btn {
+    background-color: #3b5998;
+}
+
+input[type=submit]{
+    color:#fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

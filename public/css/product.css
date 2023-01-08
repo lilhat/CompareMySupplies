@@ -1,0 +1,146 @@
+.product-details{
+    width: 100%;
+    padding: 60px 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-image{
+    width: 350px;
+    height: 350px;
+    margin-bottom: 50px;
+    position: relative;
+    background-size: cover;
+}
+
+.image-slider{
+    position: absolute;
+    justify-content: left;
+    margin-top: 150px;
+    width: 350px;
+    height: 350px;
+}
+
+.product-images{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 100px;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.product-images img{
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.product-images img.active{
+    opacity: 0.5;
+}
+
+.details{
+    width: 75%;
+}
+
+.details .product-brand{
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
+.details .product-short-des{
+    font-size: 25px;
+    line-height: 30px;
+    height: auto;
+    margin: 15px 0 30px;
+}
+
+.product-price{
+    font-weight: 1000;
+    font-size: 25px;
+}
+
+.compare-price{
+    font-size: 25px;
+}
+
+.table-container{
+    display: flex;
+    justify-content: center;
+}
+
+.table{
+    width: 90%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+
+.table thead tr {
+    background-color: orange;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table th, .table td{
+    padding: 12px 15px;
+}
+
+.table tbody tr{
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid orange;
+}
+
+.table tbody tr.active-row{
+    font-weight: bold;
+    color: orange;
+}
+
+.compare-price{
+    font-weight: bold;
+}
+
+.supplier-logo{
+    width: 100px;
+    height: 40px;
+}
+
+.supplier-btn{
+    width: 8vw;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: orange;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.supplier-btn:hover{
+    opacity: 0.7;
+}
+
+.product-container {
+    margin-right: 0px;
+}
+
+.next-btn{
+    margin-right: 0px;
+}
