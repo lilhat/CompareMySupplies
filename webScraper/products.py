@@ -2,6 +2,8 @@ from suppliers import *
 from python_to_postgres import *
 
 
+# Functions that call scrape functions on individual product suppliers, then calls function to insert into database
+
 # Blue Circle Multipurpose Cement 25kg
 def bluecircle_multi_cement_25kg():
     to_database('bluecircle_multi_cement_25kg', [
@@ -14,8 +16,6 @@ def bluecircle_multi_cement_25kg():
         scrape_wickes(
             'https://www.wickes.co.uk/Blue-Circle-General-Purpose-Cement'
             '---25kg/p/224661'),
-        scrape_buildersmerchant(
-            'https://www.buildersmerchant.com/product/blue-circle-general-purpose-cement-25kg/'),
         scrape_bradfords('https://www.bradfords.co.uk/blue-circle-general-purpose-cement-25kg-cem225'),
         scrape_amazon('https://www.amazon.co.uk/Blue-Circle-General-Purpose-Cement/dp/B088HH7DNL')
     ])
@@ -144,3 +144,20 @@ def mk_sentry_16module_8way_populated_dual_rcd_consumer_unit_spd():
         scrape_cef('https://www.cef.co.uk/catalogue/products/4911245-8-way-flexible-dual-100a-rcd-metal-clad-consumer'
                    '-unit-with-spd-and-8-x-mcbs')
     ])
+
+
+prods = [('bluecircle_multi_cement_25kg', 'Blue Circle Multipurpose Cement, 25kg', 'cement'),
+         ('tarmac_kiln_dried_paving_sand_25kg', 'Tarmac Kiln Dried Paving Sand, 25kg', 'sand'),
+         ('thistle_multifinish_plaster_25kg', 'Thistle Multifinish plaster, 25kg', 'plaster'),
+         ('gyproc_square_edge_plasterboard_l1800_w900_t12p5',
+          'Gyproc Standard Square edge Plasterboard', 'plasterboard'),
+         ('dense_concrete_block_h100_l440_w100', 'Dense Concrete block (L)440mm (W)100mm', 'concrete'),
+         ('bluecircle_multi_readymixed_concrete_20kg', 'Blue Circle Ready Mixed Concrete, 20kg', 'concrete'),
+         ('metsa_roundedge_whitewood_cls_timber_l2400_w63_t38', 'Metsa Round Edge Whitewood CLS Timber', 'timber'),
+         ('nononsense_white_pva_adhesive_5l', 'No Nonsense White PVA Adhesive 5L', 'adhesives'),
+         ('prysmian_6242y_2p5mm_grey_twinearth_100m', 'Prysmian 2.5MM Twin & Earth Cable 100M', 'electrical'),
+         ('offbrand_6242y_2p5mm_grey_twinearth_100m', 'Offbrand 2.5MM Twin & Earth Cable 100M', 'electrical'),
+         ('floplast_ringseal_black_singlesocket_soil_pipe_d110_l3000', 'Floplast Ringseal Black Soil '
+                                                                       'Pipe Black', 'pipe'),
+         ('mk_sentry_16module_8way_populated_dual_rcd_consumer_unit_spd',
+          'MK Sentry 16-Module Dual RCD Consumer Unit', 'electrical')]
