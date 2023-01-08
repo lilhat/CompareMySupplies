@@ -2175,3 +2175,148 @@ Traceback (most recent call last):
   File "E:\CompareMyMaterials\webScraper\suppliers.py", line 106, in scrape_buildersmerchant
     product_name = soup.find('h2', class_='product_title entry-title show-product-nav').text
 AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:29:14,902 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 49, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:29:18,611 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 105, in scrape_buildersmerchant
+    product_name = soup.find('h2', class_='product_title entry-title show-product-nav').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:29:32,240 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 49, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:29:34,752 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 49, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:29:50,962 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 49, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:29:52,416 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 49, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:49:33,392 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:49:45,996 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:49:48,605 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:50:02,776 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:50:04,265 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:55:52,090 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:56:03,979 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:56:06,805 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:56:50,261 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:57:02,620 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:57:05,236 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:57:19,074 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 20:57:21,022 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 21:00:34,094 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 21:00:46,660 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 21:00:49,510 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 21:01:03,833 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 21:01:05,425 - suppliers - ERROR - 'NoneType' object has no attribute 'text'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 48, in scrape_travisperkins
+    product_name = soup.find('h1', class_='sc-bczRLJ sc-gsnTZi bgIXvN ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'text'
+2023-01-08 21:07:30,131 - suppliers - ERROR - 'NoneType' object has no attribute 'find'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 50, in scrape_travisperkins
+    price_with_sign = price.find('h1', class_='sc-bczRLJ sc-gsnTZi nFQPz ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'find'
+2023-01-08 21:07:42,179 - suppliers - ERROR - 'NoneType' object has no attribute 'find'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 50, in scrape_travisperkins
+    price_with_sign = price.find('h1', class_='sc-bczRLJ sc-gsnTZi nFQPz ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'find'
+2023-01-08 21:07:44,747 - suppliers - ERROR - 'NoneType' object has no attribute 'find'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 50, in scrape_travisperkins
+    price_with_sign = price.find('h1', class_='sc-bczRLJ sc-gsnTZi nFQPz ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'find'
+2023-01-08 21:07:59,413 - suppliers - ERROR - 'NoneType' object has no attribute 'find'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 50, in scrape_travisperkins
+    price_with_sign = price.find('h1', class_='sc-bczRLJ sc-gsnTZi nFQPz ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'find'
+2023-01-08 21:08:00,837 - suppliers - ERROR - 'NoneType' object has no attribute 'find'
+Traceback (most recent call last):
+  File "E:\CompareMyMaterials\webScraper\suppliers.py", line 50, in scrape_travisperkins
+    price_with_sign = price.find('h1', class_='sc-bczRLJ sc-gsnTZi nFQPz ePZrKO').text
+AttributeError: 'NoneType' object has no attribute 'find'
