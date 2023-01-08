@@ -1,0 +1,126 @@
+@import 'signin.css';
+@import 'signup.css';
+@import 'nav.css';
+@import 'footer.css';
+
+/* Master Styles */
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0px;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .body, .container {
+      width: 40%;
+    }
+  }
+
+
+/* Item Styles */
+
+.items-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item-wrapper {
+    position: relative;
+}
+
+.img-background {
+    height: 350px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-text-wrapper {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    padding-left: 200px;
+    padding-right: 100px;
+    
+}
+
+.logo-wrapper img {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.img-text-wrapper .subtitle {
+    transition: 1s;
+    font-weight: 600;
+    color: transparent;
+}
+
+.img-text-wrapper:hover .subtitle {
+    font-weight: 600;
+    color: orange;
+    text-decoration: underline;
+}
+
+.img-darken {
+    transition: 1s;
+    filter: brightness(30%);
+}
+
+/* About Page Styles */
+.two-column-wrapper {
+    display: flex;
+}
+
+.profile-image-wrapper img {
+    width: 100%;
+    padding: 40px;
+}
+
+.profile-content-wrapper {
+    padding-top: 100px;
+    padding-left: 30px;
+}
+
+.profile-content-wrapper h1 {
+    color: orange;
+}
+
+.profile-content-wrapper b1 {
+    font-size: 20px;
+}
+
+/* Contact Page Styles */
+.contact-image-wrapper img {
+    width: 250px;
+    height: 250px;
+    padding-top: 250px;
+    padding-left: 400px;
+}
+
+.contact-content-wrapper {
+    padding-top: 100px;
+    padding-left: 30px;
+}
+
+.contact-content-wrapper h1{
+    color: orange;
+}
+
+.contact-content-wrapper b1{
+    font-size: 20px;
+}
+
