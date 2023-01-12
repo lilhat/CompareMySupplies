@@ -8,10 +8,8 @@ import asyncio
 import aiohttp
 
 
-# r = requests.post(url='https://async.scraperapi.com/jobs', json={'apiKey': '37277f0e22d9948e62e5708337e51782', 'url': 'https://www.diy.com/'})
-
-
-payload = {'api_key': '37277f0e22d9948e62e5708337e51782', 'url': 'https://www.diy.com/'}
+# Scrape the homepage and get all category links
+payload = {'api_key': '37277f0e22d9948e62e5708337e51782', 'url': 'https://www.travisperkins.co.uk/'}
 r = requests.get('http://api.scraperapi.com', params=payload)
 json_response = json.loads(r.text)
 body = json_response['response']['body']
@@ -27,19 +25,20 @@ department_links = [link for link in links if '/department' in link]
 print(department_links)
 
 
-# r = requests.post(url='https://async.scraperapi.com/jobs', json={'apiKey': '37277f0e22d9948e62e5708337e51782', 'url': 'https://www.diy.com'+department_links[0]})
-
-
+# Variable i is the page number
 i = 1
 urls = []
+
 # To find pages do totalResults/pageSize and round up
+# Create a batch job with all the categories available
 for j in range(0, len(department_links)):
-    url_single = 'https://www.diy.com' + department_links[j] + '?page=' + str(i)
+    url_single = 'https://www.travisperkins.co.uk' + department_links[j] + '?page=' + str(i)
     urls.append(url_single)
 
 r = requests.post(url='https://async.scraperapi.com/batchjobs',
                   json={'apiKey': '37277f0e22d9948e62e5708337e51782', 'urls': urls})
 
+# Load the response as json
 r_text = r.text
 print(r_text)
 json_response = json.loads(r.text)
@@ -47,12 +46,14 @@ statusUrl = None
 statusUrls = []
 status = None
 
+# Get each individual category job URL and place them into a list
 for element in json_response:
     if isinstance(element, dict) and 'statusUrl' in element:
         statusUrl = element['statusUrl']
         statusUrls.append(statusUrl)
 
-x = 0
+
+# Stay in while loop until every job is finished
 finished_list = []
 while len(finished_list) < len(statusUrls):
     status_list = []
@@ -68,8 +69,8 @@ while len(finished_list) < len(statusUrls):
             finished_list.append(status_list[j])
 
 
+# Loop through each response and scrape the first page of products into product dictionary
 products = []
-
 for j in range(0, len(statusUrls)):
     r = requests.get(statusUrls[j])
     r_text = r.text
@@ -105,7 +106,7 @@ for j in range(0, len(statusUrls)):
                 price_list.append(text)
 
         for product_link in product_links:
-            link_list.append('https://www.diy.com' + product_link['href'])
+            link_list.append('https://www.travisperkins.co.uk' + product_link['href'])
 
         for product, price, link in zip(product_list, price_list, link_list):
             products.append({'product': product, 'price': price, 'category': category_title, 'link': link})
@@ -116,9 +117,7 @@ for j in range(0, len(statusUrls)):
     except:
         print("Error occurred")
 
-# r = requests.post(url='https://async.scraperapi.com/batchjobs',
-#                   json={'apiKey': '37277f0e22d9948e62e5708337e51782',
-#                         'urls': urls})
 
+# Write products into csv file
 df = pd.DataFrame(products)
-df.to_csv('products.csv', index=False)
+df.to_csv('tpProducts.csv', index=False)
