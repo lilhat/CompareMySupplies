@@ -11,9 +11,8 @@ import aiohttp
 # Scrape the homepage and get all category links
 payload = {'api_key': '37277f0e22d9948e62e5708337e51782', 'url': 'https://www.diy.com/'}
 r = requests.get('http://api.scraperapi.com', params=payload)
-json_response = json.loads(r.text)
-body = json_response['response']['body']
-soup = BeautifulSoup(body, 'html.parser')
+r_text = r.text
+soup = BeautifulSoup(r_text, 'html.parser')
 product_elements = soup.find_all('li', {'class': '_43ba2ed1'})
 links = []
 for product_element in product_elements:
