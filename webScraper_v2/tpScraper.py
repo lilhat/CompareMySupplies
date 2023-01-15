@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import concurrent.futures
 
-
 # print(driver.page_source)
 payload = {'api_key': 'c77c0381435173c259ffb52574077993', 'url': 'https://www.travisperkins.co.uk/', 'render': 'true'}
 r = requests.get('http://api.scraperapi.com', params=payload)
@@ -30,11 +29,11 @@ for j in range(0, len(department_links)):
     url_single = 'https://www.travisperkins.co.uk' + department_links[j]
     urls.append(url_single)
 
-
 # Loop through each response and scrape the first page of products into product dictionary
 NUM_RETRIES = 5
 NUM_THREADS = 5
 products = []
+
 
 def scrape_url(url):
     for _ in range(NUM_RETRIES):
