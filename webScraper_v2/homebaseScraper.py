@@ -7,7 +7,7 @@ import concurrent.futures
 
 # Loop through each response and scrape the first page of products into product dictionary
 NUM_RETRIES = 5
-NUM_THREADS = 5
+NUM_THREADS = 50
 products = []
 urls = []
 
@@ -60,6 +60,24 @@ def send_request(url):
 get_categories()
 
 
+def single_request(url):
+    for _ in range(NUM_RETRIES):
+        response = requests.get(
+            url='https://app.scrapingbee.com/api/v1/',
+            params={
+                'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
+                'url': url,
+            },
+
+        )
+        if response.status_code == 200:
+            description = scrape_desc(response.content)
+            return description
+        else:
+            print("Error: " + str(response.status_code))
+            print("Url: " + url)
+
+
 def scrape_url(body):
     try:
         soup = BeautifulSoup(body, 'html.parser')
@@ -77,6 +95,7 @@ def scrape_url(body):
         price_list = []
         link_list = []
         image_list = []
+        desc_list = []
         for product_title in product_titles:
             title_element = product_title.find("h3")
             if title_element:
@@ -94,15 +113,35 @@ def scrape_url(body):
         for product_link in product_links:
             link_element = product_link.find("a")
             if link_element:
-                link_list.append('https://www.homebase.co.uk' + link_element['href'])
+                full_url = 'https://www.homebase.co.uk' + link_element['href']
+                link_list.append(full_url)
+                desc_list.append(single_request(full_url))
 
         for product_image in product_images:
             image_link = product_image['src']
             image_list.append(image_link)
 
-        for product, price, link, image in zip(product_list, price_list, link_list, image_list):
-            print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image})
-            products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image})
+        for product, price, link, image, description in zip(product_list, price_list, link_list, image_list, desc_list):
+            print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image, 'description': description})
+            products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image, 'description': description})
+
+    except KeyError:
+        print("Key Error occurred")
+    except:
+        print("Error occurred")
+
+
+def scrape_desc(body):
+    try:
+        soup = BeautifulSoup(body, 'html.parser')
+        product_desc = soup.find('div', {'id': 'product-description-content-2'})
+
+        if product_desc:
+            description = re.sub('^[\s]+|[\s]+$', '', product_desc.text)
+        else:
+            description = "N/A"
+
+        return description
 
     except KeyError:
         print("Key Error occurred")
