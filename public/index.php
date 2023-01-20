@@ -30,7 +30,7 @@ $prods = $newObj->get_Category();
 
         <header class="hero-section">
             <div class="content">
-                <p class="sub-heading">Compare the prices of all your essential building materials!</p>
+                <p class="sub-heading">Compare the prices of all your essential building supplies!</p>
                 <div class="search-box">
                     <input type="text" class="tbox" placeholder="What supplies are you looking for?" />
                     <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
