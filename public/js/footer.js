@@ -7,7 +7,7 @@ const createFooter = () => {
     <div class="footer-ul-container">
         <ul class="category">
             <li class="category-title">Business</li>
-            <li><a href="#" class="footer-link">Compare My Materials Ltd</a></li>
+            <li><a href="#" class="footer-link">Compare My Supplies Ltd</a></li>
             <li><a href="#" class="footer-link">Advertising</a></li>
             <li><a href="#" class="footer-link">Media</a></li>
             <li><a href="#" class="footer-link">Careers</a></li>
@@ -38,14 +38,14 @@ const createFooter = () => {
             <li><a href="#" class="footer-link">Affiliate Help</a></li>
         </ul>
         <div class="contact-info">
-            <p class="info">Customer Support Email: <p class="info-details">comparematerials@gmail.com</p></p>
+            <p class="info">Customer Support Email: <p class="info-details">comparemysupplies@gmail.com</p></p>
             <p class="info">Telephone: <p class="info-details">01793 882282</p></p>
         </div>
     </div>
     </div>
     <div class="footer-social-container">
         <div class="footer-info-container">
-            <span>@ CompareMyMaterials 2022</span>
+            <span>@ CompareMySupplies 2023</span>
             <a href="#" class="social-link">Terms & Services</a>
             <a href="#" class="social-link">Privacy Page</a>
         </div>
