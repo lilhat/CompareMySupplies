@@ -10,9 +10,9 @@ def bluecircle_multi_cement_25kg():
         scrape_bq(
             'https://www.diy.com/departments/blue-circle-multipurpose'
             '-cement-25kg-bag/35715_BQ.prd'),
-        scrape_travisperkins(
-            'https://www.travisperkins.co.uk/cement/blue-circle-general'
-            '-purpose-grey-cement-in-paper-bag-25kg/p/846581'),
+        # scrape_travisperkins(
+        #     'https://www.travisperkins.co.uk/cement/blue-circle-general'
+        #     '-purpose-grey-cement-in-paper-bag-25kg/p/846581'),
         scrape_wickes(
             'https://www.wickes.co.uk/Blue-Circle-General-Purpose-Cement'
             '---25kg/p/224661'),
@@ -26,8 +26,8 @@ def tarmac_kiln_dried_paving_sand_25kg():
     to_database('tarmac_kiln_dried_paving_sand_25kg', [
         scrape_bq(
             'https://www.diy.com/departments/tarmac-kiln-dried-paving-sand-large-bag/535484_BQ.prd'),
-        scrape_travisperkins(
-            'https://www.travisperkins.co.uk/bagged-aggregates/kiln-dried-paving-sand-25kg/p/518674'),
+        # scrape_travisperkins(
+        #     'https://www.travisperkins.co.uk/bagged-aggregates/kiln-dried-paving-sand-25kg/p/518674'),
         scrape_wickes(
             'https://www.wickes.co.uk/Tarmac-Kiln-Dried-Paving-Sand---Large-Bag/p/236668'),
         scrape_homebase('https://www.homebase.co.uk/tarmac-kiln-dried-paving-sand-large-bag/12804149.html'),
@@ -39,8 +39,8 @@ def tarmac_kiln_dried_paving_sand_25kg():
 def thistle_multifinish_plaster_25kg():
     to_database('thistle_multifinish_plaster_25kg', [
         scrape_bq('https://www.diy.com/departments/thistle-multifinish-plaster-25kg-bag/35812_BQ.prd'),
-        scrape_travisperkins(
-            'https://www.travisperkins.co.uk/plaster/british-gypsum-thistle-multifinish-coat-plaster-25kg/p/848743'),
+        # scrape_travisperkins(
+        #     'https://www.travisperkins.co.uk/plaster/british-gypsum-thistle-multifinish-coat-plaster-25kg/p/848743'),
         scrape_wickes(
             'https://www.wickes.co.uk/British-Gypsum-Thistle-Multi-Finish-Plaster---25kg/p/220056'),
         scrape_homebase('https://www.homebase.co.uk/thistle-multifinish-plaster-25kg/12815176.html'),
@@ -58,9 +58,9 @@ def gyproc_square_edge_plasterboard_l1800_w900_t12p5():
         scrape_bq(
             'https://www.diy.com/departments/gyproc-standard-square-edge-plasterboard-l-1-8m-w-0-9m-t-12-5mm/35761_BQ'
             '.prd'),
-        scrape_travisperkins(
-            'https://www.travisperkins.co.uk/standard-plasterboard/british-gypsum-gyproc-wallboard-square-edge-1800mm'
-            '-x-900mm-x-9-5mm/p/760041')
+        # scrape_travisperkins(
+        #     'https://www.travisperkins.co.uk/standard-plasterboard/british-gypsum-gyproc-wallboard-square-edge-1800mm'
+        #     '-x-900mm-x-9-5mm/p/760041')
     ])
 
 
@@ -77,9 +77,9 @@ def bluecircle_multi_readymixed_concrete_20kg():
     to_database('bluecircle_multi_readymixed_concrete_20kg', [
         scrape_bq(
             'https://www.diy.com/departments/blue-circle-multipurpose-ready-mixed-concrete-20kg-bag/135767_BQ.prd'),
-        scrape_travisperkins(
-            'https://www.travisperkins.co.uk/ready-mixed-concrete-and-mortar/blue-circle-multi-purpose-ready-to-use'
-            '-concrete-20kg/p/346658'),
+        # scrape_travisperkins(
+        #     'https://www.travisperkins.co.uk/ready-mixed-concrete-and-mortar/blue-circle-multi-purpose-ready-to-use'
+        #     '-concrete-20kg/p/346658'),
         scrape_wickes(
             'https://www.wickes.co.uk/Blue-Circle-Multi-Purpose-Ready-To-Use-Concrete---20kg/p/133770'),
         scrape_homebase('https://www.homebase.co.uk/tarmac-multipurpose-concrete-20kg/12811797.html'),
