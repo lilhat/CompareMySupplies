@@ -3,98 +3,118 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import concurrent.futures
 
-# print(driver.page_source)
-payload = {'api_key': 'c77c0381435173c259ffb52574077993', 'url': 'https://www.travisperkins.co.uk/', 'render': 'true'}
-r = requests.get('http://api.scraperapi.com', params=payload)
-r_text = r.text
-soup = BeautifulSoup(r_text, 'html.parser')
-product_elements = soup.find_all('li',
-                                 {'class': 'NavMenuListDesktop__NavMenuTableCategoryListItem-sc-1ypu5gb-2 gvVYHL'})
-links = []
-for product_element in product_elements:
-    link_element = product_element.find("a")
-    if link_element:
-        links.append(link_element['href'])
 
-department_links = [link for link in links if '/product' in link]
-print(department_links)
-
-# Variable i is the page number
-i = 1
-urls = []
-
-# To find pages do totalResults/pageSize and round up
-# Create a batch job with all the categories available
-for j in range(0, len(department_links)):
-    url_single = 'https://www.travisperkins.co.uk' + department_links[j]
-    urls.append(url_single)
-
-# Loop through each response and scrape the first page of products into product dictionary
+# # Loop through each response and scrape the first page of products into product dictionary
 NUM_RETRIES = 5
 NUM_THREADS = 5
 products = []
+urls = []
 
 
-def scrape_url(url):
+def get_categories():
+    response = requests.get(
+        url='https://app.scrapingbee.com/api/v1/',
+        params={
+            'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
+            'url': 'https://www.travisperkins.co.uk/',
+        },
+
+    )
+    body = response.content
+    soup = BeautifulSoup(body, 'html.parser')
+    product_elements = soup.find_all('li',
+                                     {'class': 'NavMenuListDesktop__NavMenuTableCategoryListItem-sc-1ypu5gb-2 gvVYHL'})
+    links = []
+    for product_element in product_elements:
+        link_element = product_element.find("a")
+        if link_element:
+            links.append(link_element['href'])
+
+    department_links = [link for link in links if '/product' in link]
+    print(department_links)
+
+    # Variable i is the page number
+    i = 1
+
+    for j in range(0, len(department_links)):
+        url_single = 'https://www.travisperkins.co.uk' + department_links[j]
+        urls.append(url_single)
+
+
+def send_request(url):
     for _ in range(NUM_RETRIES):
-        try:
-            payload = {'api_key': 'c77c0381435173c259ffb52574077993', 'url': url,
-                       'render': 'true'}
-            r = requests.get('http://api.scraperapi.com', params=payload)
-            r_text = r.text
-            if r.status_code in [200, 404]:
-                ## escape for loop if the API returns a successful response
-                break
-        except requests.exceptions.ConnectionError:
-            response = ''
-    if r.status_code == 200:
-        try:
-            soup = BeautifulSoup(r_text, 'html.parser')
-            product_titles = soup.find_all('div',
-                                           {'class': 'ProductItemDesktopNewFlow__ProductName-sc-1uzlgcd-7 jrxgHl'})
-            product_prices = soup.find_all('h2', {'class': 'sc-bczRLJ sc-dkzDqf nFQPz eZNacu'})
-            category_title_html = soup.find('h1', {'data-test-id': 'listing-header-title'})
-            product_links = soup.find_all('a',
-                                          {'class': 'ProductItemDesktopNewFlow__ProductInfoLink-sc-1uzlgcd-4 fgClmn'})
+        response = requests.get(
+            url='https://app.scrapingbee.com/api/v1/',
+            params={
+                'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
+                'url': url,
+            },
 
-            if category_title_html is not None:
-                category_title = category_title_html.text
+        )
+        if response.status_code == 200:
+            scrape_url(response.content)
+            break
+        else:
+            print("Error: " + str(response.status_code))
+            print("Url: " + url)
+
+
+get_categories()
+
+
+def scrape_url(body):
+    try:
+        soup = BeautifulSoup(body, 'html.parser')
+        product_titles = soup.find_all('div',
+                                       {'class': 'ProductItemDesktopNewFlow__ProductName-sc-1uzlgcd-7 jrxgHl'})
+        product_prices = soup.find_all('h2', {'class': 'sc-bczRLJ sc-dkzDqf nFQPz eZNacu'})
+        category_title_html = soup.find('h1', {'data-test-id': 'listing-header-title'})
+        product_links = soup.find_all('a',
+                                      {'class': 'ProductItemDesktopNewFlow__ProductInfoLink-sc-1uzlgcd-4 fgClmn'})
+        product_images = soup.find_all('img', {'data-test-id': 'product-card-image'})
+        if category_title_html is not None:
+            category_title = category_title_html.text
+        else:
+            category_title = "N/A"
+
+        product_list = []
+        price_list = []
+        link_list = []
+        image_list = []
+        for product_title in product_titles:
+            title_element = product_title.text
+            if title_element:
+                product_list.append(title_element)
+
+        for product_price in product_prices:
+            text = ""
+            text += product_price.get_text(strip=True)
+            if text.strip() == "":
+                text = "N/A"
             else:
-                category_title = "N/A"
+                price_list.append(text)
 
-            product_list = []
-            price_list = []
-            link_list = []
+        for product_link in product_links:
+            link_list.append('https://www.travisperkins.co.uk' + product_link['href'])
 
-            for product_title in product_titles:
-                title_element = product_title.text
-                if title_element:
-                    product_list.append(title_element)
+        for product_image in product_images:
+            image_link = product_image['src']
+            image_list.append("https://" + image_link[2:])
 
-            for product_price in product_prices:
-                text = ""
-                text += product_price.get_text(strip=True)
-                if text.strip() == "":
-                    text = "N/A"
-                else:
-                    price_list.append(text)
+        for product, price, link, image in zip(product_list, price_list, link_list, image_list):
+            print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image})
+            products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image})
 
-            for product_link in product_links:
-                link_list.append('https://www.travisperkins.co.uk' + product_link['href'])
-
-            for product, price, link in zip(product_list, price_list, link_list):
-                print({'product': product, 'price': price, 'category': category_title, 'link': link})
-                products.append({'product': product, 'price': price, 'category': category_title, 'link': link})
-
-        except KeyError:
-            print("Key Error occurred")
-            print(urls[j])
-        except:
-            print("Error occurred")
+    except KeyError:
+        print("Key Error occurred")
+    except:
+        print("Error occurred")
 
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
-    executor.map(scrape_url, urls)
+    executor.map(send_request, urls)
+
+
 # Write products into csv file
 df = pd.DataFrame(products)
 df.to_csv('tpProducts.csv', index=False)
