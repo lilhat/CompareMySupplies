@@ -93,7 +93,6 @@
                         <div class="product-card">
                             <div class="product-image">
                                 <img src="images/products/<?php echo $extra['product_code']?>.png" class="product-thumb" alt="">
-                                <a href="product.php?product=<?php echo $extra['product_code']?>"><button class="card-btn">Compare Prices</button></a>
                             </div>
                             <div class="product-info">
                                 <h2 class="product-brand"><a href="product.php?product=<?php echo $extra['product_code'] ?>"><?php echo $extra['product_name'] ?></a></h2>
