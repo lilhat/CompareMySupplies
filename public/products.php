@@ -14,7 +14,7 @@ $prods = $newObj->get_Category();
     <title>Products</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/product.css">
@@ -40,8 +40,9 @@ $prods = $newObj->get_Category();
                             <a href="product.php?product=<?php echo $prod['product_code']?>"><button class="card-btn">Compare Prices</button></a>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand"><?php echo $prod['product_name'] ?></h2>
-                            <p class="product-short-des"><?php echo $prod['category'] ?></p>
+                            <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
+                            <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
+                            <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
                             <span class="price">£<?php echo $comp['price'] ?></span> 
                         </div>
                     </div>

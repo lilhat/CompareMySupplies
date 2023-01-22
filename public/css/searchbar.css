@@ -30,3 +30,17 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+.search-box-home {
+    display: flex;
+    width: 40vw;
+    max-width: 70%;
+    left: 110px;
+    position: relative;
+}
+
+

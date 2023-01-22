@@ -5,13 +5,15 @@ const createNav = () => {
         <div class="nav-wrapper">
             <div class="main-logo">
                 <a href="index.php">
-                    <img src="images/main-logo.png" class="brand-logo" alt="">
+                    <img src="images/main-logo2.png" class="brand-logo" alt="">
                 </a>
             </div>
-            <div class="search-box">
-                <input type="text" class="tbox" placeholder="Search..." />
-                <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            <form action="search.php" method="get">
+                <div class="search-box">
+                    <input type="text" class="tbox" placeholder="Search..." />
+                    <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
             <div class="top-menu">
             <ul class="top-links-container">
                 <span class="first-link"><li class="top-link-item"><a href="index.php">Home</a></li></span>
@@ -32,12 +34,55 @@ const createNav = () => {
         </div>
         <div class="menu">
             <ul class="links-container">
-                <li class="link-item"><a href="categories.php?product=plaster">Plaster</a></li>
-                <li class="link-item"><a href="categories.php?product=concrete">Concrete</a> </li>
-                <li class="link-item"><a href="categories.php?product=cement">Cement</a></li>
-                <li class="link-item"><a href="categories.php?product=timber">Timber</a></li>
-                <li class="link-item"><a href="categories.php?product=adhesives">Adhesives</a></li>
-                <li class="link-item"><a href="categories.php?product=electrical">Electricals</a></li>
+                <li class="link-item">
+                    <a href="categories.php?product=plaster">Plaster <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=concrete">Concrete <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=concrete">Cement <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=timber">Timber <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=adhesives">Adhesives <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=eletrical">Electricals <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <!-- add more <li> elements here -->
             </ul>
         </div>
     `;

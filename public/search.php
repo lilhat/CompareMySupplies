@@ -42,9 +42,8 @@ $prods = $newObj->get_Category_id($id);
                             <a href="product.php?product=<?php echo $prod['product_code']?>"><button class="card-btn">Compare Prices</button></a>
                         </div>
                         <div class="product-info">
-                            <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
-                            <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
-                            <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
+                            <h2 class="product-brand"><?php echo $prod['product_name'] ?></h2>
+                            <p class="product-short-des"><?php echo $prod['category'] ?></p>
                             <span class="price">£<?php echo $comp['price'] ?></span> 
                         </div>
                     </div>
