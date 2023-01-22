@@ -29,6 +29,7 @@
     background: orange;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    transition: 0.3s ease-in-out;
 }
 
 .btn:hover {

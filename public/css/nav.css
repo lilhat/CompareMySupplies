@@ -218,6 +218,8 @@
     pointer-events: none;
 }
 
+
+
 .dropdown-content {
     /* hide the dropdown content by default */
     display: none;
@@ -227,8 +229,14 @@
     top: 130px;
     box-shadow: 1px 1px 3px gray; /* add a box-shadow */
     list-style-type: none; /* remove bullet points */
-    animation: floatUp 0.5s; /* animate the dropdown */
+
 }
+
+.link-item:hover .dropdown-content{
+    animation: floatUp 0.5s;
+}
+
+
 
 .link-item:hover a:hover {
     color: orange;
@@ -266,6 +274,17 @@ to {
     transform: translateY(0); /* move the dropdown to its original position */
     opacity: 1; /* make the dropdown visible */
 }
+}
+
+@keyframes floatDown {
+    from {
+        transform: translateY(0); /* move the dropdown down by 20px */
+        opacity: 1; /* make the dropdown invisible */
+    }
+    to {
+        transform: translateY(20px); /* move the dropdown to its original position */
+        opacity: 0; /* make the dropdown visible */
+    }
 }
 
 

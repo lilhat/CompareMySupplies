@@ -39,7 +39,6 @@ $prods = $newObj->get_Category_id($id);
                     <div class="product-card">
                         <div class="product-image">
                             <img src="images/products/<?php echo $prod['product_code']?>.png " class="product-thumb" alt="<?$prod['product_name'] ?>">
-                            <a href="product.php?product=<?php echo $prod['product_code']?>"><button class="card-btn">Compare Prices</button></a>
                         </div>
                         <div class="product-info">
                             <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
