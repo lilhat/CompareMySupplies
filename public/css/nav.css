@@ -70,6 +70,7 @@
     color: #333;
     transition:0.6s;
     white-space: nowrap;
+    font-weight: 500;
 }
 
 .top-link-item a:hover {
@@ -96,10 +97,36 @@
 
 .link-item a {
     padding:19.5px;
-    line-height:28px;
+    line-height:20px;
     text-decoration: none;
     color: #333;
-    transition:0.6s;
+    transition: color 0.6s;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    position: relative;
+    bottom: 22px;
+    font-weight: bold;
+}
+
+.link-item a .first-line {
+    margin-left: 3px;
+}
+
+.link-item a .first-line-2 {
+    margin-left: 1px;
+}
+
+.link-item a .first-line-3 {
+    margin-left: 2px;
+}
+
+.link-item a .first-line-4 {
+    margin-left: 9px;
+}
+
+.link-item a .first-line-5 {
+    margin-left: 11px;
 }
 
 .active {
@@ -222,18 +249,28 @@
 
 .dropdown-content {
     /* hide the dropdown content by default */
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    visibility: hidden;
+    position: absolute;
+}
+
+.dropdown-content a{
+
+    display: inline-block;
+    padding: 10px;
+}
+
+.link-item:hover .dropdown-content{
+    animation: floatUp 0.5s;
     position: absolute; /* position the dropdown content */
     background-color: white;
     padding: 10px;
     top: 130px;
     box-shadow: 1px 1px 3px gray; /* add a box-shadow */
     list-style-type: none; /* remove bullet points */
-
-}
-
-.link-item:hover .dropdown-content{
-    animation: floatUp 0.5s;
+    visibility: visible;
+    padding-top: 40px;
 }
 
 
@@ -251,7 +288,6 @@
 
 .link-item:hover .dropdown-content {
     /* show the dropdown content on hover */
-    display: block;
     transform: translateY(0);
     /* move the dropdown back to its original position */
 }

@@ -35,7 +35,24 @@ const createNav = () => {
         <div class="menu">
             <ul class="links-container">
                 <li class="link-item">
-                    <a href="categories.php?product=plaster">Plaster <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=plaster">Building & <br> Hardware <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Aggregates & Sand</a></li>
+                        <li><a href="#">Bricks & Blocks</a></li>
+                        <li><a href="#">Concrete & Cement</a></li>
+                        <li><a href="#">Additives & Chemicals</a></li>
+                        <li><a href="#">Guttering & Drainage</a></li>
+                        <li><a href="#">Insulation & Damp</a></li>
+                        <li><a href="#">Plasterboard</a></li>
+                        <li><a href="#">Plastering supplies</a></li>
+                        <li><a href="#">Coving</a></li>
+                        <li><a href="#">Roofing supplies</a></li>
+                        <li><a href="#">Builder's metalwork</a></li>
+                        <li><a href="#">Sealants</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=concrete">Heating & <br> Plumbing <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -43,7 +60,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=concrete">Concrete <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=concrete"><span class="first-line">Home & </span><br> Furniture <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -51,7 +68,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=concrete">Cement <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=timber"><span class="first-line-2">Kitchen & </span><br> Bathroom <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -59,7 +76,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=timber">Timber <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=adhesives">Lighting & <br><span class="first-line-3"> Electrical </span><i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -67,7 +84,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=adhesives">Adhesives <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=electrical">Outdoor & <br><span class="first-line-4"> Garden </span><i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -75,7 +92,23 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=eletrical">Electricals <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=electrical"><span class="first-line-3">Painting & </span><br> Decorating <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=electrical"><span class="first-line-3">Tiling & </span><br> Flooring <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=electrical"><span class="first-line-5">Tools & </span><br> Equipment <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
