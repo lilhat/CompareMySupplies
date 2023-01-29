@@ -92,7 +92,9 @@
                         <?php foreach ($comps as $comp) : ?>
                         <div class="product-card">
                             <div class="product-image">
+                                <a href="product.php?product=<?php echo $extra['product_code'] ?>">
                                 <img src="images/products/<?php echo $extra['product_code']?>.png" class="product-thumb" alt="">
+                                </a>
                             </div>
                             <div class="product-info">
                                 <h2 class="product-brand"><a href="product.php?product=<?php echo $extra['product_code'] ?>"><?php echo $extra['product_name'] ?></a></h2>
