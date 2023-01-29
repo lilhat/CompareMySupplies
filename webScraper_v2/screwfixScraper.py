@@ -50,7 +50,7 @@ def get_categories():
             # Variable i is the page number
             i = 1
 
-            for j in range(0, 7):
+            for j in range(0, len(department_links)):
                 urls.append(department_links[j])
                 print(department_links[j])
             break
