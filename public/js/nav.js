@@ -16,8 +16,7 @@ const createNav = () => {
             </form>
             <div class="top-menu">
             <ul class="top-links-container">
-                <span class="first-link"><li class="top-link-item"><a href="index.php">Home</a></li></span>
-                <li class="top-link-item"><a href="products.php">All Categories</a> </li>
+                <li class="top-link-item"><a href="products.php">All Categories</a></li>
             </ul>
             </div>
             <div class="sign-in">
@@ -35,7 +34,38 @@ const createNav = () => {
         <div class="menu">
             <ul class="links-container">
                 <li class="link-item">
-                    <a href="categories.php?product=plaster">Plaster <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=plaster">Building & <br> Hardware</a>
+                    <ul class="dropdown-content">
+                        <ul class="content">
+                            <li class="dropdown-header"><a href="#">Building Supplies</a></li>
+                            <li><a href="#">Aggregates & Sand</a></li>
+                            <li><a href="#">Bricks & Blocks</a></li>
+                            <li><a href="#">Concrete & Cement</a></li>
+                            <li><a href="#">Additives & Chemicals</a></li>
+                            <li><a href="#">Guttering & Drainage</a></li>
+                            <li><a href="#">Insulation & Damp</a></li>
+                            <li><a href="#">Plasterboard</a></li>
+                            <li><a href="#">Plastering supplies</a></li>
+                            <li><a href="#">Coving</a></li>
+                            <li><a href="#">Roofing supplies</a></li>
+                            <li><a href="#">Builder's metalwork</a></li>
+                            <li><a href="#">Sealants</a></li>
+                        </ul>
+                        <ul class="content">
+                            <li class="dropdown-header"><a href="#">Timber & Sheet Materials</a></li>
+                            <li><a href="#">Architrave</a></li>
+                            <li><a href="#">Constructional timber</a></li>
+                            <li><a href="#">Decorate mouldings</a></li>
+                            <li><a href="#">Additives & Chemicals</a></li>
+                            <li><a href="#">Furniture boards</a></li>
+                            <li><a href="#">Scaffold boards</a></li>
+                            <li><a href="#">Sheet materials</a></li>
+                            <li><a href="#">Stairs & stair parts</a></li>
+                        </ul>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=concrete">Heating & <br> Plumbing</a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -43,7 +73,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=concrete">Concrete <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=concrete"><span class="first-line">Home & </span><br> Furniture</a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -51,7 +81,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=concrete">Cement <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=timber"><span class="first-line-2">Kitchen & </span><br> Bathroom</a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -59,7 +89,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=timber">Timber <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=adhesives">Lighting & <br><span class="first-line-3"> Electrical </span></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -67,7 +97,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=adhesives">Adhesives <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=electrical">Outdoor & <br><span class="first-line-4"> Garden </span></a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
@@ -75,7 +105,23 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="categories.php?product=eletrical">Electricals <i class="fa fa-angle-down"></i></a>
+                    <a href="categories.php?product=electrical"><span class="first-line-3">Painting & </span><br> Decorating</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=electrical"><span class="first-line-3">Tiling & </span><br> Flooring</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Option 1</a></li>
+                        <li><a href="#">Option 2</a></li>
+                        <li><a href="#">Option 3</a></li>
+                    </ul>
+                </li>
+                <li class="link-item">
+                    <a href="categories.php?product=electrical"><span class="first-line-5">Tools & </span><br> Equipment</a>
                     <ul class="dropdown-content">
                         <li><a href="#">Option 1</a></li>
                         <li><a href="#">Option 2</a></li>
