@@ -38,7 +38,7 @@ const createFooter = () => {
             <li><a href="#" class="footer-link">Affiliate Help</a></li>
         </ul>
         <div class="contact-info">
-            <p class="info">Customer Support Email: <p class="info-details">comparemysupplies@gmail.com</p></p>
+            <p class="info">Customer Support Email: <p class="info-details">contact@comparemysupplies.com</p></p>
             <p class="info">Telephone: <p class="info-details">01793 882282</p></p>
         </div>
     </div>
