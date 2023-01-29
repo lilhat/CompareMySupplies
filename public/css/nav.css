@@ -89,6 +89,18 @@
     list-style: none;
 }
 
+.links-container::after {
+    content: ""; /* empty content */
+    display: block; /* make it visible */
+    width: 100%; /* make the line as wide as the parent element */
+    height: 1px; /* make the line 1px high */
+    background-color: gray; /* color the line gray */
+    position: absolute; /* position the line */
+    bottom: 0;
+    opacity: 0.2;
+    left: 0; /* align the line to the left */
+}
+
 .link-item {
     text-transform: capitalize;
     padding: 0 10px;
@@ -250,15 +262,18 @@
 .dropdown-content {
     /* hide the dropdown content by default */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /* define the number of columns and the width of each column */
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
     visibility: hidden;
     position: absolute;
 }
 
 .dropdown-content a{
-
     display: inline-block;
-    padding: 10px;
+    padding: 5px;
+    bottom: 0;
+    list-style-type: none; /* remove bullet points */
 }
 
 .link-item:hover .dropdown-content{
@@ -272,8 +287,6 @@
     visibility: visible;
     padding-top: 40px;
 }
-
-
 
 .link-item:hover a:hover {
     color: orange;
@@ -300,6 +313,25 @@
     color: orange;
     /* change text color to blue */
 }
+
+.dropdown-header{
+    grid-column: 1 / -1; /* span the headers across both columns */
+    position: absolute;
+    top: 10px;
+}
+
+
+.dropdown-header a{
+    font-size: 18px;
+    color: orange;
+}
+
+.content {
+    padding: 10px;
+    top: 130px;
+    list-style-type: none; /* remove bullet points */
+}
+
 
 @keyframes floatUp {
 from {
