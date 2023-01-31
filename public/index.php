@@ -27,7 +27,6 @@ $prods = $newObj->get_Category();
 <body>
     <nav class="navbar"></nav>
     <div class="container">
-
         <header class="hero-section">
             <div class="content">
                 <p class="sub-heading">Compare thousands of products from the top suppliers in the UK</p>

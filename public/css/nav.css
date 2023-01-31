@@ -8,18 +8,60 @@
     width: 100vw;
     z-index: 9;
     background: white;
-    height: 129px;
+    height: 150px;
 
+}
+
+.nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+    padding-top: 8px;
+    margin-left: 90px;
+    margin-right: 90px;
+    width: 500px;
+
+}
+
+.nav-top:after {
+    content: ""; /* empty content */
+    display: block; /* make it visible */
+    width: 100%; /* make the line as wide as the parent element */
+    height: 1px; /* make the line 1px high */
+    background-color: gray; /* color the line gray */
+    position: absolute; /* position the line */
+    bottom: 123px;
+    opacity: 0.2;
+    left: 0; /* align the line to the left */
+  }
+
+.nav-top-links  {
+    list-style: none;
+    display: flex;
+}
+
+.nav-top-item {
+    opacity: 0.6;
+}
+
+.nav-top-item a{
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #333;
+    transition:0.6s;
+    white-space: nowrap;
 }
 
 .nav-wrapper {
     background:white;
     width: 100%;
-    height:70px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
+    height: 43%;
+    margin-left: 120px;
+    margin-right: 90px;
 }
 
 
@@ -36,24 +78,24 @@
   }
 
 
-.brand-logo {
+.brand-logo img{
     float:left;
     display: flex;
-    width: 15vw;
-    height: 6vw;
+    max-width:100%;
+    max-height:100%;
     margin-left: 2vw;
     margin-right: 2vw;
 }
 
 .top-menu {
-    width: 77vw;
+    width: 35vw;
     margin-right: 5vw;
 }
 
 .top-links-container{
-    width: 100%;
+    width: 60vw;
     display: flex;
-    justify-content: right;
+    justify-content: center;
     list-style: none;
 }
 
@@ -79,14 +121,18 @@
 
 .menu {
     justify-content: center;
-    float: normal;
+    float: none;
+    height: 40%;
+    position: relative;
+    bottom: 18px;
 }
 
 .links-container{
     width: 100vw;
     display: flex;
-    justify-content: center;
     list-style: none;
+    margin-left: 310px;
+    
 }
 
 .links-container::after {
@@ -117,8 +163,9 @@
     justify-content: center;
     display: block;
     position: relative;
-    bottom: 22px;
+    bottom: 6px;
     font-weight: bold;
+    width: 100%;
 }
 
 .link-item a .first-line {
@@ -281,11 +328,11 @@
     position: absolute; /* position the dropdown content */
     background-color: white;
     padding: 10px;
-    top: 130px;
     box-shadow: 1px 1px 3px gray; /* add a box-shadow */
     list-style-type: none; /* remove bullet points */
     visibility: visible;
     padding-top: 40px;
+    top: 60px;
 }
 
 .link-item:hover a:hover {
@@ -375,8 +422,8 @@ to {
     }
 
     .brand-logo {
-        width: 20vw;
-        height: 12vw;
+        width: 130px;
+        height: 50px;
     }
 
     .top-menu{
@@ -390,5 +437,9 @@ to {
     .tbox {
         width: 100px;
     }
-  }
+
+    .links-container{
+        display: none;
+    }
+}
 

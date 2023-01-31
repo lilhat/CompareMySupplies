@@ -2,6 +2,13 @@ const createNav = () => {
     let nav = document.querySelector('.navbar');
 
     nav.innerHTML = `
+        <div class="nav-top"> 
+            <ul class="nav-top-links">
+                <li class="nav-top-item"><a href="products.php">Our Story</a>| </li>
+                <li class="nav-top-item"><a href="about.php">FAQ</a>| </li>
+                <li class="nav-top-item"><a href="contact.php">Contact Us</a></li>
+            </ul>
+        </div>
         <div class="nav-wrapper">
             <div class="main-logo">
                 <a href="index.php">
