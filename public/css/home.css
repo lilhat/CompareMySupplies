@@ -21,6 +21,7 @@ form {
     padding: 30px;
     border-radius: 40px;
     border:rgba(255, 255, 255, 0.5);
+    
 
 }
 
@@ -53,13 +54,16 @@ form {
 
 .border-container {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
+
+
 }
 
 .product-container {
     padding-left: 10vw;
     padding-top: 1.5vw;
     padding-bottom: 1vw;
-    margin-right: 20vw;
+    margin-left: 8vw;
+    margin-right: 8.5vw;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
@@ -84,6 +88,7 @@ form {
     justify-content: space-between;
     transition: border 0.5s ease-in-out;
     border: 2px solid white;
+    right: 180px;
 }
 
 
@@ -238,7 +243,6 @@ form {
 
 .next-btn{
     right: 0;
-    margin-right: 20vw;
 }
 
 .pre-btn img, .next-btn img{

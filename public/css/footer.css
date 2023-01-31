@@ -2,12 +2,17 @@ footer{
     position: relative;
     width: 100vw;
     height: 250px;
-    padding: 40px 10vw;
     padding-bottom: 80px;
     background: white;
 }
 
+.footer-border{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
 .footer-content{
+    padding: 40px 10vw;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -69,21 +74,21 @@ li:not(:last-child) {
 
 .footer-social-container{
     margin-top: 105px;
-    float: left;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+
 }
 
 .footer-info-container{
-    margin-right: 1030px;
+    margin-right: 50vw;
 }
 
 
 .footer-info-container span{
     color: #333;
-    margin: 20px 0;
+
 }
 .social-link{
     color: #333;
-    margin-left: 20px;
+    margin-left: 10px;
 }
