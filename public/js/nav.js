@@ -9,6 +9,8 @@ const createNav = () => {
                 <li class="nav-top-item"><a href="contact.php">Contact Us</a></li>
             </ul>
         </div>
+        <div class="nav-border">
+        </div>
         <div class="nav-wrapper">
             <div class="main-logo">
                 <a href="index.php">
