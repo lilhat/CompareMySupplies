@@ -1,13 +1,3 @@
-<?php
-include("response.php");
-$newObj = new Product();
-$newObj2 = new Product();
-
-$id = $_GET['product'];
-$prods = $newObj->get_Category_id($id);
-
-?>
-
 <!DOCTYPE html>
 <html>
 
