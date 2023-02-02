@@ -13,11 +13,12 @@
 }
 
 .nav-top {
+    display: flex;
     position: relative;
     justify-content: space-between;
     align-items: center;
     height: 20px;
-    top: 3px;
+    top: 6px;
     margin-left: 90px;
     margin-right: 90px;
     width: 100vw;
@@ -48,7 +49,6 @@
 }
 
 .nav-wrapper {
-
     background:white;
     width: 100%;
     display: flex;
@@ -72,13 +72,12 @@
   }
 
 
-.brand-logo img{
+.brand-logo{
     float:left;
     display: flex;
     max-width:100%;
     max-height:100%;
-    margin-left: 2vw;
-    margin-right: 2vw;
+    min-width: 150px;
 }
 
 .top-menu {
@@ -251,12 +250,12 @@
 
 .login-logout-popup{
     position: absolute;
-    left: 96%;
+    left: 91.55%;
     transform: translateX(-50%);
     padding: 0px;
     background: #fff;
     border-radius: 10px;
-    top: 50px;
+    top: 75px;
     width: 100px;
     height: 100px;
     transition: 0.5s;
@@ -417,7 +416,6 @@ to {
 
     .brand-logo {
         width: 130px;
-        height: 50px;
     }
 
     .top-menu{
