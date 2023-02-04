@@ -51,6 +51,7 @@ def send_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+                'render_js': 'false',
             },
 
         )
@@ -72,6 +73,7 @@ def single_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+                'render_js': 'false',
             },
 
         )
@@ -143,6 +145,7 @@ def scrape_desc(body):
 
         if product_desc:
             description = re.sub('^[\s]+|[\s]+$', '', product_desc.text)
+            description = re.sub('[\n\t\r]+', ' ', description)
         else:
             description = "N/A"
 
