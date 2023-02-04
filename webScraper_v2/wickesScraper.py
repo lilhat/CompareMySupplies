@@ -46,6 +46,7 @@ def send_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+                'render_js': 'false',
             },
 
         )
@@ -67,6 +68,7 @@ def single_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+                'render_js': 'false',
             },
 
         )
@@ -160,5 +162,5 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
 
 
 # Write products into csv file
-df = pd.DataFrame(products)
-df.to_csv('wickesProducts.csv', index=False)
+# df = pd.DataFrame(products)
+# df.to_csv('wickesProducts.csv', index=False)
