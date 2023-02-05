@@ -77,3 +77,5 @@ $prods = $newObj->get_Category();
     <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
 </body>
+
+</html>
