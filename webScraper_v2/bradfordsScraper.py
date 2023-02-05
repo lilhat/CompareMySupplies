@@ -29,8 +29,6 @@ def get_categories():
     links = []
     script = product_elements.find('script').text
 
-    # start = script.index("= {")
-    # end = script.rindex("}]}")
     json_string = re.search(r'{.*}]}', script).group()
     content_json = json.loads(json_string)
     # Access the list from the JSON object
@@ -124,14 +122,6 @@ def scrape_url(body):
             description, image = single_request(full_url)
             desc_list.append(description)
             image_list.append(image)
-
-        # for product_image in product_images:
-        #     image_tag = product_image.find('img')
-        #     image_link = image_tag['src']
-        #     if image_link.startswith("data:"):
-        #         image_list.append('N/A')
-        #     else:
-        #         image_list.append(image_link)
 
         for product, price, link, image, description in zip(product_list, price_list, link_list, image_list, desc_list):
             print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image, 'description': description})

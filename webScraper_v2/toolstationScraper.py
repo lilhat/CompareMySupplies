@@ -1,10 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
+import re
+import json
 import pandas as pd
 import concurrent.futures
 
 
-# # Loop through each response and scrape the first page of products into product dictionary
+# Loop through each response and scrape the first page of products into product dictionary
 NUM_RETRIES = 5
 NUM_THREADS = 50
 products = []
@@ -17,30 +19,25 @@ def get_categories():
             url='https://app.scrapingbee.com/api/v1/',
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
-                'url': 'https://www.travisperkins.co.uk/',
+                'url': 'https://www.toolstation.com/',
             },
 
         )
         if response.status_code == 200:
             body = response.content
             soup = BeautifulSoup(body, 'html.parser')
-            product_elements = soup.find_all('li',
-                                             {'class': 'NavMenuListDesktop__NavMenuTableCategoryListItem-sc-1ypu5gb-2 gvVYHL'})
+            product_elements = soup.find_all('ul', {'class': 'megamenu__sub-menu'})
             links = []
             for product_element in product_elements:
-                link_element = product_element.find("a")
-                if link_element:
-                    links.append(link_element['href'])
+                a_element = product_element.find('a')
+                if a_element is not None:
+                    links.append(a_element['href'])
 
-            department_links = [link for link in links if '/product' in link]
-            print(department_links)
-
-            # Variable i is the page number
-            i = 1
+            department_links = [link for link in links if '/' in link]
 
             for j in range(0, len(department_links)):
-                url_single = 'https://www.travisperkins.co.uk' + department_links[j]
-                urls.append(url_single)
+                urls.append(department_links[j])
+                print(department_links[j])
             break
         else:
             print("Error: " + str(response.status_code))
@@ -53,6 +50,7 @@ def send_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+                'render_js': 'false',
             },
 
         )
@@ -71,12 +69,13 @@ def single_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+                'render_js': 'false',
             },
 
         )
         if response.status_code == 200:
-            description = scrape_desc(response.content)
-            return description
+            description, price = scrape_desc(response.content)
+            return description, price
         else:
             print("Error: " + str(response.status_code))
             print("Url: " + url)
@@ -85,15 +84,11 @@ def single_request(url):
 def scrape_url(body):
     try:
         soup = BeautifulSoup(body, 'html.parser')
-        product_titles = soup.find_all('div',
-                                       {'class': 'ProductItemDesktopNewFlow__ProductName-sc-1uzlgcd-7 jrxgHl'})
-        product_prices = soup.find_all('h2', {'class': 'sc-bczRLJ sc-dkzDqf nFQPz eZNacu'})
-        category_title_html = soup.find('h1', {'data-test-id': 'listing-header-title'})
-        product_links = soup.find_all('a',
-                                      {'class': 'ProductItemDesktopNewFlow__ProductInfoLink-sc-1uzlgcd-4 fgClmn'})
-        product_images = soup.find_all('img', {'data-test-id': 'product-card-image'})
+        product_titles = soup.find_all('div', {'class': 'product-name'})
+        category_title_html = soup.find('h1', {'class': 'text-blue text-size-9 font-bold mb-4'})
+        product_images = soup.find_all('div', {'class': 'my-0 mx-auto product-image px-6 py-1 mb-2 relative'})
         if category_title_html is not None:
-            category_title = category_title_html.text
+            category_title = re.sub('^[\s]+|[\s]+$', '', category_title_html.text)
         else:
             category_title = "N/A"
 
@@ -102,31 +97,30 @@ def scrape_url(body):
         link_list = []
         image_list = []
         desc_list = []
-        for product_title in product_titles:
-            title_element = product_title.text
+        for i in range(0, len(product_titles)):
+            title_raw = product_titles[i].find('a')
+            link = title_raw['href']
+            link_list.append(link)
+            description, price = single_request(link)
+            desc_list.append(description)
+            price_list.append(price)
+            title_element = re.sub('^[\s]+|[\s]+$', '', title_raw.text)
             if title_element:
                 product_list.append(title_element)
 
-        for product_price in product_prices:
-            text = ""
-            text += product_price.get_text(strip=True)
-            if text.strip() == "":
-                text = "N/A"
-            else:
-                price_list.append(text)
-
-        for product_link in product_links:
-            full_url = 'https://www.travisperkins.co.uk' + product_link['href']
-            link_list.append(full_url)
-            desc_list.append(single_request(full_url))
-
-        for product_image in product_images:
-            image_link = product_image['src']
-            image_list.append("https://" + image_link[2:])
+        for i in range(0, len(product_images)):
+            if product_images[i] is not None:
+                img_tags = product_images[i].find_all('img')
+                for img in img_tags:
+                    if img.parent.name != "div":
+                        image_link = img['src']
+                        image_list.append(image_link)
 
         for product, price, link, image, description in zip(product_list, price_list, link_list, image_list, desc_list):
-            print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image, 'description': description})
-            products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image, 'description': description})
+            print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image,
+                   'description': description})
+            products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image,
+                             'description': description})
 
     except KeyError:
         print("Key Error occurred")
@@ -137,14 +131,21 @@ def scrape_url(body):
 def scrape_desc(body):
     try:
         soup = BeautifulSoup(body, 'html.parser')
-        product_desc = soup.find('div', {'data-test-id': 'product-overview'})
-
+        product_desc = soup.find_all('div', {'class': 'product-details'})
+        product_prices = soup.find_all('span', {'class': 'main-price'})
         if product_desc:
-            description = product_desc.text
+            p_element = product_desc[0].find('p')
+            description = re.sub('^[\s]+|[\s]+$', '', p_element.text)
+            description = re.sub('[\n\t\r]+', '', description)
         else:
             description = "N/A"
 
-        return description
+        if product_prices:
+            price = product_prices[0].text
+        else:
+            price = 'N/A'
+
+        return description, price
 
     except KeyError:
         print("Key Error occurred")
@@ -157,7 +158,6 @@ get_categories()
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
     executor.map(send_request, urls)
 
-
 # Write products into csv file
 df = pd.DataFrame(products)
-df.to_csv('tpProducts.csv', index=False)
+df.to_csv('toolstationProducts.csv', index=False)

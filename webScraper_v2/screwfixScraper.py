@@ -35,15 +35,14 @@ def get_categories():
             links = content_json["all_links"]
             links = [item for item in links if item is not None]
             department_links = [link for link in links if '/c/' in link]
-            department_links = [department_link for department_link in department_links if 'https' in department_link]
-            print(department_links)
 
             # Variable i is the page number
             i = 1
 
             for j in range(0, len(department_links)):
-                urls.append(department_links[j])
-                print(department_links[j])
+                full_link = "https://www.screwfix.com" + department_links[j]
+                urls.append(full_link)
+                print(full_link)
             break
         else:
             print("Error: " + str(response.status_code))
@@ -56,6 +55,7 @@ def send_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+
             },
 
         )
@@ -74,6 +74,7 @@ def single_request(url):
             params={
                 'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
                 'url': url,
+
             },
 
         )
@@ -86,12 +87,11 @@ def single_request(url):
 
 
 def scrape_url(body):
-    try:
+    # try:
         soup = BeautifulSoup(body, 'html.parser')
-        product_titles = soup.find_all('div', {'class': 'lii__r'})
-        product_prices = soup.find_all('div', {'class': 'lii_price'})
-        category_title_html = soup.find('h1', {'class': 'h1wrapper__h1-special'})
-        product_images = soup.find_all('img', {'id': 'product_image'})
+        product_titles = soup.find_all('div', {'data-qaid': 'product-heading'})
+        product_cards = soup.find_all('div', {'data-qaid': 'product-card'})
+        category_title_html = soup.find('h1', {'data-qaid': 'h1-seo-heading'})
 
         if category_title_html is not None:
             category_title = re.sub('^[\s]+|[\s]+$', '', category_title_html.text)
@@ -104,21 +104,20 @@ def scrape_url(body):
         image_list = []
         desc_list = []
         for i in range(0, len(product_titles)):
-            title_raw = product_titles[i].find('a', {'class': 'fh_product_click'})
-            link = title_raw['href']
+            title_raw = product_titles[i].find('a', {'data-qaid': 'product_description'})
+            link = "https://www.screwfix.com" + title_raw['href']
             link_list.append(link)
             desc_list.append(single_request(link))
             title_element = re.sub('^[\s]+|[\s]+$', '', title_raw.text)
             if title_element:
                 product_list.append(title_element)
 
-        for i in range(0, len(product_prices)):
-            price = product_prices[i].find('h4').text
-            price_list.append(price)
-
-        for i in range(0, len(product_images)):
-            if product_images[i] is not None:
-                img = product_images[i]
+        for i in range(0, len(product_cards)):
+            if product_cards[i] is not None:
+                price = product_cards[i].find('span', {'data-qaid': 'price'}).text
+                price = price.replace("Inc Vat", "").strip()
+                price_list.append(price)
+                img = product_cards[i].find('img')
                 image_link = img['src']
                 image_list.append(image_link)
 
@@ -128,27 +127,26 @@ def scrape_url(body):
             products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image,
                              'description': description})
 
-    except KeyError:
-        print("Key Error occurred")
-    except:
-        print("Error occurred")
+    # except KeyError:
+    #     print("Key Error occurred")
+    # except:
+    #     print("Error occurred")
+
 
 def scrape_desc(body):
     try:
         soup = BeautifulSoup(body, 'html.parser')
-        product_desc = soup.find('p', {'id': 'product_long_description_container'})
+        product_desc = soup.find('p', {'data-qaid': 'pdp-product-overview'})
 
         if product_desc:
             description = re.sub('^[\s]+|[\s]+$', '', product_desc.text)
         else:
             description = "N/A"
 
-        product_desc2 = soup.find('ul', {'class': 'pr__spec-list'})
+        product_desc2 = soup.find('ul', {'data-qaid': 'pdp-product-bullets'})
 
         if product_desc2:
-            span_tags = product_desc2.find_all('li')
-            for tag in span_tags:
-                description += tag.text + ' '
+            description += product_desc2.text
         else:
             return description
 
@@ -163,7 +161,6 @@ def scrape_desc(body):
 get_categories()
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
     executor.map(send_request, urls)
-
 
 # Write products into csv file
 df = pd.DataFrame(products)
