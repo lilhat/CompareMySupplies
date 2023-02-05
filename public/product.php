@@ -20,8 +20,6 @@
 ?>
 <!DOCTYPE html>
 <html>
-<?php
-    ?>
 <head>
     <meta charset="utf-8" />
     <title><?php echo $id?></title>
@@ -39,7 +37,7 @@
 <body>
 
     <nav class="navbar"></nav>
-
+    <div class="overlay"></div>
     <section class="product-details">
         <div class="main-image" style="background-image: url('images/products/<?php echo $id?>.png')"></div>
         <div class="image-slider">
@@ -103,9 +101,9 @@
                                 <span class="price">£<?php echo $price['price'] ?></span> 
                             </div>
                         </div>
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
-                    <?php endforeach; ?>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
                     
             </div>
         </section>
@@ -114,6 +112,7 @@
 
     <script src="js/nav.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/product.js"></script>
 

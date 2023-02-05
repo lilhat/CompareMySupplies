@@ -17,6 +17,7 @@
 
 </head>   
 <body>
+    <div class="overlay"></div>
     <nav class="navbar"></nav>
     <div class="container">
         
@@ -35,8 +36,11 @@
         </div>
     </div>
     <footer></footer>
+    
     <script src="js/nav.js"></script>
+    <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
+
 </body>
 
 </html>

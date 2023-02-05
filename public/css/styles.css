@@ -13,9 +13,21 @@ body {
 
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr;
+    z-index: 5;
 }
 
 @media only screen and (max-width: 768px) {

@@ -33,6 +33,7 @@
 
 </head>   
 <body>
+    <div class="overlay"></div>
     <div class="container">
         <nav class="navbar"></nav>
     </div>
