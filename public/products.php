@@ -25,8 +25,8 @@ $prods = $newObj->get_Category();
 
 </head>   
 <body>
-
     <nav class="navbar"></nav>
+    <div class="overlay"></div>
     <section class="product">
             <h2 class="product-category">Products</h2>
             <div class="border-container">
@@ -56,6 +56,7 @@ $prods = $newObj->get_Category();
 
     <script src="js/nav.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/product.js"></script>
 

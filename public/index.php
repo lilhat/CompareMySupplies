@@ -26,6 +26,7 @@ $prods = $newObj->get_Category();
 
 <body>
     <nav class="navbar"></nav>
+    <div class="overlay"></div>
     <div class="container">
         <header class="hero-section">
             <div class="content">
@@ -73,6 +74,7 @@ $prods = $newObj->get_Category();
     </div>
     <script src="js/nav.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
 </body>
 

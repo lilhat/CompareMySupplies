@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    z-index: 9;
+    z-index: 12;
     background: white;
     height: 150px;
 
@@ -115,17 +115,19 @@
 .menu {
     justify-content: center;
     float: none;
-    height: 40%;
     position: relative;
-    bottom: 22px;
+    height: 38%;
+    bottom: 18px;
+    z-index: 8;
 }
 
 .links-container{
     width: 100vw;
+    max-width: fit-content;
     display: flex;
     list-style: none;
     margin-left: 310px;
-    
+    z-index: 10;
 }
 
 .links-container::after {
@@ -156,7 +158,7 @@
     justify-content: center;
     display: block;
     position: relative;
-    bottom: 6px;
+    bottom: 10px;
     font-weight: bold;
     width: 100%;
 }
@@ -297,17 +299,33 @@
     pointer-events: none;
 }
 
-
-
 .dropdown-content {
     /* hide the dropdown content by default */
     display: grid;
     /* define the number of columns and the width of each column */
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 40px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
     visibility: hidden;
     position: absolute;
+    
+    top: 50vw;
+    left: 16.15vw;
+    width: 66.15vw;
+    max-width: 100%;
+    padding-bottom: 0px;
 }
+
+/* .dropdown-header::after {
+    width: 100%;
+    content: "";
+    position: absolute;
+    padding-top: 5px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    z-index: -1;
+} */
 
 .dropdown-content a{
     display: inline-block;
@@ -317,11 +335,9 @@
 }
 
 .link-item:hover .dropdown-content{
-    animation: floatUp 0.5s;
     position: absolute; /* position the dropdown content */
     background-color: white;
     padding: 10px;
-    box-shadow: 1px 1px 3px gray; /* add a box-shadow */
     list-style-type: none; /* remove bullet points */
     visibility: visible;
     padding-top: 40px;
@@ -332,18 +348,14 @@
     color: orange;
 }
 
+
+
 .fa-angle-down {
     position: relative; /* make the element relative */
     top: 2px; /* move the element down by 5px */
     left: 5px;
   }
 
-
-.link-item:hover .dropdown-content {
-    /* show the dropdown content on hover */
-    transform: translateY(0);
-    /* move the dropdown back to its original position */
-}
 
 .dropdown-content li {
     transition: color 0.2s;
@@ -358,6 +370,8 @@
     grid-column: 1 / -1; /* span the headers across both columns */
     position: absolute;
     top: 10px;
+    word-wrap: break-word;
+    max-width: 12vw;
 }
 
 
