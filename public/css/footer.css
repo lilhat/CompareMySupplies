@@ -76,7 +76,6 @@ footer{
     margin-top: 105px;
     display: flex;
     justify-content: center;
-
 }
 
 .footer-info-container{
@@ -91,4 +90,5 @@ footer{
 .social-link{
     color: #333;
     margin-left: 10px;
+    text-decoration: none;
 }

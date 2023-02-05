@@ -7,7 +7,7 @@ form {
 
 .hero-section{
     width: 100vw;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 400px);
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)),url('../images/header-background.png');
     background-size: cover;
     display: flex;
@@ -41,7 +41,7 @@ form {
     overflow: hidden;
     padding: 20px 0;
     height: 33.85vw;
-    
+    zoom: 80%;
 }
 
 .product-category{

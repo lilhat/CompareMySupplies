@@ -1,6 +1,17 @@
 .product{
     height: 110vw;
 }
+
+.product-category {
+    left: 7.8vw;
+    position: relative;
+}
+
+.main-content {
+    left: 7.8vw;
+    position: relative;
+}
+
 .product-container {
     height: 100vw;
     margin-right: 3vw;

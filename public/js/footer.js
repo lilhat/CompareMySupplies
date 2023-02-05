@@ -44,7 +44,7 @@ const createFooter = () => {
                 </div>
             </div>
             </div>
-            <div class="footer-social-container">
+            <div class="footer-social-container" style="display:flex">
                 <div class="footer-info-container">
                     <span>@ CompareMySupplies 2023</span>
                     <a href="#" class="social-link">Terms & Services</a>
