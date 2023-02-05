@@ -1,21 +1,23 @@
-let dropdownButtons = document.querySelectorAll('.link-item');
+let linkItems = document.querySelectorAll('.link-item');
 let dropdownContents = document.querySelectorAll('.dropdown-content');
 let overlay = document.querySelector('.overlay');
 let menu = document.querySelector('.menu');
 let linksContainer = document.querySelector('.links-container')
 
-for (let i = 0; i < dropdownButtons.length; i++) {
-    dropdownButtons[i].addEventListener('mouseenter', function() {
+for (let i = 0; i < linkItems.length; i++) {
+    linkItems[i].addEventListener('mouseenter', function() {
         dropdownContents[i].style.display = 'grid';
+        linkItems[i].style.backgroundColor = 'white';
         overlay.style.display = 'block';
         menu.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        linksContainer.style.backgroundColor = 'white';
+        linksContainer.style.backgroundColor = 'lightgrey';
     });
 
-    dropdownButtons[i].addEventListener('mouseleave', function() {
+    linkItems[i].addEventListener('mouseleave', function() {
         dropdownContents[i].style.display = 'none';
         overlay.style.display = 'none';
         menu.style.backgroundColor = '';
         linksContainer.style.backgroundColor = '';
+        linkItems[i].style.backgroundColor = '';
     });
 }

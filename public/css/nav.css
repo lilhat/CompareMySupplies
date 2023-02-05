@@ -24,11 +24,7 @@
     width: 100vw;
 }
 
-.nav-border {
-    position: relative;
-    top: 5px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
+
 
 .nav-top-links  {
     list-style: none;
@@ -46,6 +42,18 @@
     color: #333;
     transition:0.6s;
     white-space: nowrap;
+}
+
+.nav-wrapper:before {
+    content: ""; /* empty content */
+    display: block; /* make it visible */
+    width: 100%; /* make the line as wide as the parent element */
+    height: 1px; /* make the line 1px high */
+    background-color: gray; /* color the line gray */
+    position: absolute; /* position the line */
+    bottom: 125px;
+    opacity: 0.2;
+    left: 0; /* align the line to the left */
 }
 
 .nav-wrapper {
@@ -69,7 +77,7 @@
     bottom: 55px;
     opacity: 0.2;
     left: 0; /* align the line to the left */
-  }
+}
 
 
 .brand-logo{
@@ -117,27 +125,30 @@
     float: none;
     position: relative;
     height: 38%;
-    bottom: 18px;
     z-index: 8;
 }
 
 .links-container{
+    position: absolute;
+    margin: 0px;
     width: 100vw;
     max-width: fit-content;
+    height: 55px;
     display: flex;
     list-style: none;
     margin-left: 310px;
     z-index: 10;
+    padding: 0px;
 }
 
-.links-container::after {
+.menu:after {
     content: ""; /* empty content */
     display: block; /* make it visible */
     width: 100%; /* make the line as wide as the parent element */
     height: 1px; /* make the line 1px high */
     background-color: gray; /* color the line gray */
     position: absolute; /* position the line */
-    bottom: 0;
+    bottom: 1px;
     opacity: 0.2;
     left: 0; /* align the line to the left */
 }
@@ -146,6 +157,8 @@
     text-transform: capitalize;
     padding: 0 10px;
     margin: 0 5px;
+    width: fit-content;
+    height: 100px;
 }
 
 .link-item a {
@@ -307,10 +320,9 @@
     grid-gap: 20px;
     visibility: hidden;
     position: absolute;
-    
     top: 50vw;
-    left: 16.15vw;
-    width: 66.15vw;
+    left: 0;
+    width: 64.08vw;
     max-width: 100%;
     padding-bottom: 0px;
 }
@@ -341,7 +353,7 @@
     list-style-type: none; /* remove bullet points */
     visibility: visible;
     padding-top: 40px;
-    top: 60px;
+    top: 55px;
 }
 
 .link-item:hover a:hover {
