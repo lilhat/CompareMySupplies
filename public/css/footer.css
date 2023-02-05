@@ -47,7 +47,7 @@ footer{
     color: #333;
 }
 
-li:not(:last-child) { 
+.category li:not(:last-child) { 
     margin-bottom: 10px;  
 }
 

@@ -40,7 +40,7 @@ form {
     position: relative;
     overflow: hidden;
     padding: 20px 0;
-    height: 650px;
+    height: 33.85vw;
     
 }
 
@@ -79,8 +79,8 @@ form {
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     flex: 0 0 auto;
-    width: 250px;
-    height: 500px;
+    width: 13vw;
+    height: 26vw;
     margin-right: 40px;
     border-radius: 10px;
     position: relative;
@@ -255,16 +255,7 @@ form {
 }
 
 @media only screen and (max-width: 871px){
-    .container, .hero-section, .product-container, .product-card{
-        width:100vw;
-    }
     .hero-section .sub-heading{
         font-size: 4vw;
-    }
-    .product-container{
-        width: 100vw;
-    }
-    .product{
-        width: 100vw;
     }
 }

@@ -19,8 +19,8 @@
     align-items: center;
     height: 20px;
     top: 6px;
-    margin-left: 90px;
-    margin-right: 90px;
+    margin-left: 4.6875vw;
+    margin-right: 4.6875vw;
     width: 100vw;
 }
 
@@ -62,8 +62,8 @@
     display: flex;
     align-items: center;
     height: 50%;
-    margin-left: 120px;
-    margin-right: 90px;
+    margin-left: 6.25vw;
+    margin-right: 4.6875vw;
 }
 
 
@@ -124,8 +124,9 @@
     justify-content: center;
     float: none;
     position: relative;
-    height: 38%;
+    height: 36%;
     z-index: 8;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .links-container{
@@ -133,32 +134,19 @@
     margin: 0px;
     width: 100vw;
     max-width: fit-content;
-    height: 55px;
+    max-height: 55px;
     display: flex;
     list-style: none;
-    margin-left: 310px;
+    left: 20vw;
     z-index: 10;
     padding: 0px;
-}
-
-.menu:after {
-    content: ""; /* empty content */
-    display: block; /* make it visible */
-    width: 100%; /* make the line as wide as the parent element */
-    height: 1px; /* make the line 1px high */
-    background-color: gray; /* color the line gray */
-    position: absolute; /* position the line */
-    bottom: 1px;
-    opacity: 0.2;
-    left: 0; /* align the line to the left */
 }
 
 .link-item {
     text-transform: capitalize;
     padding: 0 10px;
-    margin: 0 5px;
+    margin: 0px;
     width: fit-content;
-    height: 100px;
 }
 
 .link-item a {
@@ -317,18 +305,18 @@
     display: grid;
     /* define the number of columns and the width of each column */
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
+    grid-gap: 15px;
     visibility: hidden;
     position: absolute;
-    top: 50vw;
     left: 0;
-    width: 64.08vw;
+    width: 100%;
     max-width: 100%;
     padding-bottom: 0px;
 }
 
 /* .dropdown-header::after {
     width: 100%;
+    max-width: 100%;
     content: "";
     position: absolute;
     padding-top: 5px;
@@ -336,7 +324,7 @@
     left: 0;
     right: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    z-index: -1;
+    z-index: 10;
 } */
 
 .dropdown-content a{
@@ -354,6 +342,8 @@
     visibility: visible;
     padding-top: 40px;
     top: 55px;
+    width: auto;
+    min-width: 98.35%;
 }
 
 .link-item:hover a:hover {
