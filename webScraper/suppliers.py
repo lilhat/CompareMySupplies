@@ -271,3 +271,7 @@ def scrape_cef(link):
         final_data = ("N/A", supplier, 0.00, link)
         logger.exception(error)
     return final_data
+
+
+# EHSmith
+# Tippers

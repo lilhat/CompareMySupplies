@@ -14,7 +14,7 @@ $prods = $newObj->get_Category();
     <title>Products</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/product.css">
@@ -25,35 +25,39 @@ $prods = $newObj->get_Category();
 
 </head>   
 <body>
-
     <nav class="navbar"></nav>
+    <div class="overlay"></div>
     <section class="product">
-            <h2 class="product-category">Products</h2>
-            <div class="border-container">
-                <div class="product-container">
-                    <?php foreach ($prods as $prod): ?>
-                        <?php $comps = $newObj2->get_Price($prod['product_code']) ?>
-                        <?php foreach ($comps as $comp): ?>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="images/products/<?php echo $prod['product_code']?>.png " class="product-thumb" alt="<?$prod['product_name'] ?>">
-                            <a href="product.php?product=<?php echo $prod['product_code']?>"><button class="card-btn">Compare Prices</button></a>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand"><?php echo $prod['product_name'] ?></h2>
-                            <p class="product-short-des"><?php echo $prod['category'] ?></p>
-                            <span class="price">£<?php echo $comp['price'] ?></span> 
-                        </div>
+        <h2 class="product-category">Products</h2>
+        <div class="border-container"></div>
+        <div class="main-content">
+            <div class="product-container">
+                <?php foreach ($prods as $prod): ?>
+                    <?php $comps = $newObj2->get_Price($prod['product_code']) ?>
+                    <?php foreach ($comps as $comp): ?>
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="product.php?product=<?php echo $prod['product_code'] ?>">
+                        <img src="images/products/<?php echo $prod['product_code']?>.png " class="product-thumb" alt="<?$prod['product_name'] ?>">
+                        </a>
                     </div>
-                    <?php endforeach; ?>
-                    <?php endforeach; ?>
+                    <div class="product-info">
+                        <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
+                        <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
+                        <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
+                        <span class="price">£<?php echo $comp['price'] ?></span> 
+                    </div>
                 </div>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
-        </section>
+        </div>
+    </section>
     <footer></footer>
 
     <script src="js/nav.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/product.js"></script>
 

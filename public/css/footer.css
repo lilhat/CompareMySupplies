@@ -2,12 +2,17 @@ footer{
     position: relative;
     width: 100vw;
     height: 250px;
-    padding: 40px 10vw;
     padding-bottom: 80px;
-    background: #383838;
+    background: white;
 }
 
+.footer-border{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
 .footer-content{
+    padding: 40px 10vw;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -31,7 +36,7 @@ footer{
 
 .category-title{
     text-transform: capitalize;
-    color: #fff;
+    color: #333;
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -39,15 +44,15 @@ footer{
 .category .footer-link{
     text-decoration: none;
     text-transform: capitalize;
-    color: rgba(255, 255, 255, 0.75);
+    color: #333;
 }
 
-li:not(:last-child) { 
+.category li:not(:last-child) { 
     margin-bottom: 10px;  
 }
 
 .footer-link:hover{
-    color: #fff;
+    color: #333;
 }
 
 .contact-info{
@@ -57,33 +62,33 @@ li:not(:last-child) {
 
 .info{
     text-transform: capitalize;
-    color: #fff;
+    color: #333;
     font-size: 20px;
     margin-bottom: 20px;
 }
 
 .info-details{
-    color: rgba(255, 255, 255, 0.75);
+    color: #333;
     margin: 20px 0;
 }
 
 .footer-social-container{
     margin-top: 105px;
-    float: left;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .footer-info-container{
-    margin-right: 1030px;
+    margin-right: 50vw;
 }
 
 
 .footer-info-container span{
-    color: #fff;
-    margin: 20px 0;
+    color: #333;
+
 }
 .social-link{
-    color: #fff;
-    margin-left: 20px;
+    color: #333;
+    margin-left: 10px;
+    text-decoration: none;
 }

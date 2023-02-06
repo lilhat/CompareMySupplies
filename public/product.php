@@ -20,14 +20,12 @@
 ?>
 <!DOCTYPE html>
 <html>
-<?php
-    ?>
 <head>
     <meta charset="utf-8" />
     <title><?php echo $id?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/product.css">
@@ -39,7 +37,7 @@
 <body>
 
     <nav class="navbar"></nav>
-
+    <div class="overlay"></div>
     <section class="product-details">
         <div class="main-image" style="background-image: url('images/products/<?php echo $id?>.png')"></div>
         <div class="image-slider">
@@ -73,7 +71,7 @@
                   <td><?php echo $comp['product_name'] ?></td>
                   <td><span class="compare-price">£<?php echo $comp['price'] ?></span></td>
                   <td><img class="supplier-logo" src="images/suppliers/<?php echo $comp['supplier_name']?>.png"></td>
-                  <td><a href="<?php echo $comp['link'] ?>"><button class="supplier-btn">Go To Supplier</button></a></td>
+                  <td><a href="<?php echo $comp['link'] ?>" target="_blank"><button class="supplier-btn">Go To Supplier</button></a></td>
                 </tr>
                <?php endforeach;?>
             </table>
@@ -87,20 +85,25 @@
                 <div class="product-container">
                 <?php foreach ($extras as $extra): ?>
                     <?php $prices = $newObj4->get_Price($extra['product_code'])?>
+                    <?php $comps = $newObj2->get_Price($extra['product_code']) ?>
                     <?php foreach($prices as $price): ?>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="images/products/<?php echo $extra['product_code']?>.png" class="product-thumb" alt="">
-                            <a href="product.php?product=<?php echo $extra['product_code']?>"><button class="card-btn">Compare Prices</button></a>
+                        <?php foreach ($comps as $comp) : ?>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <a href="product.php?product=<?php echo $extra['product_code'] ?>">
+                                <img src="images/products/<?php echo $extra['product_code']?>.png" class="product-thumb" alt="">
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <h2 class="product-brand"><a href="product.php?product=<?php echo $extra['product_code'] ?>"><?php echo $extra['product_name'] ?></a></h2>
+                                <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $extra['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
+                                <p class="product-short-des"><a href="categories.php?product=<?php echo $extra['category'] ?>"><?php echo $extra['category'] ?></a></p>
+                                <span class="price">£<?php echo $price['price'] ?></span> 
+                            </div>
                         </div>
-                        <div class="product-info">
-                            <h2 class="product-brand"><?php echo $extra['product_name']?></h2>
-                            <p class="product-short-des"><?php echo $extra['category']?></p>
-                            <span class="price">£<?php echo $price['price'] ?></span> 
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
                     
             </div>
         </section>
@@ -109,6 +112,7 @@
 
     <script src="js/nav.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/product.js"></script>
 

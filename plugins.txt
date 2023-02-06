@@ -1,0 +1,21 @@
+<script src="/js/front/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/js/front/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="/js/front/vendor/bootstrap.bundle.min.js"></script>
+<script src="/js/front/plugins/slick.js"></script>
+<script src="/js/front/plugins/jquery.syotimer.min.js"></script>
+<script src="/js/front/plugins/waypoints.js"></script>
+<script src="/js/front/plugins/wow.js"></script>
+<script src="/js/front/plugins/perfect-scrollbar.js"></script>
+<script src="/js/front/plugins/magnific-popup.js"></script>
+<script src="/js/front/plugins/select2.min.js"></script>
+<script src="/js/front/plugins/counterup.js"></script>
+<script src="/js/front/plugins/jquery.countdown.min.js"></script>
+<script src="/js/front/plugins/images-loaded.js"></script>
+<script src="/js/front/plugins/isotope.js"></script>
+<script src="/js/front/plugins/scrollup.js"></script>
+<script src="/js/front/plugins/jquery.vticker-min.js"></script>
+<script src="/js/front/plugins/jquery.theia.sticky.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<link rel="stylesheet" href="/css/front/plugins/animate.min.css">

@@ -64,9 +64,6 @@ def send_request(url):
             print("Url: " + url)
 
 
-get_categories()
-
-
 def single_request(url):
     for _ in range(NUM_RETRIES):
         response = requests.get(
@@ -154,6 +151,8 @@ def scrape_desc(body):
     except:
         print("Error occurred")
 
+
+get_categories()
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
     executor.map(send_request, urls)

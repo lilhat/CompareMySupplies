@@ -27,12 +27,13 @@
 <head>
     <meta charset="utf-8" />
     <title>Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/ce98f0dc47.js" crossorigin="anonymous"></script>
 
 </head>   
 <body>
+    <div class="overlay"></div>
     <div class="container">
         <nav class="navbar"></nav>
     </div>
