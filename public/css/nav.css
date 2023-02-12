@@ -183,10 +183,6 @@
     margin-left: 11px;
 }
 
-.active {
-    background: orange;
-}
-
 .user-pic {
     width: 40px;
     cursor: pointer;
@@ -386,6 +382,21 @@
     list-style-type: none; /* remove bullet points */
 }
 
+.burger {
+    display: none;
+    cursor: pointer;
+    left: 0;
+}
+
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #333;
+}
 
 @keyframes floatUp {
 from {
@@ -408,19 +419,72 @@ to {
         opacity: 0; /* make the dropdown visible */
     }
 }
+  
+@media (max-width: 768px) {
+    .link-item {
+      text-align: center;
+    }
+  
+    .dropdown-content {
+      display: block;
+    }
+  
+    .burger {
+      display: block;
+      position: fixed;
+      left: 50px;
+      top: 45px;
+    }
+
+    .burger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+
+    .burger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .burger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .active {
+        background: transparent;
+    }
+
+    .links-container{
+        position: fixed;
+        left: -100%;
+        top: 100px;
+        gap: 0;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        margin-left: 0px;
+    }
+
+    .link-item{
+        margin: 16px 0;
+    }
+
+    .link-item a{
+        padding: 0px;
+    }
+
+    .links-container.active{
+        left: 0;
+        top: 100px;
+        position: fixed;
+    }
 
 
-@media only screen and (max-width: 871px) {
-    /* For mobile phones: */
     .body, .container {
       width: 100vw;
     }
 
     .navbar, .nav-wrapper {
-        width: 100vw;
-    }
-    
-    .menu {
         width: 100vw;
     }
 
@@ -436,16 +500,8 @@ to {
         width: 40vw;
     }
 
-    .top-links-container {
-        display: none;
-    }
-
     .tbox {
         width: 100px;
-    }
-
-    .links-container{
-        display: none;
     }
 }
 

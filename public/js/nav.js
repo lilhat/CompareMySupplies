@@ -630,6 +630,11 @@ const createNav = () => {
                     </ul>
                 </li>
             </ul>
+            <div class="burger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     `;
 
@@ -690,33 +695,4 @@ window.onload = () => {
 
 
 }
-
-
-
-// const linkItems = document.querySelectorAll('.link-item');
-// const linksContainer = document.querySelector('.links-container');
-// linkItems.forEach(item => {
-//     item.addEventListener('mouseenter', function() {
-//         linkItems.forEach(linkItem => {
-//             if (linkItem !== item) {
-//                 linksContainer.style.backgroundColor = 'grey';
-//             }
-//             else{
-//                 linkItem.style.backgroundColor = 'white'
-//             }
-//         });
-//     });
-
-//     item.addEventListener('mouseleave', function() {
-//         linkItems.forEach(linkItem => {
-//             if (linkItem !== item) {
-//                 linkItem.style.backgroundColor = '';
-//                 linksContainer.style.backgroundColor = '';
-//             }
-//             else{
-//                 linkItem.style.backgroundColor = 'white'
-//             }
-//         });
-//     });
-// });
 

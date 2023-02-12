@@ -19,3 +19,11 @@ for (let i = 0; i < dropdownButtons.length; i++) {
         linksContainer.style.backgroundColor = '';
     });
 }
+
+
+const burger = document.querySelector(".burger");
+
+burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    linksContainer.classList.toggle("active");
+})
