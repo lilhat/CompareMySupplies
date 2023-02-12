@@ -31,7 +31,8 @@ $prods = $newObj->get_Category_id($id);
     <div class="overlay"></div>
     <section class="product">
         <h2 class="product-category"><?php echo $id?></h2>
-        <div class="border-container">
+        <div class="border-container"></div>
+        <div class="main-content">
             <div class="product-container">
                 <?php foreach ($prods as $prod): ?>
                     <?php $comps = $newObj2->get_Price($prod['product_code']) ?>

@@ -47,7 +47,7 @@ footer{
     color: #333;
 }
 
-li:not(:last-child) { 
+.category li:not(:last-child) { 
     margin-bottom: 10px;  
 }
 
@@ -76,7 +76,6 @@ li:not(:last-child) {
     margin-top: 105px;
     display: flex;
     justify-content: center;
-
 }
 
 .footer-info-container{
@@ -91,4 +90,5 @@ li:not(:last-child) {
 .social-link{
     color: #333;
     margin-left: 10px;
+    text-decoration: none;
 }

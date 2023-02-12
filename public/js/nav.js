@@ -477,7 +477,7 @@ const createNav = () => {
                             <li><a href="#">Interior woodcare</a></li>
                         </ul>
                         <ul class="content">
-                            <li class="dropdown-header"><a href="#">Decorating tools & supplies</a></li>
+                            <li class="dropdown-header"><a href="#">Decorating supplies</a></li>
                             <li><a href="#">Paint rollers</a></li>
                             <li><a href="#">Paint brushes</a></li>
                             <li><a href="#">Paint trays</a></li>
@@ -492,7 +492,7 @@ const createNav = () => {
                             <li><a href="#">Expanding foam</a></li>
                         </ul>
                         <ul class="content">
-                            <li class="dropdown-header"><a href="#">Wallpaper & wall coverings</a></li>
+                            <li class="dropdown-header"><a href="#">Wallpaper & coverings</a></li>
                             <li><a href="#">Wallpaper</a></li>
                             <li><a href="#">Murals</a></li>
                             <li><a href="#">Wall stickers</a></li>

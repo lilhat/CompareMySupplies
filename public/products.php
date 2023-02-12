@@ -28,30 +28,31 @@ $prods = $newObj->get_Category();
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <section class="product">
-            <h2 class="product-category">Products</h2>
-            <div class="border-container">
-                <div class="product-container">
-                    <?php foreach ($prods as $prod): ?>
-                        <?php $comps = $newObj2->get_Price($prod['product_code']) ?>
-                        <?php foreach ($comps as $comp): ?>
-                    <div class="product-card">
-                        <div class="product-image">
-                            <a href="product.php?product=<?php echo $prod['product_code'] ?>">
-                            <img src="images/products/<?php echo $prod['product_code']?>.png " class="product-thumb" alt="<?$prod['product_name'] ?>">
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
-                            <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
-                            <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
-                            <span class="price">£<?php echo $comp['price'] ?></span> 
-                        </div>
+        <h2 class="product-category">Products</h2>
+        <div class="border-container"></div>
+        <div class="main-content">
+            <div class="product-container">
+                <?php foreach ($prods as $prod): ?>
+                    <?php $comps = $newObj2->get_Price($prod['product_code']) ?>
+                    <?php foreach ($comps as $comp): ?>
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="product.php?product=<?php echo $prod['product_code'] ?>">
+                        <img src="images/products/<?php echo $prod['product_code']?>.png " class="product-thumb" alt="<?$prod['product_name'] ?>">
+                        </a>
                     </div>
-                    <?php endforeach; ?>
-                    <?php endforeach; ?>
+                    <div class="product-info">
+                        <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
+                        <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
+                        <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
+                        <span class="price">£<?php echo $comp['price'] ?></span> 
+                    </div>
                 </div>
+                <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
-        </section>
+        </div>
+    </section>
     <footer></footer>
 
     <script src="js/nav.js"></script>
