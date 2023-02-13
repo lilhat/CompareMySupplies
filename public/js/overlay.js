@@ -21,3 +21,11 @@ for (let i = 0; i < linkItems.length; i++) {
         linkItems[i].style.backgroundColor = '';
     });
 }
+
+
+const burger = document.querySelector(".burger");
+
+burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    linksContainer.classList.toggle("active");
+})
