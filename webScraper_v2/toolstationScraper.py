@@ -84,9 +84,9 @@ def single_request(url):
 def scrape_url(body):
     try:
         soup = BeautifulSoup(body, 'html.parser')
-        product_titles = soup.find_all('div', {'class': 'product-name'})
+        product_titles = soup.find_all('div', {'class': 'flex flex-col gap-0.5'})
         category_title_html = soup.find('h1', {'class': 'text-blue text-size-9 font-bold mb-4'})
-        product_images = soup.find_all('div', {'class': 'my-0 mx-auto product-image px-6 py-1 mb-2 relative'})
+        product_images = soup.find_all('div', {'class': 'relative'})
         if category_title_html is not None:
             category_title = re.sub('^[\s]+|[\s]+$', '', category_title_html.text)
         else:

@@ -39,7 +39,7 @@ def get_categories():
             department_links = [item for item in links if item != '#']
             print(department_links)
 
-            for j in range(0, 10):
+            for j in range(0, len(department_links)):
                 urls.append(department_links[j])
                 print(department_links[j])
             break
