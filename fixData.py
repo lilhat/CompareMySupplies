@@ -1,0 +1,103 @@
+import csv
+
+# Open the input CSV file and create a new output file
+def fix_price():
+    with open('database\\top_sellers1.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('database\\top_sellers.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+        # Create a CSV reader and writer
+        reader = csv.reader(input_file)
+        writer = csv.writer(output_file)
+
+        # Find the index of the column containing prices
+        header = next(reader)
+        price_index = header.index('price')
+
+        # Write the header row to the output file
+        writer.writerow(header)
+
+        # Iterate over the rows in the input file
+        for row in reader:
+            # Get the price value from the row
+            price = row[price_index]
+
+            # Remove any £, letters and % signs from the price
+            price = price.replace('£', '').replace('%', '').replace(',', '').strip(
+                'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')
+
+            if '-' in price:
+                # Handle price ranges
+                x, y = price.split('-')
+                x = x.strip()
+                y = y.strip()
+
+                # Format the x and y values to have 2 decimal places
+                try:
+                    x = float(x)
+                    if x.is_integer():
+                        x = '{:.2f}'.format(x)
+                    else:
+                        x = '{:.2f}'.format(x)
+                except ValueError:
+                    pass
+
+                try:
+                    y = float(y)
+                    if y.is_integer():
+                        y = '{:.2f}'.format(y)
+                    else:
+                        y = '{:.2f}'.format(y)
+                except ValueError:
+                    pass
+
+                # Reconstruct the price range string
+                price = f'{x}-{y}'
+            else:
+                # Handle single prices
+                try:
+                    price = price.strip()
+                    price = float(price)
+                    if price.is_integer():
+                        # Price has 0 decimal places
+                        price = '{:.2f}'.format(price)
+                    else:
+                        # Price has 1 or 2 decimal places
+                        price = '{:.2f}'.format(price)
+                except ValueError:
+                    pass
+
+            # Replace the price value in the row with the cleaned-up value
+            row[price_index] = price
+            print(price)
+
+            # Write the updated row to the output file
+            writer.writerow(row)
+
+def fix_source():
+    with open('database\\products1.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('database\\products.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+        # Create a CSV reader and writer
+        reader = csv.reader(input_file)
+        writer = csv.writer(output_file)
+
+        # Find the index of the column containing the source value
+        header = next(reader)
+        source_index = header.index('source')
+
+        # Write the header row to the output file
+        writer.writerow(header)
+
+        # Iterate over the rows in the input file
+        for row in reader:
+            # Get the source value from the row
+            source = row[source_index]
+
+            # Remove the 'products.csv' string from the source value
+            source = source.replace('Products.csv', '').strip().capitalize()
+            source = ' '.join(word.upper() if len(word) == 2 else word for word in source.split())
+            # Replace the source value in the row with the cleaned-up value
+            row[source_index] = source
+
+            # Write the updated row to the output file
+            writer.writerow(row)
+
+fix_source()
