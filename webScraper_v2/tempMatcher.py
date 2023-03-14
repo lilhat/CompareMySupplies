@@ -6,7 +6,7 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
 # define the input file path
-input_file = 'bq_building.csv'
+input_file = 'bqMain.csv'
 
 # define the data folder path
 data_folder = 'data/'
@@ -32,6 +32,7 @@ with open(input_file, newline='', encoding='utf-8-sig') as csvfile:
 
 number_pattern = r'(\d+(?:\.\d+)?)'
 
+
 def fuzzy_match(product_name, row_name, product_price, row_price):
     # extract the numbers from the product name and the row name
     product_number = ''.join(re.findall(number_pattern, product_name))
@@ -50,8 +51,8 @@ def fuzzy_match(product_name, row_name, product_price, row_price):
     if product_number and row_number:
         num_ratio = fuzz.ratio(product_number, row_number)
         if num_ratio == 100:
-            num_weight = 0.20
-            word_weight = 0.65
+            num_weight = 0.25
+            word_weight = 0.60
             price_weight = 0.15
         else:
             word_ratio = 0
@@ -105,19 +106,19 @@ with open(output_file, 'w', newline='', encoding='utf-8-sig') as csvfile:
         if filename.endswith('.csv'):
             with open(data_folder + filename, newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
+                matched_products = {}
                 for row in reader:
-                    # found_match = False
                     for product in products:
-                        if product['id'] not in matched_products.get(filename, set()):
-                            if product['product'] and row['product']:
-                                product_name = product['product']
-                                row_name = row['product']
-                                product_price = product['price']
-                                row_price = row['price']
-                                product_desc = product['description']
-                                match_found, score, num, word, price = fuzzy_match(product_name, row_name, product_price, row_price)
+                        if product['product'] and row['product']:
+                            product_name = product['product']
+                            row_name = row['product']
+                            product_price = product['price']
+                            row_price = row['price']
+                            product_desc = product['description']
+                            match_found, score, num, word, price = fuzzy_match(product_name, row_name, product_price, row_price)
 
-                                if match_found:
+                            if match_found:
+                                if product['id'] not in matched_products or score > matched_products[product['id']]['score']:
                                     match = {
                                         'id': product['id'],
                                         'name': row['product'],
@@ -133,7 +134,11 @@ with open(output_file, 'w', newline='', encoding='utf-8-sig') as csvfile:
                                     print('To row:', row_name)
                                     print('Score:', score)
                                     print('Num:', num, 'Word:', word, 'Price:', price)
-                                    writer.writerow(match)
-                                    matched_products.setdefault(filename, set()).add(product['id'])
+                                    matched_products[product['id']] = {'match': match, 'score': score}
+
+                for product_id, product_data in matched_products.items():
+                    match = product_data['match']
+                    writer.writerow(match)
+
 
 

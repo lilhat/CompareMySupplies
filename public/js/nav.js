@@ -43,13 +43,13 @@ const createNav = () => {
         <div class="menu">
             <ul class="links-container">
                 <li class="link-item">
-                    <a href="categories.php?product=plaster">Building & <br> Hardware</a>
+                    <a href="categories.php?maincategory=building_hardware">Building & <br> Hardware</a>
                     <ul class="dropdown-content">
                         <ul class="content">
-                            <li class="dropdown-header"><a href="#">Building Supplies</a></li>
-                            <li><a href="#">Aggregates & Sand</a></li>
-                            <li><a href="#">Bricks & Blocks</a></li>
-                            <li><a href="#">Concrete & Cement</a></li>
+                            <li class="dropdown-header"><a href="categories.php?maincategory=building_hardware&subcategory=building_supplies">Building Supplies</a></li>
+                            <li><a href="categories.php?maincategory=building_hardware&subcategory=building_supplies&category=Aggregates%20%26%20sand">Aggregates & Sand</a></li>
+                            <li><a href="categories.php?maincategory=building_hardware&subcategory=building_supplies&category=Bricks%20%26%20blocks">Bricks & Blocks</a></li>
+                            <li><a href="categories.php?maincategory=building_hardware&subcategory=building_supplies&category=Chemicals,%20concrete%20%26%20cement">Concrete & Cement</a></li>
                             <li><a href="#">Additives & Chemicals</a></li>
                             <li><a href="#">Guttering & Drainage</a></li>
                             <li><a href="#">Insulation & Damp</a></li>
@@ -65,7 +65,6 @@ const createNav = () => {
                             <li><a href="#">Architrave</a></li>
                             <li><a href="#">Constructional timber</a></li>
                             <li><a href="#">Decorate mouldings</a></li>
-                            <li><a href="#">Additives & Chemicals</a></li>
                             <li><a href="#">Furniture boards</a></li>
                             <li><a href="#">Scaffold boards</a></li>
                             <li><a href="#">Sheet materials</a></li>
@@ -630,10 +629,24 @@ const createNav = () => {
                     </ul>
                 </li>
             </ul>
-            <div class="burger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="burger" onclick="toggleMobileMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <div class="menu-container">
+                    <ul class="mobile-menu">
+                        <a href="categories.php?product=plaster">Building & Hardware</a>
+                        <a href="categories.php?product=concrete">Heating & Plumbing</a>
+                        <a href="categories.php?product=concrete"><span class="first-line">Home & </span> Furniture</a>
+                        <a href="categories.php?product=timber"><span class="first-line-2">Kitchen & </span> Bathroom</a>
+                        <a href="categories.php?product=adhesives">Lighting & <span class="first-line-3"> Electrical </span></a>
+                        <a href="categories.php?product=electrical">Outdoor & <span class="first-line-4"> Garden </span></a>
+                        <a href="categories.php?product=electrical"><span class="first-line-3">Painting & </span> Decorating</a>
+                        <a href="categories.php?product=electrical"><span class="first-line-3">Tiling & </span> Flooring</a>
+                        <a href="categories.php?product=electrical"><span class="first-line-5">Tools & </span> Equipment</a>
+                    </ul>
+                </div>
+
             </div>
         </div>
     `;
@@ -696,3 +709,6 @@ window.onload = () => {
 
 }
 
+function toggleMobileMenu(menu) {
+    menu.classList.toggle('open');
+}

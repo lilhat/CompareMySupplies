@@ -3,8 +3,7 @@
 <?php
 include("response.php");
 $newObj = new Product();
-$newObj2 = new Product();
-$prods = $newObj->get_Category();
+
 ?>
 
 <!DOCTYPE html>
@@ -45,24 +44,22 @@ $prods = $newObj->get_Category();
             <button class="next-btn"><img src="images/arrow.png"></button>
             <div class="border-container">
                 <div class="product-container">
-                    <?php foreach ($prods as $prod) : ?>
-                        <?php $comps = $newObj2->get_Price($prod['product_code']) ?>
+                        <?php $comps = $newObj->get_Top() ?>
                         <?php foreach ($comps as $comp) : ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <a href="product.php?product=<?php echo $prod['product_code'] ?>">
-                                    <img src="images/products/<?php echo $prod['product_code'] ?>.png" class="product-thumb" alt="">
+                                    <a href="product.php?product=<?php echo $comp['name'] ?>">
+                                    <img src="<?php echo $comp['image']?>" class="product-thumb" alt="">
                                     </a>
                                 </div>
                                 <div class="product-info">
-                                    <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
-                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
-                                    <span class="price">£<?php echo $comp['price'] ?></span>
-                                    <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
+                                    <h2 class="product-brand"><a href="product.php?product=<?php echo $comp['name'] ?>"><?php echo $comp['name'] ?></a></h2>
+                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="<?php echo $comp['source'] ?>"><?php echo $comp['source']?></a></span></p>
+                                    <span class="price">£<?php echo number_format($comp['price'],2) ?></span>
+                                    <p class="product-short-des"><a href="categories.php?product=<?php echo $comp['category'] ?>"><?php echo $comp['category'] ?></a></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                    <?php endforeach; ?>
 
                 </div>
         </section>

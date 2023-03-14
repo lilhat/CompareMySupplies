@@ -23,9 +23,9 @@ for (let i = 0; i < linkItems.length; i++) {
 }
 
 
-const burger = document.querySelector(".burger");
+// const burger = document.querySelector(".burger");
 
-burger.addEventListener("click", () => {
-    burger.classList.toggle("active");
-    linksContainer.classList.toggle("active");
-})
+// burger.addEventListener("click", () => {
+//     burger.classList.toggle("active");
+//     linksContainer.classList.toggle("active");
+// })

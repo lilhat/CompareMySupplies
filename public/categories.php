@@ -3,8 +3,23 @@ include("response.php");
 $newObj = new Product();
 $newObj2 = new Product();
 
-$id = $_GET['product'];
-$prods = $newObj->get_Category_id($id);
+$maincategory = $_GET['maincategory'];
+
+if (isset($_GET['subcategory'])) {
+    $subcategory = $_GET['subcategory'];
+    $prods = $newObj->get_Sub_Category($maincategory, $subcategory);
+    if (isset($_GET['category'])) {
+        $category = $_GET['category'];
+        $prods = $newObj->get_Category($maincategory, $subcategory,$category);
+        $maincategory = str_replace('_', ' ', $_GET['category']);
+    } else {
+        $prods = $newObj->get_Sub_Category($maincategory, $subcategory);
+        $maincategory = str_replace('_', ' ', $_GET['subcategory']);
+    }
+} else {
+    $prods = $newObj->get_Main_Category($maincategory);
+    $maincategory = str_replace('_', ' ', $_GET['maincategory']);
+}
 
 ?>
 
@@ -13,7 +28,7 @@ $prods = $newObj->get_Category_id($id);
 
 <head>
     <meta charset="utf-8" />
-    <title><?php echo $id?></title>
+    <title><?php echo $category?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -30,24 +45,24 @@ $prods = $newObj->get_Category_id($id);
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <section class="product">
-        <h2 class="product-category"><?php echo $id?></h2>
+        <h2 class="product-category"><?php echo $maincategory?></h2>
         <div class="border-container"></div>
         <div class="main-content">
             <div class="product-container">
                 <?php foreach ($prods as $prod): ?>
-                    <?php $comps = $newObj2->get_Price($prod['product_code']) ?>
+                    <?php $comps = $newObj2->get_Price($prod['name']) ?>
                     <?php foreach ($comps as $comp): ?>
                 <div class="product-card">
                     <div class="product-image">
-                        <a href="product.php?product=<?php echo $prod['product_code'] ?>">
-                        <img src="images/products/<?php echo $prod['product_code']?>.png " class="product-thumb" alt="<?$prod['product_name'] ?>">
+                        <a href="product.php?product=<?php echo $prod['name'] ?>">
+                        <img src="<?php echo $prod['image']?>" class="product-thumb" alt="<?$prod['name'] ?>">
                         </a>
                     </div>
                     <div class="product-info">
-                        <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $prod['product_name'] ?></a></h2>
-                        <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['product_code'] ?>"><?php echo $comp['supplier_name']?></a></span></p>
+                        <h2 class="product-brand"><a href="product.php?product=<?php echo $prod['name'] ?>"><?php echo $prod['name'] ?></a></h2>
+                        <p class="product-supplier">Cheapest from <span class="supplier" ><a href="product.php?product=<?php echo $prod['name'] ?>"><?php echo $comp['source']?></a></span></p>
                         <p class="product-short-des"><a href="categories.php?product=<?php echo $prod['category'] ?>"><?php echo $prod['category'] ?></a></p>
-                        <span class="price">£<?php echo $comp['price'] ?></span> 
+                        <span class="price">£<?php echo number_format($comp['price'], 2) ?></span> 
                     </div>
                 </div>
                 <?php endforeach; ?>

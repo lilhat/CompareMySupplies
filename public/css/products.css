@@ -10,6 +10,7 @@
 .main-content {
     left: 7.8vw;
     position: relative;
+    overflow-y: scroll;
 }
 
 .product-container {

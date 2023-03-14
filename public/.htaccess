@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Set the base directory for rewriting
+
+# Redirect URLs without a trailing slash to the same URL with a trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.[^/]+$
+RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+
+# Rewrite URLs of the format categories.php?maincategory=X&subcategory=Y&category=Z to clean URLs
+RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)/?$ categories.php?maincategory=$1&subcategory=$2&category=$3 [L]

@@ -385,11 +385,22 @@
 
 .burger {
     display: none;
-    cursor: pointer;
-    left: 0;
+    margin: auto 0;
 }
 
-.bar{
+.burger .bar1, .bar2, .bar3{
+    position: relative;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+    zoom: 70%;
+    left: 20px;
+    cursor: pointer;
+}
+
+/* .bar{
     display: block;
     width: 25px;
     height: 3px;
@@ -397,6 +408,26 @@
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: #333;
+} */
+
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.open .bar2{
+    opacity: 0;
+}
+
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+}
+
+
+.mobile-menu {
+    display: none;
+    overflow-y: scroll;
 }
 
 @keyframes floatUp {
@@ -432,9 +463,8 @@ to {
   
     .burger {
       display: block;
+      top: 47px;
       position: fixed;
-      left: 50px;
-      top: 45px;
     }
 
     .burger.active .bar:nth-child(2){
@@ -451,6 +481,29 @@ to {
     
     .active {
         background: transparent;
+    }
+
+    .open .mobile-menu{
+        position: fixed;
+        display: grid;
+        align-items: center;
+        background-color: white;
+        margin-top: 30px;
+        width: 100vw;
+        height: 100vh;
+        max-height: calc(100vh - 50px);
+        overflow-y: scroll;
+
+    }
+
+    .open .mobile-menu a{
+        text-decoration: none;
+        color: #333;
+        transition: 0.3s;
+    }
+
+    .open .mobile-menu a:hover{
+        color: orange;
     }
 
     .links-container{
@@ -495,6 +548,7 @@ to {
 
     .brand-logo {
         width: 130px;
+        margin-left: 30px;
     }
 
     .top-menu{
