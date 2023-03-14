@@ -51,9 +51,9 @@ const createFooter = () => {
                     <a href="#" class="social-link">Privacy Page</a>
                 </div>
                 <div>
-                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/comparemysupplies/" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/CompareMySupplies/" class="social-link" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://twitter.com/CompareMySupply" class="social-link" target="_blank"><i class="fa-brands fa-twitter"></i></a>
                 </div>
             </div>
         </div>
