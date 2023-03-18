@@ -2,8 +2,8 @@ import csv
 
 # Open the input CSV file and create a new output file
 def fix_price():
-    with open('database\\top_sellers1.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('database\\top_sellers.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('database\\products_original.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('database\\products2.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -40,17 +40,17 @@ def fix_price():
                 except ValueError:
                     pass
 
-                try:
-                    y = float(y)
-                    if y.is_integer():
-                        y = '{:.2f}'.format(y)
-                    else:
-                        y = '{:.2f}'.format(y)
-                except ValueError:
-                    pass
+                # try:
+                #     y = float(y)
+                #     if y.is_integer():
+                #         y = '{:.2f}'.format(y)
+                #     else:
+                #         y = '{:.2f}'.format(y)
+                # except ValueError:
+                #     pass
 
                 # Reconstruct the price range string
-                price = f'{x}-{y}'
+                price = x
             else:
                 # Handle single prices
                 try:
@@ -73,8 +73,8 @@ def fix_price():
             writer.writerow(row)
 
 def fix_source():
-    with open('database\\products1.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('database\\products.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('database\\products2.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('database\\products1.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -100,4 +100,5 @@ def fix_source():
             # Write the updated row to the output file
             writer.writerow(row)
 
-fix_source()
+# fix_price()
+# fix_source()

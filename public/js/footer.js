@@ -4,7 +4,7 @@ const createFooter = () => {
     footer.innerHTML = `
     <div class="footer-border">
         <div class="footer-content">
-            <img src="images/main-lightlogo.png" class="logo" alt="">
+            <img src="/images/main-lightlogo.png" class="logo" alt="">
             <div class="footer-ul-container">
                 <ul class="category">
                     <li class="category-title">Business</li>

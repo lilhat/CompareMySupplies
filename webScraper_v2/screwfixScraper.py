@@ -87,7 +87,7 @@ def single_request(url):
 
 
 def scrape_url(body):
-    # try:
+    try:
         soup = BeautifulSoup(body, 'html.parser')
         product_titles = soup.find_all('div', {'data-qaid': 'product-heading'})
         product_cards = soup.find_all('div', {'data-qaid': 'product-card'})
@@ -127,10 +127,10 @@ def scrape_url(body):
             products.append({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image,
                              'description': description})
 
-    # except KeyError:
-    #     print("Key Error occurred")
-    # except:
-    #     print("Error occurred")
+    except KeyError:
+        print("Key Error occurred")
+    except:
+        print("Error occurred")
 
 
 def scrape_desc(body):

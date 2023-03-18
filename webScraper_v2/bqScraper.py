@@ -80,8 +80,8 @@ def single_request(url):
 
         )
         if response.status_code == 200:
-            description = scrape_desc(response.content)
-            return description
+            description, image = scrape_desc(response.content)
+            return description, image
         else:
             print("Error: " + str(response.status_code))
             print("Url: " + url)
@@ -94,7 +94,6 @@ def scrape_url(body):
         product_prices = soup.find_all('div', {'data-test-id': 'product-primary-price'})
         category_title_html = soup.find('h1', {'data-test-id': 'plp-title'})
         product_links = soup.find_all('a', {'data-test-id': 'product-panel-main-section'})
-        product_images = soup.find_all('img', {'data-test-id': 'image'})
         if category_title_html is not None:
             category_title = category_title_html.text
         else:
@@ -121,11 +120,9 @@ def scrape_url(body):
         for product_link in product_links:
             full_url = 'https://www.diy.com' + product_link['href']
             link_list.append(full_url)
-            desc_list.append(single_request(full_url))
-
-        for product_image in product_images:
-            image_link = product_image['srcset']
-            image_list.append(image_link[:-3])
+            desc, image = single_request(full_url)
+            desc_list.append(desc)
+            image_list.append(image)
 
         for product, price, link, image, description in zip(product_list, price_list, link_list, image_list, desc_list):
             print({'product': product, 'price': price, 'category': category_title, 'link': link, 'image': image, 'description': description})
@@ -141,13 +138,20 @@ def scrape_desc(body):
     try:
         soup = BeautifulSoup(body, 'html.parser')
         product_desc = soup.find('div', {'data-test-id': 'ProductDescText'})
+        product_image = soup.find('picture', {'data-test-id': 'picture-wrapper'})
 
         if product_desc:
             description = product_desc.text
         else:
             description = "N/A"
 
-        return description
+        if product_image:
+            image_tag = product_image.find('img', {'data-test-id': 'image'})
+            image = image_tag['src']
+        else:
+            image = 'N/A'
+
+        return description, image
 
     except KeyError:
         print("Key Error occurred")

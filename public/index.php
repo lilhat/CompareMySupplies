@@ -15,8 +15,8 @@ $newObj = new Product();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/home.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ce98f0dc47.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
@@ -40,23 +40,23 @@ $newObj = new Product();
         </header>
         <section class="product">
             <h2 class="product-category">Top Sellers</h2>
-            <button class="pre-btn"><img src="images/arrow.png"></button>
-            <button class="next-btn"><img src="images/arrow.png"></button>
+            <button class="pre-btn"><img src="/images/arrow.png"></button>
+            <button class="next-btn"><img src="/images/arrow.png"></button>
             <div class="border-container">
                 <div class="product-container">
                         <?php $comps = $newObj->get_Top() ?>
                         <?php foreach ($comps as $comp) : ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <a href="product.php?product=<?php echo $comp['name'] ?>">
+                                    <a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $comp['name'])))?>">
                                     <img src="<?php echo $comp['image']?>" class="product-thumb" alt="">
                                     </a>
                                 </div>
                                 <div class="product-info">
-                                    <h2 class="product-brand"><a href="product.php?product=<?php echo $comp['name'] ?>"><?php echo $comp['name'] ?></a></h2>
-                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="<?php echo $comp['source'] ?>"><?php echo $comp['source']?></a></span></p>
+                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $comp['name']))) ?>"><?php echo $comp['name'] ?></a></h2>
+                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $comp['name'])))?>"><?php echo $comp['source']?></a></span></p>
                                     <span class="price">£<?php echo number_format($comp['price'],2) ?></span>
-                                    <p class="product-short-des"><a href="categories.php?product=<?php echo $comp['category'] ?>"><?php echo $comp['category'] ?></a></p>
+                                    <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $comp['category']))?>"><?php echo $comp['category'] ?></a></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -69,10 +69,10 @@ $newObj = new Product();
 
 
     </div>
-    <script src="js/nav.js"></script>
-    <script src="js/home.js"></script>
-    <script src="js/overlay.js"></script>
-    <script src="js/footer.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/overlay.js"></script>
+    <script src="/js/footer.js"></script>
 </body>
 
 </html>

@@ -152,12 +152,20 @@ form {
 .product-brand {
     font-weight: bold;
     font-size: 22px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3;
+   -webkit-box-orient: vertical;
 }
 
 .product-brand a{
     text-decoration: none;
     color: black;
     transition: color 0.3s ease-in-out;
+
 }
 
 .product-brand a:hover{
