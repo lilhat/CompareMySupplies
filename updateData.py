@@ -32,15 +32,15 @@ def update_products():
 
 def update_comparisons():
     # Read the first CSV file and extract the link and price columns
-    df1 = pd.read_csv('file1.csv')
+    df1 = pd.read_csv('tp.csv')
     df1 = df1[['link', 'price']]
     # Read the second CSV file and extract the link and price columns
-    df2 = pd.read_csv('file2.csv')
+    df2 = pd.read_csv('comparisons.csv')
     df3 = df2.copy()
     df2 = df2[['link', 'price']]
 
     # Remove duplicates from df1
-    df1.drop_duplicates(subset=['name'], keep='first', inplace=True)
+    df1.drop_duplicates(subset=['link'], keep='first', inplace=True)
 
     # Merge the two dataframes on the link column
     merged_df = pd.merge(df2, df1, on='link', how='left')
@@ -59,4 +59,4 @@ def update_comparisons():
     df3.to_csv('updated.csv', index=False)
 
 # update_products()
-# update_comparisons()
+update_comparisons()

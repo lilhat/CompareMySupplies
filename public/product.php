@@ -18,7 +18,6 @@
         $prods = $newObj2->get_First_Comparison($prodID);
         $mains = $newObj3->get_Price($prodID);
         foreach($prods as $prod) :
-            $name = $prod['name'];
             $link = $prod['link'];
             $price = $prod['price'];
     
@@ -28,6 +27,8 @@
             $image = $main['image'];
         endforeach;
     }
+
+    $name = str_replace("''", "'", $name);
     $extras = $newObj4->get_Top();
 
 
@@ -105,13 +106,13 @@
                         <?php foreach($extra_prices as $extra_price) : ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $extra['name'])))?>">
+                                    <a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $extra['name']))))?>">
                                     <img src="<?php echo $extra['image']?>" class="product-thumb" alt="">
                                     </a>
                                 </div>
                                 <div class="product-info">
-                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $extra['name'])))?>"><?php echo $extra['name'] ?></a></h2>
-                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $extra['name']))) ?>"><?php echo $extra_price['source']?></a></span></p>
+                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $extra['name']))))?>"><?php echo $extra['name'] ?></a></h2>
+                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $extra['name'])))) ?>"><?php echo $extra_price['source']?></a></span></p>
                                     <p class="product-short-des"><a href="/categories.php/<?php echo urlencode(str_replace('/', '~', $extra['category'])) ?>"><?php echo $extra['category'] ?></a></p>
                                     <span class="price">£<?php echo number_format($extra_price['price'],2) ?></span> 
                                 </div>

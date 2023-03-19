@@ -35,6 +35,7 @@ RewriteCond %{QUERY_STRING} ^query=([^&]+)
 RewriteRule ^search/$ /search/%1? [L,R=301]
 
 RewriteRule ^search/([^/]+)/?$ /search.php?query=$1 [L]
+RewriteRule ^search/$ /search.php [L]
 
 # Rewrite search
 RewriteRule ^search/([^/]+)/page/(\d+)/?$ /search.php?query=$1&page=$2 [NE,QSA,L,B]

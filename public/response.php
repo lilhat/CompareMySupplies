@@ -112,7 +112,7 @@ public function get_Category($maincategory, $subcategory, $category, $page_size,
   public function get_Search($string, $page_size, $offset) {
     $sql = "SELECT COUNT(*) OVER () AS total_count, id, name, price, category, image, description 
             FROM (
-              SELECT DISTINCT ON (id) id, name, price, category, link, image, description, source 
+              SELECT DISTINCT ON (id) id, name, price, category, image, description 
               FROM public.products
               WHERE name ILIKE '%$string%' OR category ILIKE '%$string%'
               ORDER BY id ASC, price ASC 

@@ -1,6 +1,7 @@
 <?php
 include("response.php");
 $newObj = new Product();
+$newObj1 = new Product();
 
 $page_size = 15;
 $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1; // current page number (default to 1)
@@ -10,6 +11,7 @@ if (isset($_GET['query'])) {
     $search_query = $_GET['query'];
     $prods = $newObj->get_Search($search_query, $page_size, $offset);
 }
+
 
 
 
@@ -42,31 +44,29 @@ if (isset($_GET['query'])) {
         <h2 class="product-category">Search Result</h2>
         <div class="border-container"></div>
         <div class="main-content">
+        <?php if ($prods && $search_query) : ?>
             <div class="product-container">
-                <?php if ($prods && $search_query) : ?>
                     <?php foreach ($prods as $prod) : ?>
+                        <?php $extras = $newObj1->get_First_Comparison($prod['id']) ?>
                         <?php $total_products = $prod['total_count']; ?>
-                        <div class="product-card">
-                            <div class="product-image">
-                                <a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $prod['name']))) ?>">
-                                    <img src="<?php echo $prod['image'] ?>" class="product-thumb" alt="<? $prod['name'] ?>">
-                                </a>
+                        <?php foreach ($extras as $extra) : ?>
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $prod['name'])))) ?>">
+                                        <img src="<?php echo $prod['image'] ?>" class="product-thumb" alt="<? $prod['name'] ?>">
+                                    </a>
+                                </div>
+                                <div class="product-info">
+                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $prod['name'])))) ?>"><?php echo $prod['name'] ?></a></h2>
+                                    <p class="product-supplier">Cheapest from <span class="supplier"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $prod['name'])))) ?>"><?php echo $extra['source'] ?></a></span></p>
+                                    <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $prod['category'])) ?>"><?php echo $prod['category'] ?></a></p>
+                                    <span class="price">£<?php echo number_format($extra['price'], 2) ?></span>
+                                </div>
                             </div>
-                            <div class="product-info">
-                                <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $prod['name']))) ?>"><?php echo $prod['name'] ?></a></h2>
-                                <p class="product-supplier">Cheapest from <span class="supplier"><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $prod['name']))) ?>"><?php echo $prod['source'] ?></a></span></p>
-                                <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $prod['category'])) ?>"><?php echo $prod['category'] ?></a></p>
-                                <span class="price">£<?php echo number_format($prod['price'], 2) ?></span>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
-
-                <?php elseif ($search_query) : ?>
-                    <h1 class="result-text">No results found for <span class="search-result"><?php echo $search_query ?></span></h1>
-                <?php else : ?>
-                    <h1 class="result-text">No results found</h1>
-                <?php endif; ?>
             </div>
+        
 
 
             <?php if ($total_products > $page_size) : ?>
@@ -98,6 +98,15 @@ if (isset($_GET['query'])) {
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+        <?php elseif ($search_query) : ?>
+            <div class="product-container">    
+                <h1 class="result-text">No results found for <span class="search-result"><?php echo $search_query ?></span></h1>
+            </div>
+        <?php else : ?>
+            <div class="product-container"> 
+                <h1 class="result-text">No results found</h1>
+            </div>
+        <?php endif; ?>
         </div>
     </section>
     <footer></footer>

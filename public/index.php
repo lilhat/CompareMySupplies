@@ -3,6 +3,7 @@
 <?php
 include("response.php");
 $newObj = new Product();
+$newObj2 = new Product();
 
 ?>
 
@@ -30,9 +31,9 @@ $newObj = new Product();
         <header class="hero-section">
             <div class="content">
                 <p class="sub-heading">Compare thousands of products from the top suppliers in the UK</p>
-                <form action="search.php" method="get">
+                <form action="/search/" method="get">
                     <div class="search-box-home">
-                            <input type="text" class="tbox" placeholder="What supplies are you looking for?" />
+                            <input type="text" class="tbox" name="query" placeholder="What supplies are you looking for?" />
                             <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </form>
@@ -46,19 +47,22 @@ $newObj = new Product();
                 <div class="product-container">
                         <?php $comps = $newObj->get_Top() ?>
                         <?php foreach ($comps as $comp) : ?>
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $comp['name'])))?>">
-                                    <img src="<?php echo $comp['image']?>" class="product-thumb" alt="">
-                                    </a>
+                            <?php $extras = $newObj2->get_First_Comparison($comp['id']) ?>
+                            <?php foreach ($extras as $extra) : ?>
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $comp['name']))))?>">
+                                        <img src="<?php echo $comp['image']?>" class="product-thumb" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="product-info">
+                                        <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $comp['name'])))) ?>"><?php echo $comp['name'] ?></a></h2>
+                                        <p class="product-supplier">Cheapest from <span class="supplier" ><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $comp['name']))))?>"><?php echo $extra['source']?></a></span></p>
+                                        <span class="price">£<?php echo number_format($extra['price'],2) ?></span>
+                                        <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $comp['category']))?>"><?php echo $comp['category'] ?></a></p>
+                                    </div>
                                 </div>
-                                <div class="product-info">
-                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $comp['name']))) ?>"><?php echo $comp['name'] ?></a></h2>
-                                    <p class="product-supplier">Cheapest from <span class="supplier" ><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $comp['name'])))?>"><?php echo $comp['source']?></a></span></p>
-                                    <span class="price">£<?php echo number_format($comp['price'],2) ?></span>
-                                    <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $comp['category']))?>"><?php echo $comp['category'] ?></a></p>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
 
                 </div>

@@ -127,7 +127,7 @@ def scrape_url(body):
     except KeyError:
         print("Key Error occurred")
     except:
-        print("Error occurred")
+        print("Error occurred main")
 
 
 def scrape_desc(body):
@@ -154,7 +154,7 @@ def scrape_desc(body):
     except KeyError:
         print("Key Error occurred")
     except:
-        print("Error occurred")
+        print("Error occurred desc")
 
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:

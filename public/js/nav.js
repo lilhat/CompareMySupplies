@@ -11,7 +11,27 @@ const createNav = () => {
         </div>
         <div class="nav-border">
         </div>
+
+
         <div class="nav-wrapper">
+            <div class="burger" onclick="toggleMobileMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <div class="menu-container">
+                    <ul class="mobile-menu">
+                        <a href="/main_categories/building_hardware">Building & Hardware</a>
+                        <a href="/main_categories/heating_plumbing">Heating & Plumbing</a>
+                        <a href="/main_categories/home_furniture">Home & Furniture</a>
+                        <a href="/main_categories/kitchen_bathroom">Kitchen & Bathroom</a>
+                        <a href="/main_categories/lighting_electrical">Lighting & Electrical</a>
+                        <a href="/main_categories/outdoor_garden">Outdoor & Garden</a>
+                        <a href="/main_categories/painting_decorating">Painting & Decorating</a>
+                        <a href="/main_categories/tiling_flooring">Tiling & Flooring</a>
+                        <a href="/main_categories/tools_equipment">Tools & Equipment</a>
+                    </ul>
+                </div>
+            </div>
             <div class="main-logo">
                 <a href="/home">
                     <img src="/images/main-logo2.png" class="brand-logo" alt="">
@@ -23,11 +43,7 @@ const createNav = () => {
                     <button class="btn" type="submit "><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
-            <div class="top-menu">
-            <ul class="top-links-container">
-                <li class="top-link-item"><a href="/products.php">All Categories</a></li>
-            </ul>
-            </div>
+           
             <div class="sign-in">
                 <a>
                     <img src="/images/user.png" id="user-pic" class="user-pic">
@@ -38,6 +54,8 @@ const createNav = () => {
                 </a>
 
             </div>
+
+
 
         </div>
         <div class="menu">
@@ -635,25 +653,7 @@ const createNav = () => {
                     </ul>
                 </li>
             </ul>
-            <div class="burger" onclick="toggleMobileMenu(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <div class="menu-container">
-                    <ul class="mobile-menu">
-                        <a href="categories.php?product=plaster">Building & Hardware</a>
-                        <a href="categories.php?product=concrete">Heating & Plumbing</a>
-                        <a href="categories.php?product=concrete"><span class="first-line">Home & </span> Furniture</a>
-                        <a href="categories.php?product=timber"><span class="first-line-2">Kitchen & </span> Bathroom</a>
-                        <a href="categories.php?product=adhesives">Lighting & <span class="first-line-3"> Electrical </span></a>
-                        <a href="categories.php?product=electrical">Outdoor & <span class="first-line-4"> Garden </span></a>
-                        <a href="categories.php?product=electrical"><span class="first-line-3">Painting & </span> Decorating</a>
-                        <a href="categories.php?product=electrical"><span class="first-line-3">Tiling & </span> Flooring</a>
-                        <a href="categories.php?product=electrical"><span class="first-line-5">Tools & </span> Equipment</a>
-                    </ul>
-                </div>
-
-            </div>
+            
         </div>
     `;
 

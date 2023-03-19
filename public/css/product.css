@@ -144,3 +144,31 @@
 .next-btn{
     margin-right: 0px;
 }
+
+@media (max-width: 768px) {
+
+    .product-details{
+        zoom: 40%;
+        max-width: fit-content;
+    }
+
+    .compare-table{
+        zoom: 60%;
+    }
+
+    .details{
+        position: relative;
+        left: 75px;
+        width: 400px;
+
+    }
+
+    .supplier-btn{
+        width: 100px;
+    }
+
+    .product {
+        height: fit-content;
+    }
+
+}

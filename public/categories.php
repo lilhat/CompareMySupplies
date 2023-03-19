@@ -95,13 +95,13 @@ $maincategory = str_replace("''", "'", $maincategory);
                             <?php $total_products = $prod['total_count']; ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $prod['name']))) ?>">
+                                    <a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $prod['name'])))) ?>">
                                         <img src="<?php echo $prod['image'] ?>" class="product-thumb" alt="<? $prod['name'] ?>">
                                     </a>
                                 </div>
                                 <div class="product-info">
-                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace('+', '--', str_replace('/', '~', $prod['name']))) ?>"><?php echo $prod['name'] ?></a></h2>
-                                    <p class="product-supplier">Cheapest from <span class="supplier"><a href="/product/<?php echo urlencode(str_replace('+', '-', str_replace('/', '~', $prod['name']))) ?>"><?php echo $comp['source'] ?></a></span></p>
+                                    <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $prod['name'])))) ?>"><?php echo $prod['name'] ?></a></h2>
+                                    <p class="product-supplier">Cheapest from <span class="supplier"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $prod['name'])))) ?>"><?php echo $comp['source'] ?></a></span></p>
                                     <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $prod['category'])) ?>"><?php echo $prod['category'] ?></a></p>
                                     <span class="price">£<?php echo number_format($comp['price'], 2) ?></span>
                                 </div>

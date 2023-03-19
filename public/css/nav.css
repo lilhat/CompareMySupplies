@@ -20,7 +20,7 @@
     height: 20px;
     margin-left: 4.6875vw;
     margin-right: 4.6875vw;
-    width: 100vw;
+    width: 93vw;
 }
 
 
@@ -57,7 +57,7 @@
 
 .nav-wrapper {
     background:white;
-    width: 100%;
+    width: 93vw;
     display: flex;
     align-items: center;
     height: 50%;
@@ -93,9 +93,8 @@
 }
 
 .top-links-container{
-    width: 60vw;
+    width: fit-content;
     display: flex;
-    justify-content: center;
     list-style: none;
 }
 
@@ -103,6 +102,8 @@
     text-transform: capitalize;
     padding: 0 10px;
     margin: 0 5px;
+    position: relative;
+    left: 20vw;
 }
 
 .top-link-item a {
@@ -126,6 +127,7 @@
     height: 36%;
     z-index: 8;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
 }
 
 .links-container{
@@ -136,7 +138,6 @@
     max-height: 55px;
     display: flex;
     list-style: none;
-    left: 20vw;
     z-index: 10;
     padding: 0px;
 }
@@ -190,9 +191,11 @@
 
 .sign-in {
     vertical-align: top;
-    display: inline-block;
+    position: relative;
+    margin-left: 35vw;
+    right: 10px;
+    display: flex;
     text-align: center;
-    margin-right: 3vw;
     transition: 0.6s;
 }
 
@@ -215,7 +218,8 @@
 .search-box {
     float: left;
     display: flex;
-    width: 500px;
+    width: 30vw;
+    max-width: 500px;
 }
 
 .tbox {
@@ -248,16 +252,17 @@
 
 .login-logout-popup{
     position: absolute;
-    left: 91.55%;
+    left: 50%;
     transform: translateX(-50%);
     padding: 0px;
     background: #fff;
     border-radius: 10px;
-    top: 75px;
+    top: 40px;
     width: 100px;
     height: 100px;
     transition: 0.5s;
     border: 2px solid #f5f5f5;
+    z-index: 13;
 }
 
 .login-logout-popup::after{
@@ -338,7 +343,7 @@
     padding-top: 40px;
     top: 55px;
     width: auto;
-    min-width: 98.35%;
+    min-width: 98.3%;
 }
 
 .link-item:hover a:hover {
@@ -368,7 +373,7 @@
     position: absolute;
     top: 10px;
     word-wrap: break-word;
-    max-width: 12vw;
+    max-width: 16vw;
 }
 
 
@@ -460,12 +465,18 @@ to {
     .dropdown-content {
       display: block;
     }
+
+    .main-logo {
+        position: relative;
+        left: 20px;
+    }
   
     .burger {
       display: block;
-      top: 47px;
-      position: fixed;
+      position: absolute;
+      z-index: 15;
     }
+
 
     .burger.active .bar:nth-child(2){
         opacity: 0;
@@ -483,28 +494,36 @@ to {
         background: transparent;
     }
 
+
+
     .open .mobile-menu{
-        position: fixed;
+        position: absolute;
         display: grid;
+        grid-auto-rows: 75px;
         align-items: center;
         background-color: white;
-        margin-top: 30px;
+        margin-top: 50px;
         width: 100vw;
         height: 100vh;
         max-height: calc(100vh - 50px);
         overflow-y: scroll;
-
+        z-index: 15;
+        top: 50px;
+        
     }
 
     .open .mobile-menu a{
         text-decoration: none;
         color: #333;
         transition: 0.3s;
+        font-weight: 600;
+        font-size: 18px;
     }
 
     .open .mobile-menu a:hover{
         color: orange;
     }
+
 
     .links-container{
         position: fixed;
@@ -518,6 +537,10 @@ to {
         transition: 0.3s;
         margin-left: 0px;
     }
+    
+    .menu {
+        display: none;
+    }
 
     .link-item{
         margin: 16px 0;
@@ -530,7 +553,7 @@ to {
     .links-container.active{
         left: 0;
         top: 100px;
-        position: fixed;
+        position: relative;
     }
 
 
@@ -543,7 +566,7 @@ to {
     }
 
     .search-box {
-        width: 60vw;
+        display: none;
     }
 
     .brand-logo {
@@ -552,11 +575,39 @@ to {
     }
 
     .top-menu{
-        width: 40vw;
+        display: none;
     }
 
     .tbox {
-        width: 100px;
+        width: 125px;
+    }
+
+    .sign-in{
+        position: relative;
+        left: 135px;
+        margin: 0px;
+    }
+
+    .login-logout-popup {
+        left: 20px;
+        top: 40px;
+    }
+
+    .top-link-item{
+        display: none;
+    }
+
+    .top-links-container{
+        display: none;
+    }
+
+    .nav-top{
+        margin: 0px;
+    }
+
+    .nav-wrapper{
+        margin: 0px;
+        padding: 0px;
     }
 }
 

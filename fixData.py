@@ -1,9 +1,11 @@
 import csv
+import urllib.parse
+
 
 # Open the input CSV file and create a new output file
 def fix_price():
-    with open('database\\products_original.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('database\\products2.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('bradfordsProducts.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('bradfords.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -72,6 +74,7 @@ def fix_price():
             # Write the updated row to the output file
             writer.writerow(row)
 
+
 def fix_source():
     with open('database\\products2.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
             open('database\\products1.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
@@ -100,5 +103,43 @@ def fix_source():
             # Write the updated row to the output file
             writer.writerow(row)
 
+
+def fix_image(csv_file_path):
+    with open('products.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('products1.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+        # Create a CSV reader and writer
+        reader = csv.reader(input_file)
+        writer = csv.writer(output_file)
+
+        # Find the index of the column containing the source value
+        header = next(reader)
+        image_index = header.index('image')
+
+        # Write the header row to the output file
+        writer.writerow(header)
+        rows = []
+        # Iterate over the rows in the input file
+        for row in reader:
+            # Get the source value from the row
+            image = row[image_index]
+            url_parts = image.split("&")
+
+            # loop through the parts and replace the width and height parameters
+            for i in range(len(url_parts)):
+                if "width" in url_parts[i]:
+                    url_parts[i] = f"$width=500"
+                elif "height" in url_parts[i]:
+                    url_parts[i] = f"$height=500"
+
+            # join the parts back together with '&' character
+            new_url = "&".join(url_parts)
+            row[image_index] = new_url
+            rows.append(row)
+
+            # Write the updated row to the output file
+            writer.writerow(row)
+
+
 # fix_price()
 # fix_source()
+# fix_image('products.csv')

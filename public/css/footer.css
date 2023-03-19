@@ -14,7 +14,7 @@ footer{
 .footer-content{
     padding: 40px 10vw;
     display: flex;
-    width: 100%;
+    width: 70%;
     justify-content: space-between;
 }
 
@@ -91,4 +91,31 @@ footer{
     color: #333;
     margin-left: 10px;
     text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    footer{
+        width: 100vw;
+        height: 130px;
+    }
+
+    .footer-content{
+        zoom: 50%;
+    }
+
+    .category{
+        display: none;
+    }
+
+    .footer-social-container{
+        zoom: 50%;
+    }
+
+    .contact-info{
+        left: 150px;
+        position: relative;
+    }
+
+
 }

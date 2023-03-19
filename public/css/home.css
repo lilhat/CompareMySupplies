@@ -8,6 +8,7 @@ form {
 .hero-section{
     width: 100vw;
     height: calc(100vh - 400px);
+    min-height: 60vh;
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)),url('../images/header-background.png');
     background-size: cover;
     display: flex;
@@ -40,7 +41,7 @@ form {
     position: relative;
     overflow: hidden;
     padding: 20px 0;
-    height: 33.85vw;
+    height: 700px;
     zoom: 80%;
 }
 
@@ -80,7 +81,7 @@ form {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     flex: 0 0 auto;
     width: 13vw;
-    height: 26vw;
+    height: 500px;
     margin-right: 40px;
     border-radius: 10px;
     position: relative;
@@ -151,7 +152,7 @@ form {
 
 .product-brand {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 1.2vw;
     text-overflow: ellipsis;
     overflow: hidden;
    text-overflow: ellipsis;
@@ -159,6 +160,7 @@ form {
    -webkit-line-clamp: 3; /* number of lines to show */
            line-clamp: 3;
    -webkit-box-orient: vertical;
+   position: relative;
 }
 
 .product-brand a{
@@ -182,6 +184,7 @@ form {
     position: absolute;
     bottom: 0;
     opacity: 0.5;
+    font-size: 0.9vw;
 }
 
 .product-supplier .supplier{
@@ -209,6 +212,7 @@ form {
     margin: 5px 0;
     position: absolute;
     bottom: 170px;
+    font-size: 0.95vw;
 }
 
 .product-short-des a{
@@ -224,7 +228,7 @@ form {
 
 .price{
     font-weight: 900;
-    font-size: 20px;
+    font-size: 1.2vw;
     position: absolute;
     bottom: 30px;
 }
@@ -262,8 +266,64 @@ form {
     opacity: 1;
 }
 
-@media only screen and (max-width: 871px){
+@media only screen and (max-width: 768px){
+
+
     .hero-section .sub-heading{
         font-size: 4vw;
+        width: 100vw;
     }
+
+    .hero-section .content{
+        padding: 30px;
+    }
+
+    .content{
+        zoom:80%;
+    }
+
+    .product{
+        height: 100%;
+        width: 100%;
+    }
+
+    .product-card {
+        right: 20px;
+        width: 160px;
+        height: 500px;
+    }
+
+    .product-container{
+        margin-top: 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .price {
+        bottom: 40px;
+    }
+
+    .product-brand{
+        font-size: 22px;
+    }
+
+    .product-supplier {
+        line-height: 15px;
+        bottom: 10px;
+        overflow: visible;
+    }
+
+    .product-short-des{
+        font-size: 15px;
+    }
+
+    .product-supplier{
+        font-size: 13.5px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+    
+    
+
 }

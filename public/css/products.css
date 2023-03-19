@@ -2,7 +2,7 @@
     height: 100%;
     max-height: fit-content;
     min-height: fit-content;
-    overflow: hidden;
+    overflow-x: hidden;
     position: sticky;
 }
 
@@ -21,7 +21,7 @@ title {
     width: 100vw;
     left: 7vw;
     position: relative;
-    max-height: fit-content;
+
     min-height: fit-content;
 }
 
@@ -71,6 +71,43 @@ title {
     align-items: center;
 
     position: relative;
+
+
+}
+
+.pagination .active {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    
+    .product {
+        width: 100%;
+        
+        overflow-y: scroll;
+    }
+
+    .product-container{
+        margin-top: 10px;
+        grid-template-columns: 1fr 1fr;
+        overflow-x: hidden;
+        
+    }
+
+    .main-content{
+        width: 100%;
+        left: 0;
+    }
+
+    .product-card{
+        right: 30px;
+        width: 160px;
+    }
+
+    .pagination {
+        margin-left: 30px;
+    }
 
 
 }

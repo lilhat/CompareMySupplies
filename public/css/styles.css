@@ -9,8 +9,8 @@ body {
     margin: 0px;
     overflow-x: hidden;
     overflow-y: scroll;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 184%;
 
 }
 
@@ -32,10 +32,7 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .body, .container {
-      width: 40%;
-    }
+
   }
 
 
@@ -138,3 +135,10 @@ body {
     font-size: 20px;
 }
 
+@media (max-width: 768px) {
+    body{
+        overflow-x: hidden;
+        height: 100vh;
+        width: 100vw;
+    }
+}
