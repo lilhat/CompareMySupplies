@@ -4,8 +4,8 @@ import urllib.parse
 
 # Open the input CSV file and create a new output file
 def fix_price():
-    with open('bradfordsProducts.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('bradfords.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('wickesProducts.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('wickes.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -140,6 +140,6 @@ def fix_image(csv_file_path):
             writer.writerow(row)
 
 
-# fix_price()
+fix_price()
 # fix_source()
 # fix_image('products.csv')

@@ -32,7 +32,7 @@ def update_products():
 
 def update_comparisons():
     # Read the first CSV file and extract the link and price columns
-    df1 = pd.read_csv('tp.csv')
+    df1 = pd.read_csv('wickes.csv')
     df1 = df1[['link', 'price']]
     # Read the second CSV file and extract the link and price columns
     df2 = pd.read_csv('comparisons.csv')

@@ -162,5 +162,5 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=NUM_THREADS) as executor:
 
 
 # Write products into csv file
-# df = pd.DataFrame(products)
-# df.to_csv('wickesProducts.csv', index=False)
+df = pd.DataFrame(products)
+df.to_csv('wickesProducts.csv', index=False)
