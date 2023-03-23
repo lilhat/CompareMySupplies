@@ -54,7 +54,7 @@
 }
 
 .signup-btn {
-    background-color: orange;
+    background-color: #f7931e;
 }
 .facebook-btn {
     background-color: #3b5998;
@@ -70,4 +70,11 @@ input[type=submit]{
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .sign-up-form{
+        zoom: 80%;
+    }
 }

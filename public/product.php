@@ -25,6 +25,9 @@
     
         foreach($mains as $main) :
             $image = $main['image'];
+            $category = $main['category'];
+            $subcategory = $main['sub_category'];
+            $maincategory = $main['main_category'];
         endforeach;
     }
 
@@ -56,6 +59,13 @@
 
     <nav class="navbar"></nav>
     <div class="overlay"></div>
+    <div class="return-links">
+        <span class="return-link"><a href="/main_categories/<?php echo $maincategory?>"><?php echo str_replace('_', ' ', $maincategory)?></a></span>
+        <span>>></span>
+        <span class="return-link"><a href="/categories/<?php echo $maincategory?>/<?php echo $subcategory?>"><?php echo str_replace('_', ' ', $subcategory)?></a></span>
+        <span>>></span>
+        <span class="return-link"><a href="/categories/<?php echo $maincategory?>/<?php echo $subcategory?>/<?php echo $category?>"><?php echo $category?></a></span>
+    </div>
     <section class="product-details">
         <div class="main-image" style="background-image: url('<?php echo $image?>')"></div>
         <div class="image-slider">
@@ -64,8 +74,8 @@
             </div>
         </div>
         <div class="details">
+            <span class="product-cat"><?php echo $category?></span>
             <h2 class="product-brand"><?php echo $name?></h2>
-            <p class="product-short-des"></p>
             <span class="compare-price">Compare prices from </span>
             <span class="product-price"> £<?php echo number_format($price,2)?></span>
         </div>
@@ -113,7 +123,7 @@
                                 <div class="product-info">
                                     <h2 class="product-brand"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $extra['name']))))?>"><?php echo $extra['name'] ?></a></h2>
                                     <p class="product-supplier">Cheapest from <span class="supplier" ><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $extra['name'])))) ?>"><?php echo $extra_price['source']?></a></span></p>
-                                    <p class="product-short-des"><a href="/categories.php/<?php echo urlencode(str_replace('/', '~', $extra['category'])) ?>"><?php echo $extra['category'] ?></a></p>
+                                    <p class="product-short-des"><a href="/categories/<?php echo urlencode(str_replace('/', '~', $extra['category'])) ?>"><?php echo $extra['category'] ?></a></p>
                                     <span class="price">£<?php echo number_format($extra_price['price'],2) ?></span> 
                                 </div>
                             </div>
@@ -125,7 +135,8 @@
 
     <footer></footer>
 
-    <script src="/js/nav.js"></script>
+    <script type="module" src="/js/nav.js"></script>
+    <script type="module" src="/js/firebase.js"></script>
     <script src="/js/home.js"></script>
     <script src="/js/overlay.js"></script>
     <script src="/js/footer.js"></script>

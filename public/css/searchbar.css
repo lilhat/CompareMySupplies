@@ -26,7 +26,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    background: #053F5C;
+    background: #f7931e;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     transition: 0.3s ease-in-out;
@@ -38,8 +38,7 @@
 
 .search-box-home {
     display: flex;
-    width: 40vw;
-    max-width: 70%;
+    width: 600px;
     left: 110px;
     position: relative;
 }
@@ -47,14 +46,12 @@
 @media (max-width: 768px) {
 
     .search-box-home{
-        max-width: 100%;
-        width: 300px;
-        left: 19vw;
+
+        width: 60vw;
+        left: 22vw;
     }
 
-    .tbox{
-        width: 200px;
-    }
+
 
 }
 

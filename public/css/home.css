@@ -22,7 +22,7 @@ form {
     padding: 30px;
     border-radius: 40px;
     border:rgba(255, 255, 255, 0.5);
-    
+    justify-content: center;
 
 }
 
@@ -118,7 +118,7 @@ form {
 
 
 .product-card:hover{
-    border: 2px solid orange;
+    border: 2px solid #f7931e;
 }
 
 .product-card img{
@@ -172,7 +172,7 @@ form {
 
 .product-brand a:hover{
     text-decoration: none;
-    color: orange;
+    color: #f7931e;
 }
 
 .product-supplier {
@@ -199,7 +199,7 @@ form {
 
 .product-supplier a:hover{
     text-decoration: none;
-    color: orange;
+    color: #f7931e;
 }
 
 .product-short-des{
@@ -223,7 +223,7 @@ form {
 
 .product-short-des a:hover{
     text-decoration: none;
-    color: orange;
+    color: #f7931e;
 }
 
 .price{

@@ -36,7 +36,6 @@
         </div>
     </div>
     <footer></footer>
-    
     <script type="module" src="/js/nav.js"></script>
     <script type="module" src="/js/firebase.js"></script>
     <script src="/js/overlay.js"></script>

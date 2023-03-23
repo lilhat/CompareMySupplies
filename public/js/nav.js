@@ -1,10 +1,816 @@
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+import {
+    getAnalytics
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+import {
+    getDatabase,
+    set,
+    ref,
+    update,
+    onValue
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyAd9VB2QGw70kU2i0sxqVcZwHnBVa4MqEE",
+    authDomain: "comparemysupplies-2ef7e.firebaseapp.com",
+    databaseURL: "https://comparemysupplies-2ef7e-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "comparemysupplies-2ef7e",
+    storageBucket: "comparemysupplies-2ef7e.appspot.com",
+    messagingSenderId: "784827005574",
+    appId: "1:784827005574:web:2f8b800ca8d2f260836f07",
+    measurementId: "G-77Z1F88B29"
+};
+
 const createNav = () => {
     let nav = document.querySelector('.navbar');
 
     nav.innerHTML = `
+    <header class="page-header">
+    <nav>
+        <div class="header-bar">
+            <div class="toggle-menu" onclick="toggleMobileMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <a href="/home" class="brand-link">
+                <img src="/images/main-logo2.png" class="brand-logo" alt="">
+            </a>
+            <div class="sign-in">
+                <a>
+                    <img src="/images/user.png" id="user-pic" class="user-pic">
+                    <div class="login-logout-popup hide">
+                        <p class="account-info"></p>
+                        <form action="/signin.php">
+                            <button class="btn" id="user-btn"></button>
+                        </form>
+                        <form action="/signup.php">
+                            <button class="btn" id="user-btn" href="/signup.php"></button>
+                        </form>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="nav-search">
+            <form action="/search/" method="get">
+            <div class="search-box">
+                <input type="text" class="tbox" name="query" placeholder="Search..." />
+                <button class="btn" type="submit "><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            </form>
+        </div>
+        <div class="menu-wrapper">
+            <div class="list-wrapper">
+                <ul class="menu level-1">
+                <h1 class="category-title"><a href="#">All Categories</a></h1>
+                <li>
+                    <a href="" class="nested">Building & Hardware</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/building_hardware">Building & Hardware</a></h1>
+                    <li>
+                        <a href="" class="nested">Building Supplies</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/building_hardware/building_supplies">Building Supplies</a></h1>
+                        <li><a href="/categories/building_hardware/building_supplies/Aggregates_+_sand">Aggregates & Sand</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Bricks_+_blocks">Bricks & Blocks</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Chemicals,_concrete_+_cement">Concrete & Cement</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Additives_+_chemicals">Additives & Chemicals</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Guttering_+_drainage">Guttering & Drainage</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Insulation_+_damp">Insulation & Damp</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Plasterboard">Plasterboard</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Plastering_supplies">Plastering supplies</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Coving">Coving</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Roofing_supplies">Roofing supplies</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Builder%27%27s_metalwork">Builder's metalwork</a></li>
+                        <li><a href="/categories/building_hardware/building_supplies/Sealants">Sealants</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Timber & Sheet Materials</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/building_hardware/timber_sheet">Timber & Sheet Materials</a></h1>
+                        <li><a href="/categories/building_hardware/timber_sheet/Architrave">Architrave</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Trims">Trims</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Constructional_timber">Constructional timber</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Decorate_mouldings">Decorate mouldings</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Furniture_boards">Furniture boards</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Scaffold_boards">Scaffold boards</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Sheet_materials">Sheet materials</a></li>
+                        <li><a href="/categories/building_hardware/timber_sheet/Stairs_+_stair_parts">Stairs & stair parts</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Hardware</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/building_hardware/hardware">Hardware</a></h1>
+                        <li><a href="/categories/building_hardware/hardware/Screws">Screws</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Handles_+_knobs">Handles & knobs</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Hinges">Hinges</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Bolts,_nuts_+_washers">Bolts, nuts & washers</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Locks_+_padlocks">Locks & padlocks</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Brackets">Brackets</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Hooks">Hooks</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Furniture_hardware">Furniture hardware</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Fixings_+_wall_plugs">Fixings & wall plugs</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Nails">Nails</a></li>
+                        <li><a href="/categories/building_hardware/hardware/Ropes,_bungees_+_chains">Ropes, bungees & chains</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Doors & windows</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/building_hardware/doors_windows">Doors & windows</a></h1>
+                        <li><a href="/categories/building_hardware/doors_windows/Internal_doors">Internal doors</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/External_doors">External doors</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/Garage_doors">Garage doors</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/Windows">Windows</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/Doors_locks_+_latches">Door locks & latches</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/Door_frames_+_fixtures">Door frames & fixtures</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/Porches">Porches</a></li>
+                        <li><a href="/categories/building_hardware/doors_windows/Loft_doors_+_hatches">Loft doors & hatches</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Heating & Plumbing</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/heating_plumbing">Heating & Plumbing</a></h1>
+                    <li>
+                        <a href="" class="nested">Radiators</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/heating_plumbing/radiators">Radiators</a></h1>
+                        <li><a href="/categories/heating_plumbing/radiators/Double_panel_radiators">Double panel radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Double_panel_radiators">Double panel radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Towel_radiators">Towel radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Column_radiators">Column radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Designer_radiators">Designer radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Oil_filled_radiators">Oil filled radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Vertical_radiators">Vertical radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Radiator_valves">Radiator valves</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Radiator_covers">Radiator covers</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Cast_iron_radiators">Cast iron radiators</a></li>
+                        <li><a href="/categories/heating_plumbing/radiators/Heating_elements">Heating elements</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Fires, stoves & heaters</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/heating_plumbing/fires_stoves_heaters">Fires, stoves & heaters</a></h1>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Electric_Fires">Electric fires</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Stoves">Stoves</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Fireplace_suites">Fireplace suites</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Heaters">Heaters</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Gas_Fires">Gas fires</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Fire_surrounds">Fire surrounds</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Fireplace_accessories">Fireplace accessories</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Logs_charcoal">Logs &amp; charcoal</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Fireplace_hearths">Fireplace hearths</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/All_fires">All fires</a></li>
+                        <li><a href="/categories/heating_plumbing/fires_stoves_heaters/Chimney_sweeping">Chimney sweeping</a></li>  
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Plumbing</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/heating_plumbing/plumbing">Plumbing</a></h1>
+                        <li><a href="/categories/heating_plumbing/plumbing/Pipe_fittings">Pipe fittings</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Wastes_traps">Wastes &amp; traps</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Pipes">Pipes</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Bathroom_fittings">Bathroom fittings</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Valves">Valves</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Connectors">Connectors</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Plumbing_tools">Plumbing tools</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Elbows">Elbows</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Pipe_insulation">Pipe insulation</a></li>
+                        <li><a href="/categories/heating_plumbing/plumbing/Stopcocks">Stopcocks</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Central heating</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/heating_plumbing/central_heating">Central heating</a></h1>
+                        <li><a href="/categories/heating_plumbing/central_heating/Thermostats">Thermostats</a></li>
+                        <li><a href="/categories/heating_plumbing/central_heating/Underfloor_heating">Underfloor heating</a></li>
+                        <li><a href="/categories/heating_plumbing/central_heating/Water_heaters">Water heaters</a></li>
+                        <li><a href="/categories/heating_plumbing/central_heating/Heating_treatments">Heating treatments</a></li>
+                        <li><a href="/categories/heating_plumbing/central_heating/Boilers">Boilers</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Air treatment</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/heating_plumbing/air_treatment">Air treatment</a></h1>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Dehumidifiers">Dehumidifiers</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Extractor_fans">Extractor fans</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Ducting">Ducting</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Vents">Vents</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Air_purifiers">Air purifiers</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Air_conditioners">Air conditioners</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Ceiling_fans">Ceiling fans</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Fans">Fans</a></li>
+                        <li><a href="/categories/heating_plumbing/air_treatment/Humidifiers">Humidifiers</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Home & Furniture</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/home_furniture">Home & Furniture</a></h1>
+                    <li>
+                        <a href="" class="nested">Furniture</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/home_furniture/furniture">Furniture</a></h1>
+                        <li><a href="/categories/home_furniture/furniture/Bedroom_furniture">Bedroom furniture</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Wardrobes">Wardrobes</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Sliding_wardrobe_doors">Sliding wardrobe doors</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Beds">Beds</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Chairs">Chairs</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Bedside_tables">Bedside tables</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Chest_of_drawers">Chest of drawers</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Mattresses">Mattresses</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Desks">Desks</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Tables">Tables</a></li>
+                        <li><a href="/categories/home_furniture/furniture/Sideboards">Sideboards</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Home furnishings</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/home_furniture/home_furnishings">Home furnishings</a></h1>
+                        <li><a href="/categories/home_furniture/home_furnishings/Home_decor_trends">Home decor trends</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Blinds">Blinds</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Curtains">Curtains</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Curtain_poles">Curtain poles</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Curtain_tracks">Curtain tracks</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Curtain_accessories">Curtain accessories</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Cushions">Cushions</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Rugs">Rugs</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Door_mats">Door mats</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Bedding">Bedding</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Throws_+_blankets">Throws & blankets</a></li>
+                        <li><a href="/categories/home_furniture/home_furnishings/Bean_bags">Bean bags</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Home accessories</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/home_furniture/home_accessories">Home accessories</a></h1>
+                        <li><a href="/categories/home_furniture/home_accessories/Cooking_+_dining">Cooking & dining</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Mirrors">Mirrors</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Wall_art">Wall art</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Picture_frames">Picture frames</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Ornaments">Ornaments</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Artificial_flowers">Artificial flowers</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Bottles,_vases_+_jars">Bottles, vases & jars</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Clocks">Clocks</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Candles">Candles</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Candle_holders">Candle holders</a></li>
+                        <li><a href="/categories/home_furniture/home_accessories/Children%27%27s_decor">Children's decor</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Storage & shelving</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/home_furniture/storage_shelving">Storage & shelving</a></h1>
+                        <li><a href="/categories/home_furniture/storage_shelving/Shelves">Shelves</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Shelf_brackets">Shelf brackets</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Shelving_systems">Shelving systems</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Shelving_units">Shelving units</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Storage_baskets">Storage baskets</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Storage_trunks">Storage trunks</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Storage_boxes">Storage boxes</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Storage_cubes">Storage cubes</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Storage_cabinets">Storage cabinets</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Storage_drawers">Storage drawers</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Packaging">Packaging</a></li>
+                        <li><a href="/categories/home_furniture/storage_shelving/Garage_storage">Garage storage</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Laundry & utility</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/home_furniture/laundry_utility">Laundry & utility</a></h1>
+                        <li><a href="/categories/home_furniture/laundry_utility/Laundry_baskets">Laundry baskets</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Irons">Irons</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Ironing_boards">Ironing boards</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Clothes_airers">Clothes airers</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Washing_lines">Washing lines</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Household_cleaning">Household cleaning</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Bins">Bins</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Carpet_shampoo">Carpet shampoo</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Vacuum_cleaners">Vacuum cleaners</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Steam_cleaners">Steam cleaners</a></li>
+                        <li><a href="/categories/home_furniture/laundry_utility/Window_vacuums">Window vacuums</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Kitchen & Bathroom</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/kitchen_bathroom">Kitchen & Bathroom</a></h1>
+                    <li>
+                        <a href="" class="nested">Kitchen</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/kitchen_bathroom/kitchen">Kitchen</a></h1>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Bar_stools">Bar stools</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Cabinets">Cabinets</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Kitchen_bins">Kitchen bins</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Kitchen_doors">Kitchen doors</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Kitchen_sinks">Kitchen sinks</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Kitchen_storage_+_accessories">Kitchen storage & accessories</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Kitchen_taps">Kitchen taps</a></li>
+                        <li><a href="/categories/kitchen_bathroom/kitchen/Kitchen_worktops">Kitchen worktops</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Appliances</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/kitchen_bathroom/appliances">Appliances</a></h1>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Cooker_hoods">Cooker hoods</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Cookers">Cookers</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Fridge_freezers">Fridge freezers</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Hobs">Hobs</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Kettles">Kettles</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Microwaves">Microwaves</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Ovens">Ovens</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Washing_machines">Washing machines</a></li>
+                        <li><a href="/categories/kitchen_bathroom/appliances/Dishwashers">Dishwashers</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Bathrooms</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/kitchen_bathroom/bathrooms">Bathrooms</a></h1>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Baths">Baths</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Bath_panels">Bath panels</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Bathroom_suites">Bathroom suites</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Bathroom_wall_panels">Bathroom wall panels</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Taps">Taps</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Toilet_seats">Toilet seats</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Toilets">Toilets</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Basins">Basins</a></li>
+                        <li><a href="/categories/kitchen_bathroom/bathrooms/Accessories">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Showering</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/kitchen_bathroom/showering">Showering</a></h1>
+                        <li><a href="/categories/kitchen_bathroom/showering/Bath_shower_screens">Bath shower screens</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Curtain_rails_+_rods">Curtain rails & rods</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Riser_rails">Riser rails</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Shower_curtains">Shower curtains</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Shower_heads">Shower heads</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Shower_hoses">Shower hoses</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Shower_kits">Shower kits</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Shower_trays">Shower trays</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Showers">Showers</a></li>
+                        <li><a href="/categories/kitchen_bathroom/showering/Wet_rooms">Wet rooms</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Lighting & Electrical</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/lighting_electrical">Lighting & Electrical</a></h1>
+                    <li>
+                        <a href="" class="nested">Indoor lights</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/lighting_electrical/indoor_lights">Indoor lights</a></h1>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Ceiling_lights">Ceiling lights</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Floor_lamps">Floor lamps</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Light_bulbs">Light bulbs</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Table_lamps">Table lamps</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Chandeliers">Chandeliers</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Lamp_shades">Lamp shades</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Wall_lights">Wall lights</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Spotlights_+_downlights">Spotlights & downlights</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Pendant_lights">Pendant lights</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Light_fixtures & fittings">Light fixtures & fittings</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Children%27%27s_lights">Children's lights</a></li>
+                        <li><a href="/categories/lighting_electrical/indoor_lights/Cabinet_lights">Cabinet lights</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Outdoor lights</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/lighting_electrical/outdoor_lights">Outdoor lights</a></h1>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Wall_lights">Wall lights</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Security_lights">Security lights</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Garden_string_lights">Garden string lights</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Spike_lights">Spike lights</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Lanterns">Lanterns</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Post_lights">Post lights</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Decking_lights">Decking lights</a></li>
+                        <li><a href="/categories/lighting_electrical/outdoor_lights/Ground_lights">Ground lights</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Electrical</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/lighting_electrical/electrical">Electrical</a></h1>
+                        <li><a href="/categories/lighting_electrical/electrical/Switches_+_sockets">Switches & sockets</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Extensions_leads_+_reels">Extensions leads & reels</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Wiring_cables">Wiring cables</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Cable_management">Cable management</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Junction_boxes_+_connectors">Junction boxes & connectors</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Consumer_units_+_breakers">Consumer units & breakers</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Door_bells">Door bells</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Networking_+_broadband">Networking & broadband</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/TV_aerials">TV aerials</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Electricians_tools_+_supplies">Electricians tools & supplies</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Batteries_+_chargers">Batteries & chargers</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/EV_charging">EV charging</a></li>
+                        <li><a href="/categories/lighting_electrical/electrical/Generators">Generators</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Safety & security</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/lighting_electrical/safety_security">Safety & security</a></h1>
+                        <li><a href="/categories/lighting_electrical/safety_security/CCTV cameras">CCTV cameras</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Burglar_alarms">Burglar alarms</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Smoke_alarms">Smoke alarms</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Carbon_monoxide_alarms">Carbon monoxide alarms</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Door_locks_+_latches">Door locks & latches</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Safes">Safes</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Key_safes_+_cash_boxes">Key safes & cash boxes</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Bike_locks">Bike locks</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Fire_extinguishers">Fire extinguishers</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Padlocks">Padlocks</a></li>
+                        <li><a href="/categories/lighting_electrical/safety_security/Gate_locks">Gate locks</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Smart home</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/lighting_electrical/smart_home">Smart home</a></h1>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_light_bulbs">Smart light bulbs</a></li>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_alarms">Smart alarms</a></li>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_cameras">Smart cameras</a></li>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_heating">Smart heating</a></li>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_door_locks">Smart door locks</a></li>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_door_bells">Smart door bells</a></li>
+                        <li><a href="/categories/lighting_electrical/smart_home/Smart_plugs">Smart plugs</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Outdoor & Garden</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/outdoor_garden">Outdoor & Garden</a></h1>
+                    <li>
+                        <a href="" class="nested">Garden tools</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/outdoor_garden/garden_tools">Garden tools</a></h1>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Pressure_washers">Pressure washers</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Lawnmowers">Lawnmowers</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Garden_hand_tools">Garden hand tools</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Garden_power_tools">Garden power tools</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Wheelbarrows_+_trolleys">Wheelbarrows & trolleys</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Incinerators">Incinerators</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Shovels_+_spades">Shovels & spades</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Composters">Composters</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Garden_waste_bags_+_sacks">Garden waste bags & sacks</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Watering_cans">Watering cans</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Gardening_gloves">Gardening gloves</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_tools/Garden_kneelers">Garden kneelers</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Growing & planting</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/outdoor_garden/growing_planting">Growing & planting</a></h1>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Plants,_seeds_+_bulbs">Plants, seeds & bulbs</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Pots,_planters_+_askets">Pots, planters & baskets</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Compost,_manure_+_soil">Compost, manure & soil</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Fertilisers_+_plant_food">Fertilisers & plant food</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Pest_control">Pest control</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Hoses,_pumps_+_irrigation">Hoses, pumps & irrigation</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Lawn_care">Lawn care</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Weed_killers">Weed killers</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Plant_protection_+_support">Plant protection & support</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Propagators">Propagators</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Garden_cloches">Garden cloches</a></li>
+                        <li><a href="/categories/outdoor_garden/growing_planting/Plant_trays">Plant trays</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Garden buildings & storage</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/outdoor_garden/garden_buildings_storage">Garden buildings & storage</a></h1>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Sheds">Sheds</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Garden_storage_boxes">Garden storage boxes</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Summerhouses">Summerhouses</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Greenhouses & growhouses">Greenhouses & growhouses</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Pergolas">Pergolas</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Gazebos">Gazebos</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Arches">Arches</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Arbours">Arbours</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Log_cabins_+_garden offices">Log cabins & garden offices</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Shed_bases">Shed bases</a></li>
+                        <li><a href="/categories/outdoor_garden/garden_buildings_storage/Awnings">Awnings</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Outdoor living</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/outdoor_garden/outdoor_living">Outdoor living</a></h1>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Garden_furniture">Garden furniture</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Hot_tubs_+_saunas">Hot tubs & saunas</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/BBQs_+_BBQ_tools">BBQs & BBQ tools</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Chimineas_+_fire_pits">Chimineas & fire pits</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Sunloungers">Sunloungers</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Home_bars">Home bars</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Parasols_+_bases">Parasols & bases</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Pizza_ovens">Pizza ovens</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Pools_+_accessories">Pools & accessories</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Hammocks">Hammocks</a></li>
+                        <li><a href="/categories/outdoor_garden/outdoor_living/Garden_furniture_covers">Garden furniture covers</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Painting & Decorating</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/painting_decorating">Painting & Decorating</a></h1>
+                    <li>
+                        <a href="" class="nested">Interior paint</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/painting_decorating/interior_paint">Interior paint</a></h1>
+                        <li><a href="/categories/painting_decorating/interior_paint/Emulsion_paint">Emulsion paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Metal_+_wood paint">Metal & wood paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Paint_mixing">Paint mixing</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Furniture_paint">Furniture paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Primers_+_undercoats">Primers & undercoats</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Damp_+_anti-mould_paint">Damp & anti-mould paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Tile_paint">Tile paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Radiator_paint">Radiator paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Spray_paint">Spray paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Floor_paint">Floor paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Chalkboard_paint">Chalkboard paint</a></li>
+                        <li><a href="/categories/painting_decorating/interior_paint/Paint_samples">Paint samples</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Exterior paint</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/painting_decorating/exterior_paint">Exterior paint</a></h1>
+                        <li><a href="/categories/painting_decorating/exterior_paint/Metal_+_wood_paint">Metal & wood paint</a></li>
+                        <li><a href="/categories/painting_decorating/exterior_paint/Masonry_paint">Masonry paint</a></li>
+                        <li><a href="/categories/painting_decorating/exterior_paint/Fence_paint">Fence paint</a></li>
+                        <li><a href="/categories/painting_decorating/exterior_paint/Paint_mixing">Paint mixing</a></li>
+                        <li><a href="/categories/painting_decorating/exterior_paint/Door_paint">Door paint</a></li>
+                        <li><a href="/categories/painting_decorating/exterior_paint/Decking_paint">Decking paint</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Woodcare</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/painting_decorating/woodcare">Woodcare</a></h1>
+                        <li><a href="/categories/painting_decorating/woodcare/Wood_stain">Wood stain</a></li>
+                        <li><a href="/categories/painting_decorating/woodcare/Wood_varnish">Wood varnish</a></li>
+                        <li><a href="/categories/painting_decorating/woodcare/Wood_preservatives">Wood preservatives</a></li>
+                        <li><a href="/categories/painting_decorating/woodcare/Wood_oil">Wood oil</a></li>
+                        <li><a href="/categories/painting_decorating/woodcare/Wood_wax">Wood wax</a></li>
+                        <li><a href="/categories/painting_decorating/woodcare/Exterior_woodcare">Exterior woodcare</a></li>
+                        <li><a href="/categories/painting_decorating/woodcare/Interior_woodcare">Interior woodcare</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Decorating supplies</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/painting_decorating/decorating_supplies">Decorating supplies</a></h1>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Paint_rollers">Paint rollers</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Paint_brushes">Paint brushes</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Paint_trays">Paint trays</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Paint_pads">Paint pads</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Dust_sheets">Dust sheets</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Fillers">Fillers</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Tapes">Tapes</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Sandpaper">Sandpaper</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Glues_+_adhesives">Glues & adhesives</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Sealants">Sealants</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Paint_stripper">Paint stripper</a></li>
+                        <li><a href="/categories/painting_decorating/decorating_supplies/Expanding_foam">Expanding foam</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Wallpaper & coverings</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/painting_decorating/wallpaper_coverings">Wallpaper & coverings</a></h1>
+                        <li><a href="/categories/painting_decorating/wallpaper_coverings/Wallpaper">Wallpaper</a></li>
+                        <li><a href="/categories/painting_decorating/wallpaper_coverings/Murals">Murals</a></li>
+                        <li><a href="/categories/painting_decorating/wallpaper_coverings/Wall_stickers">Wall stickers</a></li>
+                        <li><a href="/categories/painting_decorating/wallpaper_coverings/Sticky_back_plastic_+_window_film">Sticky back plastic & window film</a></li>
+                        <li><a href="/categories/painting_decorating/wallpaper_coverings/Wallpaper_tools">Wallpaper tools</a></li>
+                        <li><a href="/categories/painting_decorating/wallpaper_coverings/Lining_paper">Lining paper</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Tiling & Flooring</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/tiling_flooring">Tiling & Flooring</a></h1>
+                    <li>
+                        <a href="" class="nested">Flooring</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tiling_flooring/flooring">Flooring</a></h1>
+                        <li><a href="/categories/tiling_flooring/flooring/Laminate">Laminate</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Luxury_vinyl click">Luxury vinyl click</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Sheet_vinyl">Sheet vinyl</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Adhesive_vinyl_tiles">Adhesive vinyl tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Solid_wood">Solid wood</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Engineered_wood">Engineered wood</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Adhesive_vinyl_planks">Adhesive vinyl planks</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Carpet">Carpet</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring/Flooring_samples">Flooring samples</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Tiles</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tiling_flooring/tiles">Tiles</a></h1>
+                        <li><a href="/categories/tiling_flooring/tiles/Floor_tiles">Floor tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/tiles/Wall_tiles">Wall tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/tiles/Bathroom_tiles">Bathroom tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/tiles/Kitchen_tiles">Kitchen tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/tiles/Mosaic_+_border_tiles">Mosaic & border tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/tiles/Outdoor_tiles">Outdoor tiles</a></li>
+                        <li><a href="/categories/tiling_flooring/tiles/Sample_tiles">Sample tiles</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Flooring tools</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tiling_flooring/flooring_tools">Flooring tools</a></h1>
+                        <li><a href="/categories/tiling_flooring/flooring_tools/Underlay">Underlay</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring_tools/Scotias_+_floor_trims">Scotias & floor trims</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring_tools/Thresholds,_t-bars_+_reducers">Thresholds, t-bars & reducers</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring_tools/Skirting_+_architrave">Skirting & architrave</a></li>
+                        <li><a href="/categories/tiling_flooring/flooring_tools/Underfloor_heating">Underfloor heating</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Tiling tools</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tiling_flooring/tiling_tools">Tiling tools</a></h1>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Tile_trims">Tile trims</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Grout">Grout</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Adhesive">Adhesive</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Tiling_trowels">Tiling trowels</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Tile_cutters">Tile cutters</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Tile_spacers">Tile spacers</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Tile_scribes">Tile scribes</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Grouting_tools">Grouting tools</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Tile_kits">Tile kits</a></li>
+                        <li><a href="/categories/tiling_flooring/tiling_tools/Sealant">Sealant</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="nested">Tools & Equipment</a>
+                    <ul class="sub-menu level-2">
+                    <h1 class="category-title"><a href="/main_categories/tools_equipment">Tools & Equipment</a></h1>
+                    <li>
+                        <a href="" class="nested">Power tools</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tools_equipment/power_tools">Power tools</a></h1>
+                        <li><a href="/categories/tools_equipment/power_tools/Drills">Drills</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Saws">Saws</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Sanders">Sanders</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Multi_tools_+_hobby_tools">Multi tools & hobby tools</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Angle_grinders">Angle grinders</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Kits_+_twinpacks">Kits & twinpacks</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Impact_drivers_+_wrenches">Impact drivers & wrenches</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Screwdrivers">Screwdrivers</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Nail_guns">Nail guns</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Routers">Routers</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Planers">Planers</a></li>
+                        <li><a href="/categories/tools_equipment/power_tools/Workshop_machinery">Workshop machinery</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Power tool accessories</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tools_equipment/power_tool_accessories">Power tool accessories</a></h1>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Sawing_+_blades">Sawing & blades</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Drill_bits">Drill bits</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Sanding">Sanding</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Mixed_drill_bit_sets">Mixed drill bit sets</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Multi_tool_accessories">Multi tool accessories</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Holesaws">Holesaws</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Angle_grinder_discs">Angle grinder discs</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Screwdriver_bits">Screwdriver bits</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Batteries_+_chargers">Batteries & chargers</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Routing">Routing</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Chucks,_keys_+_holders">Chucks, keys & holders</a></li>
+                        <li><a href="/categories/tools_equipment/power_tool_accessories/Cleaning_+_preparation">Cleaning & preparation</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Hand tools</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tools_equipment/hand_tools">Hand tools</a></h1>
+                        <li><a href="/categories/tools_equipment/hand_tools/Hand_saws">Hand saws</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Measures_+_levels">Measures & levels</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Spanners_+_wrenches">Spanners & wrenches</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Screwdrivers_+_keys">Screwdrivers & keys</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Tool_kits">Tool kits</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Demolition">Demolition</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Cutting_tools">Cutting tools</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Plastering_tools">Plastering tools</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Woodworking_tools">Woodworking tools</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Pliers">Pliers</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Bricklaying_tools">Bricklaying tools</a></li>
+                        <li><a href="/categories/tools_equipment/hand_tools/Cable_tools">Cable tools</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Safety & workwear</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tools_equipment/safety_workwear">Safety & workwear</a></h1>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Workwear">Workwear</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Work_trousers">Work trousers</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Overalls_+_coveralls">Overalls & coveralls</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Work_jackets">Work jackets</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Hoodies_+_sweatshirts">Hoodies & sweatshirts</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Work_shorts">Work shorts</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Footwear">Footwear</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Safety_boots">Safety boots</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Safety_trainers">Safety trainers</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Gloves">Gloves</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Dust_masks_+_filters">Dust masks & filters</a></li>
+                        <li><a href="/categories/tools_equipment/safety_workwear/Goggles_+_glasses">Goggles & glasses</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="nested">Equipment</a>
+                        <ul class="sub-menu level-3">
+                        <h1 class="category-title"><a href="/categories/tools_equipment/equipment">Equipment</a></h1>
+                        <li><a href="/categories/tools_equipment/equipment/Tool_storage">Tool storage</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Ladders_+_steps">Ladders & steps</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Workbenches_+_trestles">Workbenches & trestles</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Trolleys_+_carts">Trolleys & carts</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Cement_mixers">Cement mixers</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Vacuum_cleaners">Vacuum cleaners</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Car_care_+_maintenance">Car care & maintenance</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Workshop_machinery">Workshop machinery</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Air_compressors">Air compressors</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Torches_+_worklights">Torches & worklights</a></li>
+                        <li><a href="/categories/tools_equipment/equipment/Tarpaulins,_sheets_+_sacks">Tarpaulins, sheets & sacks</a></li>
+                    </ul>
+                    </li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+            <div class="list-wrapper">
+                <button type="button" class="back-one-level">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+                </svg>
+                <span>Back</span>
+                </button>
+                <div class="sub-menu-wrapper"></div>
+            </div>
+            <div class="list-wrapper">
+                <button type="button" class="back-one-level">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+                </svg>
+                <span>Back</span>
+                </button>
+                <div class="sub-menu-wrapper"></div>
+            </div>
+        </div>
+
+    </div>
+    </nav>
+</header>
         <div class="nav-top"> 
             <ul class="nav-top-links">
-                <li class="nav-top-item"><a href="/products.php">Our Story</a>| </li>
+                <li class="nav-top-item"><a href="/story.php">Our Story</a>| </li>
                 <li class="nav-top-item"><a href="/about">FAQ</a>| </li>
                 <li class="nav-top-item"><a href="/contact.php">Contact Us</a></li>
             </ul>
@@ -14,24 +820,9 @@ const createNav = () => {
 
 
         <div class="nav-wrapper">
-            <div class="burger" onclick="toggleMobileMenu(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <div class="menu-container">
-                    <ul class="mobile-menu">
-                        <a href="/main_categories/building_hardware">Building & Hardware</a>
-                        <a href="/main_categories/heating_plumbing">Heating & Plumbing</a>
-                        <a href="/main_categories/home_furniture">Home & Furniture</a>
-                        <a href="/main_categories/kitchen_bathroom">Kitchen & Bathroom</a>
-                        <a href="/main_categories/lighting_electrical">Lighting & Electrical</a>
-                        <a href="/main_categories/outdoor_garden">Outdoor & Garden</a>
-                        <a href="/main_categories/painting_decorating">Painting & Decorating</a>
-                        <a href="/main_categories/tiling_flooring">Tiling & Flooring</a>
-                        <a href="/main_categories/tools_equipment">Tools & Equipment</a>
-                    </ul>
-                </div>
-            </div>
+      
+      
+      
             <div class="main-logo">
                 <a href="/home">
                     <img src="/images/main-logo2.png" class="brand-logo" alt="">
@@ -48,8 +839,13 @@ const createNav = () => {
                 <a>
                     <img src="/images/user.png" id="user-pic" class="user-pic">
                     <div class="login-logout-popup hide">
-                        <p class="account-info">Logged in as, name</p>
-                        <button class="btn" id="user-btn">Log Out</button>
+                        <p class="account-info"></p>
+                        <form action="/signin.php">
+                            <button class="btn" id="user-btn"></button>
+                        </form>
+                        <form action="/signup.php">
+                            <button class="btn" id="user-btn" href="/signup.php"></button>
+                        </form>
                     </div>
                 </a>
 
@@ -58,7 +854,7 @@ const createNav = () => {
 
 
         </div>
-        <div class="menu">
+        <div class="menu-main">
             <ul class="links-container">
                 <li class="link-item">
                     <a href="/main_categories/building_hardware">Building & <br> Hardware</a>
@@ -662,38 +1458,102 @@ const createNav = () => {
 
 createNav();
 
-// nav popup
 
-const userImageButton = document.querySelector('#user-pic');
-const userPopup = document.querySelector('.login-logout-popup');
-const popuptext = document.querySelector('.account-info');
-const actionBtn = document.querySelector('#user-btn');
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+const database = getDatabase(app);
+var isLoggedIn;
 
-userImageButton.addEventListener('click', () => {
-    userPopup.classList.toggle('hide');
+
+
+// sign in popup
+
+const userImageButtonList = document.querySelectorAll('#user-pic');
+const userPopupList = document.querySelectorAll('.login-logout-popup');
+const popupTextList = document.querySelectorAll('.account-info');
+const actionBtnList = document.querySelectorAll('#user-btn');
+
+userImageButtonList[0].addEventListener('click', () => {
+    userPopupList[0].classList.toggle('hide');
 })
 
-window.onload = () => {
-    let user = JSON.parse(sessionStorage.user || null);
-    if(user != null){
-        // means user is logged in
-        popuptext.innerHTML = `Signed in as ${user.name}`;
-        actionBtn.innerHTML = 'Sign out';
-        actionBtn.addEventListener('click', () => {
-            sessionStorage.clear();
-            location.reload();
-        })
-    } else{
-        // user is logged out
-        popuptext.innerHTML = 'Not logged in';
-        actionBtn.innerHTML = 'Sign in';
-        actionBtn.addEventListener('click', () => {
-            location.href = '/signin';
-        })
-    }
-}
+
+
+userImageButtonList[1].addEventListener('click', () => {
+    userPopupList[1].classList.toggle('hide');
+})
+
+
+// window.onload = () => {
+//     let user = JSON.parse(sessionStorage.user || null);
+//     if(user != null){
+//         // means user is logged in
+//         popuptext.innerHTML = `Signed in as ${user.name}`;
+//         actionBtn.innerHTML = 'Sign out';
+//         actionBtn.addEventListener('click', () => {
+//             sessionStorage.clear();
+//             location.reload();
+//         })
+//     } else{
+//         // user is logged out
+//         popuptext.innerHTML = 'Not logged in';
+//         actionBtn.innerHTML = 'Sign in';
+//         actionBtn.addEventListener('click', () => {
+//             location.href = '/signin';
+//         })
+//     }
+// }
+
+
+
+// nav dropdown
 
 window.onload = () => {
+
+    // sign in responsiveness
+
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            isLoggedIn = true;
+            const databaseRef = ref(database, '/users/' + user.uid);
+            onValue(databaseRef, (snapshot) => {
+                const data = snapshot.val();
+                const name = data.name;
+                var j = 0
+                for (let i = 0; i < popupTextList.length; i++) {
+                    popupTextList[i].innerHTML = 'Logged in as ' + name; // Replace 'name' with the actual user's name
+                    actionBtnList[j].innerHTML = 'Log Out';
+                    actionBtnList[j].addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        alert("Signed out successfully");
+                        isLoggedIn = false;
+                    }).catch((error) => {
+                        alert(error.message);
+                    });
+                    });
+                    j = i + 2;
+                }
+                actionBtnList[3].style.visibility = 'hidden';
+            });
+        } else {
+            isLoggedIn = false;
+            var j = 0
+            for (let i = 0; i < popupTextList.length; i++) {
+                popupTextList[i].innerHTML = 'Not logged in';
+                actionBtnList[j].innerHTML = 'Log In';
+                actionBtnList[j].addEventListener('click', () => {
+                    location.href ='/signin.php';
+                })
+                j = i + 2;
+            }
+            actionBtnList[1].innerHTML = 'Create an account';
+            actionBtnList[3 ].innerHTML = 'Create an account';
+        }
+    });
+
+
     // auto set the grid columns based on the amount of lists inside each dropdown
     let containerList = document.querySelectorAll('.dropdown-content');
     for (let i = 0; i < containerList.length; i++) {
@@ -715,6 +1575,80 @@ window.onload = () => {
 
 }
 
+
+// mobile menu
+
 function toggleMobileMenu(menu) {
     menu.classList.toggle('open');
+    
 }
+
+const pageHeader = document.querySelector(".page-header");
+const toggleMenu = pageHeader.querySelector(".toggle-menu");
+const menuWrapper = pageHeader.querySelector(".menu-wrapper");
+const level1Links = pageHeader.querySelectorAll(".level-1 > li > a");
+const listWrapper2 = pageHeader.querySelector(".list-wrapper:nth-child(2)");
+const listWrapper3 = pageHeader.querySelector(".list-wrapper:nth-child(3)");
+const subMenuWrapper2 = listWrapper2.querySelector(".sub-menu-wrapper");
+const subMenuWrapper3 = listWrapper3.querySelector(".sub-menu-wrapper");
+const backOneLevelBtns = pageHeader.querySelectorAll(".back-one-level");
+const backLabel2 = listWrapper2.querySelector(".back-one-level span");
+const backLabel3 = listWrapper3.querySelector(".back-one-level span");
+const isVisibleClass = "is-visible";
+const isActiveClass = "is-active";
+
+toggleMenu.addEventListener("click", function () {
+  menuWrapper.classList.toggle(isVisibleClass);
+  if (!this.classList.contains(isVisibleClass)) {
+    listWrapper2.classList.remove(isVisibleClass);
+    listWrapper3.classList.remove(isVisibleClass);
+    const menuLinks = menuWrapper.querySelectorAll("a");
+    for (const menuLink of menuLinks) {
+      menuLink.classList.remove(isActiveClass);
+    }
+  }
+});
+
+for (const level1Link of level1Links) {
+  level1Link.addEventListener("click", function (e) {
+    const siblingList = level1Link.nextElementSibling;
+    if (siblingList) {
+      e.preventDefault();
+      this.classList.add(isActiveClass);
+      const cloneSiblingList = siblingList.cloneNode(true);
+      subMenuWrapper2.innerHTML = "";
+      subMenuWrapper2.append(cloneSiblingList);
+      listWrapper2.classList.add(isVisibleClass);
+    }
+  });
+}
+
+listWrapper2.addEventListener("click", function (e) {
+  const target = e.target;
+  if (target.tagName.toLowerCase() === "a" && target.nextElementSibling) {
+    const siblingList = target.nextElementSibling;
+    e.preventDefault();
+    target.classList.add(isActiveClass);
+    const cloneSiblingList = siblingList.cloneNode(true);
+    subMenuWrapper3.innerHTML = "";
+    subMenuWrapper3.append(cloneSiblingList);
+    listWrapper3.classList.add(isVisibleClass);
+  }
+});
+
+for (const backOneLevelBtn of backOneLevelBtns) {
+  backOneLevelBtn.addEventListener("click", function () {
+    const parent = this.closest(".list-wrapper");
+    parent.classList.remove(isVisibleClass);
+    parent.previousElementSibling
+      .querySelector(".is-active")
+      .classList.remove(isActiveClass);
+  });
+}
+
+  
+
+
+
+
+

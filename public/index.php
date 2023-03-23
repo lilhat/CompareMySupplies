@@ -73,7 +73,8 @@ $newObj2 = new Product();
 
 
     </div>
-    <script src="/js/nav.js"></script>
+    <script type="module" src="/js/nav.js"></script>
+    <script type="module" src="/js/firebase.js"></script>
     <script src="/js/home.js"></script>
     <script src="/js/overlay.js"></script>
     <script src="/js/footer.js"></script>

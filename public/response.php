@@ -75,7 +75,7 @@ public function get_Category($maincategory, $subcategory, $category, $page_size,
   }
 
   public function get_Price($id) {
-    $sql = "SELECT DISTINCT ON (id) id, name, price, category, image, description FROM public.products WHERE id = '$id' order by id ASC, price ASC";
+    $sql = "SELECT DISTINCT ON (id) id, name, price, category, image, description, sub_category, main_category FROM public.products WHERE id = '$id' order by id ASC, price ASC";
     $queryRecords = pg_query($this->conn, $sql) or die("error to fetch data");
     $data = pg_fetch_all($queryRecords);
     return $data;

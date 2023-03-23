@@ -5,6 +5,18 @@
     justify-content: space-between;
 }
 
+.return-links {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.return-link a{
+    text-transform: capitalize;
+    text-decoration: underline;
+    color: black;
+    opacity: 1;
+}
+
 .main-image{
     width: 350px;
     height: 350px;
@@ -35,6 +47,7 @@
     padding: 10px;
 }
 
+
 .product-images img{
     width: 100%;
     height: 80px;
@@ -53,13 +66,18 @@
 .details .product-brand{
     text-transform: capitalize;
     font-size: 30px;
+    max-width: 55vw;
 }
 
-.details .product-short-des{
-    font-size: 25px;
-    line-height: 30px;
-    height: auto;
-    margin: 15px 0 30px;
+.product-cat{
+    font-size: 17px;
+    position: absolute;
+    display: flex;
+    width: 100%;
+    line-height: 0px;
+    opacity: 0.5;
+    text-transform: capitalize;
+    height: 30px;
 }
 
 .product-price{
@@ -88,7 +106,7 @@
 }
 
 .table thead tr {
-    background-color: orange;
+    background-color: #f7931e;
     color: #fff;
     text-align: left;
     font-weight: bold;
@@ -103,12 +121,12 @@
 }
 
 .table tbody tr:last-of-type {
-    border-bottom: 2px solid orange;
+    border-bottom: 2px solid #f7931e;
 }
 
 .table tbody tr.active-row{
     font-weight: bold;
-    color: orange;
+    color: #f7931e;
 }
 
 .compare-price{
@@ -122,11 +140,12 @@
 
 .supplier-btn{
     width: 8vw;
+    min-width: fit-content;
     padding: 10px 20px;
     border: none;
     outline: none;
     cursor: pointer;
-    background: orange;
+    background: #f7931e;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -147,18 +166,27 @@
 
 @media (max-width: 768px) {
 
+    .return-links{
+        zoom: 65%;
+        margin-top: 10px;
+        margin-left: 30px;
+    }
+
     .product-details{
-        zoom: 40%;
+        zoom: 50%;
         max-width: fit-content;
     }
 
+    .product-cat{
+        font-size: 25px;
+    }
+
     .compare-table{
-        zoom: 60%;
+        zoom: 73%;
     }
 
     .details{
         position: relative;
-        left: 75px;
         width: 400px;
 
     }
@@ -169,6 +197,10 @@
 
     .product {
         height: fit-content;
+    }
+
+    .details .product-brand{
+        max-width: 100vw;
     }
 
 }

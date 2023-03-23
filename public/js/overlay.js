@@ -1,7 +1,7 @@
 let linkItems = document.querySelectorAll('.link-item');
 let dropdownContents = document.querySelectorAll('.dropdown-content');
 let overlay = document.querySelector('.overlay');
-let menu = document.querySelector('.menu');
+let menu = document.querySelector('.menu-main');
 let linksContainer = document.querySelector('.links-container')
 
 for (let i = 0; i < linkItems.length; i++) {
