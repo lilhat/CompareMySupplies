@@ -40,3 +40,21 @@ RewriteRule ^search/$ /search.php [L]
 # Rewrite search
 RewriteRule ^search/([^/]+)/page/(\d+)/?$ /search.php?query=$1&page=$2 [NE,QSA,L,B]
 
+# Rewrite signin
+RewriteRule ^signin$ /signin.php [L]
+
+# Rewrite signup
+RewriteRule ^signup$ /signup.php [L]
+
+# Rewrite contact
+RewriteRule ^contact$ /contact.php [L]
+
+# Rewrite faq
+RewriteRule ^faq$ /faq.php [L]
+
+# Rewrite tos
+RewriteRule ^tos$ /tos.php [L]
+
+# Rewrite privacy
+RewriteRule ^privacy$ /privacy.php [L]
+

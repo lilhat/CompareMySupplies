@@ -42,6 +42,7 @@
     <footer></footer>
     <script type="module" src="/js/nav.js"></script>
     <script type="module" src="/js/firebase.js"></script>
+
     <script src="/js/footer.js"></script>
 </body>
 

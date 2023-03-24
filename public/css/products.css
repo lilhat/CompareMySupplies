@@ -89,20 +89,25 @@ title {
     }
 
     .product-container{
-        margin-top: 10px;
         grid-template-columns: 1fr 1fr;
         overflow-x: hidden;
-        
+        margin: 17px;
+        width: auto;
     }
 
     .main-content{
         width: 100%;
-        left: 0;
+        left: 1px;
     }
 
-    .product-card{
-        right: 30px;
+    .product-card {
+        right: 20px;
         width: 160px;
+        height: 400px;
+    }
+
+    .product-card img{
+        height: 200px;
     }
 
     .pagination {

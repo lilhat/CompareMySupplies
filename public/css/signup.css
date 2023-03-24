@@ -20,30 +20,41 @@
 .alert-box{
     display: flex;
     width: 300px;
-    min-height: 150px;
+    min-height: 40px;
+    height: 50px;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 100px rgba(0, 0, 0, 0.05);
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 23%;
+    left: 50.5%;
     transform: translate(-50%, -50%);
     opacity: 0;
     pointer-events: none;
     padding: 20px;
     transition: 1s;
+    zoom: 80%;
+
 }
 
 .alert-box.show{
     opacity: 1;
     pointer-events: all;
-    top: 50%;
+    top: 23%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .alert-img{
     display: block;
     margin: 10px auto 20px;
-    height: 60px;
+    height: 43px;
+    position: relative;
+    bottom: 7px;
+    right: 20px;
 }
 
 .alert-msg{
@@ -51,7 +62,20 @@
     font-size: 20px;
     text-transform: capitalize;
     text-align: center;
-    line-height: 30px;
+    line-height: 20px;
+    right: 8px;
+    bottom: 10px;
     font-weight: 500;
+    position: relative;
+}
+
+@media (max-width: 768px){
+
+    .signup-container{  
+        top: 50px;
+        position: relative;
+        margin-bottom: 212px;
+    }
+
 }
 

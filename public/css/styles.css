@@ -10,7 +10,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     width: 100vw;
-    height: 184%;
+    height: 120%;
 
 }
 
@@ -30,11 +30,6 @@ body {
     grid-template-columns: 1fr;
     z-index: 5;
 }
-
-@media only screen and (max-width: 768px) {
-
-  }
-
 
 /* Item Styles */
 
@@ -94,16 +89,22 @@ body {
 /* About Page Styles */
 .two-column-wrapper {
     display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 50px;
 }
 
 .profile-image-wrapper img {
-    width: 100%;
-    padding: 40px;
+    width: 300px;
+    margin-right: 40px;
+    margin-top: 10px;
+    padding: 30px;
 }
 
 .profile-content-wrapper {
     padding-top: 20px;
     padding-left: 30px;
+    padding-bottom: 150px;
 }
 
 .profile-content-wrapper h1 {
@@ -115,25 +116,48 @@ body {
 }
 
 /* Contact Page Styles */
-.contact-image-wrapper img {
-    width: 250px;
-    height: 250px;
-    padding-top: 250px;
-    padding-left: 400px;
-}
-
 .contact-content-wrapper {
-    padding-top: 100px;
-    padding-left: 30px;
+    position: relative;
+    left: 611px;
+    max-width: 500px;
+    justify-content: center;
+    display: flex;
 }
 
-.contact-content-wrapper h1{
-    color: #f7931e;
+.contact-form-group button {
+    width: 8vw;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #f7931e;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: 0.3s ease-in-out;
 }
 
-.contact-content-wrapper b1{
-    font-size: 20px;
+.contact-form-group button:hover {
+    opacity: 0.7;
 }
+
+.about-paragraph{
+    width: 900px;
+    display: block;
+}
+
+.faq-paragraph{
+    width: 900px;
+    display: block;
+    font-weight: bold;
+}
+
+.tos, .privacy{
+    max-width: 80vw;
+    padding-bottom: 40px;
+}
+
 
 @media (max-width: 768px) {
     body{
@@ -141,4 +165,31 @@ body {
         height: 100vh;
         width: 100vw;
     }
+
+    .content-wrapper{
+        height: 83.5vh;
+    }
+
+    .two-column-wrapper{
+        zoom: 67%;
+    }
+    .profile-image-wrapper img{
+        display: none;
+    }
+    .about-paragraph, .faq-paragraph{
+        width: 490px;
+    }
+    .signature{
+        width: 490px;
+    }
+
+    .contact-content-wrapper{
+        zoom: 80%;
+        left: -80px;
+        height: 104vh;
+    }
+    .contact-form-group button{
+        width: 60%;
+    }
+
 }

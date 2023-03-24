@@ -51,24 +51,24 @@ if (typeof signUp !== 'undefined') {
 
     // Validate input fields
     if (validate_email(email) == false) {
-      alert('Must be a valid email');
+      showAlert('Must be a valid email');
       return;
       // Don't continue running the code
     }
     if (validate_password(password) == false || validate_password(confirm_password) == false){
-      alert('Password must be over 6 characters');
+      showAlert('Password must be over 6 characters');
       return;
     }
     if (password != confirm_password){
-      alert('Passwords must match');
+      showAlert('Passwords must match');
       return;
     }
     if (validate_field(name) == false) {
-      alert('Please enter your full name');
+      showAlert('Please enter your full name');
       return;
     }
     if (terms_checkbox.checked == false) {
-      alert('Please accept the terms and conditions');
+      showAlert('Please accept the terms and conditions');
       return;
     }
     //sign up user
@@ -84,20 +84,19 @@ if (typeof signUp !== 'undefined') {
         })
           .then(() => {
             // Data saved successfully!
-            alert('Account created successfully');
             isLoggedIn = true;
             window.location.replace("/home");
           })
           .catch((error) => {
             // The write failed...
-            alert(error);
+            showAlert(error);
           });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
-        alert(errorMessage);
+        showAlert(errorMessage);
       });
 
   });
@@ -112,12 +111,12 @@ if (typeof signIn !== 'undefined') {
   
     // Validate input fields
     if (validate_email(email) == false) {
-      alert('Must be a valid email');
+      showAlert('Must be a valid email');
       return;
       // Don't continue running the code
     }
     if (validate_password(password) == false){
-      alert('Password must be over 6 characters');
+      showAlert('Password must be over 6 characters');
       return;
     }
   
@@ -134,40 +133,24 @@ if (typeof signIn !== 'undefined') {
         })
             .then(() => {
                 // Data saved successfully!
-                alert('User logged in successfully');
                 isLoggedIn = true;
                 window.location.replace("/home");
   
             })
             .catch((error) => {
                 // The write failed...
-                alert(error);
+                showAlert(error);
             });
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        showAlert(errorMessage);
     });
   
   
   });
 }
-
-// if (typeof signOut !== 'undefined') {
-//   signOut.addEventListener('click', (e) => {
-
-//     signOut(auth).then(() => {
-//       alert("Signed out successfully");
-//       isLoggedIn = false;
-//     }).catch((error) => {
-//       alert(error.message);
-//     });
-
-//   });
-
-// }
-
 
 function validate_email(email) {
   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -202,6 +185,20 @@ function validate_field(field) {
     return true;
   }
 };
+
+function showAlert(message) {
+  const alertBox = document.querySelector('.alert-box');
+  const msg = alertBox.querySelector('.alert-msg');
+
+  msg.textContent = message;
+  alertBox.classList.add('show');
+
+  setTimeout(() => {
+    alertBox.classList.remove('show');
+  }, 2500);
+}
+
+
 
 
 

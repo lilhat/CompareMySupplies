@@ -1,0 +1,43 @@
+            <img src="/images/main-lightlogo.png" class="logo" alt="">
+            <div class="footer-ul-container">
+                <div class="contact-info">
+                    <p class="info">Customer Support Email: <p class="info-details">contact@comparemysupplies.com</p></p>
+                    <p class="info">Telephone: <p class="info-details">+44 7359 331074</p></p>
+                </div>
+            </div>
+            </div>
+
+/* FOOTER EXTRA
+                <ul class="category">
+                    <li class="category-title">Business</li>
+                    <li><a href="#" class="footer-link">Compare My Supplies Ltd</a></li>
+                    <li><a href="#" class="footer-link">Advertising</a></li>
+                    <li><a href="#" class="footer-link">Media</a></li>
+                    <li><a href="#" class="footer-link">Careers</a></li>
+                    <li><a href="#" class="footer-link">Affiliate Program</a></li>
+                </ul>
+                <ul class="category">
+                    <li class="category-title">Services</li>
+                    <li><a href="#" class="footer-link">Loyalty</a></li>
+                    <li><a href="#" class="footer-link">Finance</a></li>
+                    <li><a href="#" class="footer-link">Gift Cards</a></li>
+                    <li><a href="#" class="footer-link">Appointments</a></li>
+                    <li><a href="#" class="footer-link">Approved Marketer</a></li>
+                </ul>
+                <ul class="category">
+                    <li class="category-title">Products</li>
+                    <li><a href="#" class="footer-link">Ratings & Reviews</a></li>
+                    <li><a href="#" class="footer-link">Apps</a></li>
+                    <li><a href="#" class="footer-link">Product Information</a></li>
+                    <li><a href="#" class="footer-link">Safety Notices</a></li>
+                    <li><a href="#" class="footer-link">Approved Supplier</a></li>
+                </ul>
+                <ul class="category">
+                    <li class="category-title">Help & Support</li>
+                    <li><a href="#" class="footer-link">Advice</a></li>
+                    <li><a href="#" class="footer-link">Customer Support</a></li>
+                    <li><a href="#" class="footer-link">Brochures</a></li>
+                    <li><a href="#" class="footer-link">Ideas</a></li>
+                    <li><a href="#" class="footer-link">Affiliate Help</a></li>
+                </ul>
+*/

@@ -288,14 +288,22 @@ form {
     }
 
     .product-card {
-        right: 20px;
+        right: 0px;
         width: 160px;
-        height: 500px;
+        height: 400px;
+    }
+
+    .product-card img{
+        height: 200px;
     }
 
     .product-container{
         margin-top: 10px;
+        width: 90%;
         grid-template-columns: 1fr 1fr;
+        position: relative;
+        margin-left: 0;
+        right: 0px;
     }
 
     .price {
@@ -322,6 +330,10 @@ form {
 
     .price {
         font-size: 20px;
+    }
+
+    .pre-btn, .next-btn{
+        height: 95%;
     }
     
     

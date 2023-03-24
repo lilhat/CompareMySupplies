@@ -20,11 +20,7 @@
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <div class="container">
-        <div class="content-wrapper">
-            <div class="two-column-wrapper">
-                <div class="profile-image-wrapper">
-                    <img src="images/thumbs.jpg">
-                </div>
+        <div class="contact-content-wrapper">
                 <div class="profile-content-wrapper">
                     <h1>Contact Us</h1>
                     <div class="contact-wrapper">
@@ -63,7 +59,6 @@
                     </div>
 
                 </div>
-            </div>
 
 
         </div>
@@ -71,7 +66,7 @@
     <footer></footer>
     <script type="module" src="/js/nav.js"></script>
     <script type="module" src="/js/firebase.js"></script>
-    <script src="js/overlay.js"></script>
+    <script type="module" src="js/overlay.js"></script>
     <script src="js/footer.js"></script>
 </body>
 

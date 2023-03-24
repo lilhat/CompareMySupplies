@@ -1,8 +1,8 @@
 footer{
     position: relative;
     width: 100vw;
-    height: 250px;
-    padding-bottom: 80px;
+    height: 30px;
+    max-height: 30px;
     background: white;
 }
 
@@ -12,10 +12,11 @@ footer{
 
 
 .footer-content{
-    padding: 40px 10vw;
+    padding-top: 5px;
     display: flex;
-    width: 70%;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
+    max-height: 200px;
 }
 
 .footer-content .logo{
@@ -23,7 +24,6 @@ footer{
 }
 
 .footer-ul-container{
-    width: 100%;
     display: flex;
     justify-content: normal;
 }
@@ -56,7 +56,8 @@ footer{
 }
 
 .contact-info{
-    margin-left: 100px;
+    position: relative;
+    left: 200px;
 }
 
 
@@ -73,13 +74,12 @@ footer{
 }
 
 .footer-social-container{
-    margin-top: 105px;
     display: flex;
     justify-content: center;
 }
 
 .footer-info-container{
-    margin-right: 50vw;
+    margin-right: 60vw;
 }
 
 
@@ -97,25 +97,23 @@ footer{
 @media (max-width: 768px) {
     footer{
         width: 100vw;
-        height: 150px;
+        height: 50px;
     }
 
-    .footer-content{
-        zoom: 50%;
+    .footer-info-container{
+        position: absolute;
+        left: 20px;
+        zoom: 55%;
+        top: 17px;
+        width: fit-content;
     }
 
-    .category{
-        display: none;
+    .social-links {
+        width: fit-content;
+        position: absolute;
+        left: 265px;
     }
 
-    .footer-social-container{
-        zoom: 50%;
-    }
-
-    .contact-info{
-        left: 150px;
-        position: relative;
-    }
 
 
 }

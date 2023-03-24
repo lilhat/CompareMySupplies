@@ -53,11 +53,9 @@ const createNav = () => {
                     <img src="/images/user.png" id="user-pic" class="user-pic">
                     <div class="login-logout-popup hide">
                         <p class="account-info"></p>
-                        <form action="/signin.php">
-                            <button class="btn" id="user-btn"></button>
-                        </form>
-                        <form action="/signup.php">
-                            <button class="btn" id="user-btn" href="/signup.php"></button>
+                        <button class="btn" id="user-btn"></button>
+                        <form action="/signin">
+                            <button class="btn" id="user-btn" href="/signup"></button>
                         </form>
                     </div>
                 </a>
@@ -74,7 +72,7 @@ const createNav = () => {
         <div class="menu-wrapper">
             <div class="list-wrapper">
                 <ul class="menu level-1">
-                <h1 class="category-title"><a href="#">All Categories</a></h1>
+                <h1 class="category-title"><a href="#" style="pointer-events:none">All Categories</a></h1>
                 <li>
                     <a href="" class="nested">Building & Hardware</a>
                     <ul class="sub-menu level-2">
@@ -783,6 +781,11 @@ const createNav = () => {
                     </li>
                     </ul>
                 </li>
+                <div class="extra-links">
+                    <p class="extra-link"><a href="/about">About Us</a></p>
+                    <p class="extra-link"><a href="/faq">FAQ</a></p>
+                    <p class="extra-link"><a href="/contact">Contact Us</a></p>
+                </div>
                 </ul>
             </div>
             <div class="list-wrapper">
@@ -810,9 +813,9 @@ const createNav = () => {
 </header>
         <div class="nav-top"> 
             <ul class="nav-top-links">
-                <li class="nav-top-item"><a href="/story.php">Our Story</a>| </li>
-                <li class="nav-top-item"><a href="/about">FAQ</a>| </li>
-                <li class="nav-top-item"><a href="/contact.php">Contact Us</a></li>
+                <li class="nav-top-item"><a href="/about">About Us</a>| </li>
+                <li class="nav-top-item"><a href="/faq">FAQ</a>| </li>
+                <li class="nav-top-item"><a href="/contact">Contact Us</a></li>
             </ul>
         </div>
         <div class="nav-border">
@@ -840,11 +843,9 @@ const createNav = () => {
                     <img src="/images/user.png" id="user-pic" class="user-pic">
                     <div class="login-logout-popup hide">
                         <p class="account-info"></p>
-                        <form action="/signin.php">
-                            <button class="btn" id="user-btn"></button>
-                        </form>
-                        <form action="/signup.php">
-                            <button class="btn" id="user-btn" href="/signup.php"></button>
+                        <button class="btn" id="user-btn"></button>
+                        <form action="/signup">
+                            <button class="btn" id="user-btn" href="/signup"></button>
                         </form>
                     </div>
                 </a>
@@ -1485,29 +1486,6 @@ userImageButtonList[1].addEventListener('click', () => {
     userPopupList[1].classList.toggle('hide');
 })
 
-
-// window.onload = () => {
-//     let user = JSON.parse(sessionStorage.user || null);
-//     if(user != null){
-//         // means user is logged in
-//         popuptext.innerHTML = `Signed in as ${user.name}`;
-//         actionBtn.innerHTML = 'Sign out';
-//         actionBtn.addEventListener('click', () => {
-//             sessionStorage.clear();
-//             location.reload();
-//         })
-//     } else{
-//         // user is logged out
-//         popuptext.innerHTML = 'Not logged in';
-//         actionBtn.innerHTML = 'Sign in';
-//         actionBtn.addEventListener('click', () => {
-//             location.href = '/signin';
-//         })
-//     }
-// }
-
-
-
 // nav dropdown
 
 window.onload = () => {
@@ -1526,15 +1504,17 @@ window.onload = () => {
                     popupTextList[i].innerHTML = 'Logged in as ' + name; // Replace 'name' with the actual user's name
                     actionBtnList[j].innerHTML = 'Log Out';
                     actionBtnList[j].addEventListener('click', () => {
-                    signOut(auth).then(() => {
-                        alert("Signed out successfully");
-                        isLoggedIn = false;
-                    }).catch((error) => {
-                        alert(error.message);
-                    });
+                        location.href = '';
+                        signOut(auth).then(() => {
+                            showAlert("Signed out successfully");
+                            isLoggedIn = false;
+                        }).catch((error) => {
+                            showAlert(error.message);
+                        });
                     });
                     j = i + 2;
                 }
+                actionBtnList[1].style.visibility = 'hidden';
                 actionBtnList[3].style.visibility = 'hidden';
             });
         } else {
@@ -1544,12 +1524,12 @@ window.onload = () => {
                 popupTextList[i].innerHTML = 'Not logged in';
                 actionBtnList[j].innerHTML = 'Log In';
                 actionBtnList[j].addEventListener('click', () => {
-                    location.href ='/signin.php';
+                    location.href ='/signin';
                 })
                 j = i + 2;
             }
             actionBtnList[1].innerHTML = 'Create an account';
-            actionBtnList[3 ].innerHTML = 'Create an account';
+            actionBtnList[3].innerHTML = 'Create an account';
         }
     });
 

@@ -8,10 +8,10 @@ productContainers.forEach((item, i) => {
 
 
     nextBtn[i].addEventListener('click', () => {
-        item.scrollLeft += containerWidth;
+        item.scrollLeft += containerWidth / 2;
     })
 
     preBtn[i].addEventListener('click', () => {
-        item.scrollLeft -= containerWidth;
+        item.scrollLeft -= containerWidth / 2;
     })
 })

@@ -111,9 +111,9 @@ if (isset($_GET['query'])) {
     </section>
     <footer></footer>
 
-    <script src="/js/nav.js"></script>
+    <script type="module" src="/js/nav.js"></script>
     <script src="/js/home.js"></script>
-    <script src="/js/overlay.js"></script>
+    <script type="module" src="js/overlay.js"></script>
     <script src="/js/footer.js"></script>
     <script src="/js/product.js"></script>
 

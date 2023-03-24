@@ -24,11 +24,12 @@
         <div class="content-wrapper">
             <div class="two-column-wrapper">
                 <div class="profile-image-wrapper">
-                    <img src="/images/thumbs.jpg">
+                    <img src="/images/bricks.jpg">
                 </div>
                 <div class="profile-content-wrapper">
-                    <h1>Innovating the way you buy materials!</h1>
-                    <b1><strong>The best material comparison website on the internet! Saving you money on every purchase.</strong></b1>
+                    <h1>About Us</h1>
+                    <b1 class="about-paragraph">Welcome to our price comparison website for construction supplies.<br><br>My name is Tahlil, and I am the founder of this website. As a final year computer science student, I wanted to create a platform that would help people find the best deals on everything you would need for construction.<br><br> To achieve this goal, I have teamed up with industry experts who have years of experience in the field. Together, we have developed a platform that provides accurate and up-to-date pricing information for a wide range of construction materials and supplies.<br><br> Our mission is to help you save time and money while ensuring that you get the best value for your investment. Thank you for choosing our website, and we hope you find our service helpful.</b1>
+                    <p class="signature">~ CompareMySupplies Team</p>
                 </div>
             </div>
 
@@ -36,7 +37,6 @@
         </div>
     </div>
     <footer></footer>
-    
     <script type="module" src="/js/nav.js"></script>
     <script type="module" src="/js/firebase.js"></script>
     <script src="/js/overlay.js"></script>
