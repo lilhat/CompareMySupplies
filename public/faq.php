@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title><?php echo $id?></title>
+    <title>FAQ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
 
 </head>   
 <body>
+<?php include_once("analyticstracking.php") ?>
     <div class="overlay"></div>
     <nav class="navbar"></nav>
     <div class="container">

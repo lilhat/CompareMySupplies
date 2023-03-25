@@ -54,9 +54,7 @@ const createNav = () => {
                     <div class="login-logout-popup hide">
                         <p class="account-info"></p>
                         <button class="btn" id="user-btn"></button>
-                        <form action="/signin">
-                            <button class="btn" id="user-btn" href="/signup"></button>
-                        </form>
+                        <button class="btn" id="user-btn"></button>
                     </div>
                 </a>
             </div>
@@ -76,7 +74,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Building & Hardware</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/building_hardware">Building & Hardware</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/building_hardware">Building & Hardware</a></h1>
                     <li>
                         <a href="" class="nested">Building Supplies</a>
                         <ul class="sub-menu level-3">
@@ -145,7 +143,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Heating & Plumbing</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/heating_plumbing">Heating & Plumbing</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/heating_plumbing">Heating & Plumbing</a></h1>
                     <li>
                         <a href="" class="nested">Radiators</a>
                         <ul class="sub-menu level-3">
@@ -227,7 +225,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Home & Furniture</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/home_furniture">Home & Furniture</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/home_furniture">Home & Furniture</a></h1>
                     <li>
                         <a href="" class="nested">Furniture</a>
                         <ul class="sub-menu level-3">
@@ -320,7 +318,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Kitchen & Bathroom</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/kitchen_bathroom">Kitchen & Bathroom</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/kitchen_bathroom">Kitchen & Bathroom</a></h1>
                     <li>
                         <a href="" class="nested">Kitchen</a>
                         <ul class="sub-menu level-3">
@@ -386,7 +384,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Lighting & Electrical</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/lighting_electrical">Lighting & Electrical</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/lighting_electrical">Lighting & Electrical</a></h1>
                     <li>
                         <a href="" class="nested">Indoor lights</a>
                         <ul class="sub-menu level-3">
@@ -473,7 +471,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Outdoor & Garden</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/outdoor_garden">Outdoor & Garden</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/outdoor_garden">Outdoor & Garden</a></h1>
                     <li>
                         <a href="" class="nested">Garden tools</a>
                         <ul class="sub-menu level-3">
@@ -549,7 +547,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Painting & Decorating</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/painting_decorating">Painting & Decorating</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/painting_decorating">Painting & Decorating</a></h1>
                     <li>
                         <a href="" class="nested">Interior paint</a>
                         <ul class="sub-menu level-3">
@@ -628,7 +626,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Tiling & Flooring</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/tiling_flooring">Tiling & Flooring</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/tiling_flooring">Tiling & Flooring</a></h1>
                     <li>
                         <a href="" class="nested">Flooring</a>
                         <ul class="sub-menu level-3">
@@ -689,7 +687,7 @@ const createNav = () => {
                 <li>
                     <a href="" class="nested">Tools & Equipment</a>
                     <ul class="sub-menu level-2">
-                    <h1 class="category-title"><a href="/main_categories/tools_equipment">Tools & Equipment</a></h1>
+                    <h1 class="category-title"><a href="/main-categories/tools_equipment">Tools & Equipment</a></h1>
                     <li>
                         <a href="" class="nested">Power tools</a>
                         <ul class="sub-menu level-3">
@@ -844,9 +842,7 @@ const createNav = () => {
                     <div class="login-logout-popup hide">
                         <p class="account-info"></p>
                         <button class="btn" id="user-btn"></button>
-                        <form action="/signup">
-                            <button class="btn" id="user-btn" href="/signup"></button>
-                        </form>
+                        <button class="btn" id="user-btn"></button>
                     </div>
                 </a>
 
@@ -858,7 +854,7 @@ const createNav = () => {
         <div class="menu-main">
             <ul class="links-container">
                 <li class="link-item">
-                    <a href="/main_categories/building_hardware">Building & <br> Hardware</a>
+                    <a href="/main-categories/building_hardware">Building & <br> Hardware</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/building_hardware/building_supplies">Building Supplies</a></li>
@@ -914,7 +910,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/heating_plumbing">Heating & <br> Plumbing</a>
+                    <a href="/main-categories/heating_plumbing">Heating & <br> Plumbing</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/heating_plumbing/radiators">Radiators</a></li>
@@ -981,7 +977,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/home_furniture"><span class="first-line">Home & </span><br> Furniture</a>
+                    <a href="/main-categories/home_furniture"><span class="first-line">Home & </span><br> Furniture</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/home_furniture/furniture">Furniture</a></li>
@@ -1058,7 +1054,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/kitchen_bathroom"><span class="first-line-2">Kitchen & </span><br> Bathroom</a>
+                    <a href="/main-categories/kitchen_bathroom"><span class="first-line-2">Kitchen & </span><br> Bathroom</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/kitchen_bathroom/kitchen">Kitchen</a></li>
@@ -1111,7 +1107,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/lighting_electrical">Lighting & <br><span class="first-line-3"> Electrical </span></a>
+                    <a href="/main-categories/lighting_electrical">Lighting & <br><span class="first-line-3"> Electrical </span></a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/lighting_electrical/indoor_lights">Indoor lights</a></li>
@@ -1182,7 +1178,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/outdoor_garden">Outdoor & <br><span class="first-line-4"> Garden </span></a>
+                    <a href="/main-categories/outdoor_garden">Outdoor & <br><span class="first-line-4"> Garden </span></a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/outdoor_garden/garden_tools">Garden tools</a></li>
@@ -1260,7 +1256,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/painting_decorating"><span class="first-line-3">Painting & </span><br> Decorating</a>
+                    <a href="/main-categories/painting_decorating"><span class="first-line-3">Painting & </span><br> Decorating</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/painting_decorating/interior_paint">Interior paint</a></li>
@@ -1323,7 +1319,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/tiling_flooring"><span class="first-line-3">Tiling & </span><br> Flooring</a>
+                    <a href="/main-categories/tiling_flooring"><span class="first-line-3">Tiling & </span><br> Flooring</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/tiling_flooring/flooring">Flooring</a></li>
@@ -1371,7 +1367,7 @@ const createNav = () => {
                     </ul>
                 </li>
                 <li class="link-item">
-                    <a href="/main_categories/tools_equipment"><span class="first-line-5">Tools & </span><br> Equipment</a>
+                    <a href="/main-categories/tools_equipment"><span class="first-line-5">Tools & </span><br> Equipment</a>
                     <ul class="dropdown-content">
                         <ul class="content">
                             <li class="dropdown-header"><a href="/categories/tools_equipment/power_tools">Power tools</a></li>
@@ -1452,6 +1448,10 @@ const createNav = () => {
             </ul>
             
         </div>
+        <div class="success-box">
+            <img src="images/success.png" class="success-img" alt="">
+            <p class="success-msg">Success message</p>
+        </div>
     `;
 
     
@@ -1486,6 +1486,18 @@ userImageButtonList[1].addEventListener('click', () => {
     userPopupList[1].classList.toggle('hide');
 })
 
+function showSuccess(message) {
+    const alertBox = document.querySelector('.success-box');
+    const msg = alertBox.querySelector('.success-msg');
+  
+    msg.textContent = message;
+    alertBox.classList.add('show');
+  
+    setTimeout(() => {
+      alertBox.classList.remove('show');
+    }, 2500);
+}
+
 // nav dropdown
 
 window.onload = () => {
@@ -1502,20 +1514,33 @@ window.onload = () => {
                 var j = 0
                 for (let i = 0; i < popupTextList.length; i++) {
                     popupTextList[i].innerHTML = 'Logged in as ' + name; // Replace 'name' with the actual user's name
-                    actionBtnList[j].innerHTML = 'Log Out';
+                    actionBtnList[j].innerHTML = 'Manage Account';
                     actionBtnList[j].addEventListener('click', () => {
-                        location.href = '';
-                        signOut(auth).then(() => {
-                            showAlert("Signed out successfully");
-                            isLoggedIn = false;
-                        }).catch((error) => {
-                            showAlert(error.message);
-                        });
-                    });
+                        location.href = '/account';
+                    })
                     j = i + 2;
                 }
-                actionBtnList[1].style.visibility = 'hidden';
-                actionBtnList[3].style.visibility = 'hidden';
+                actionBtnList[1].style.visibility = 'visbile'
+                actionBtnList[1].innerHTML = 'Log Out'
+                actionBtnList[1].addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        showSuccess("Signed out successfully");
+                        isLoggedIn = false;
+                    }).catch((error) => {
+                        showAlert(error.message);
+                    });
+                })
+                actionBtnList[3].style.visibility = 'visbile'
+                actionBtnList[3].innerHTML = 'Log Out'
+                actionBtnList[3].addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        showSuccess("Signed out successfully");
+                        isLoggedIn = false;
+                    }).catch((error) => {
+                        showAlert(error.message);
+                    });
+                })
+
             });
         } else {
             isLoggedIn = false;
@@ -1529,7 +1554,13 @@ window.onload = () => {
                 j = i + 2;
             }
             actionBtnList[1].innerHTML = 'Create an account';
+            actionBtnList[1].addEventListener('click', () => {
+                location.href ='/signup';
+            })
             actionBtnList[3].innerHTML = 'Create an account';
+            actionBtnList[3].addEventListener('click', () => {
+                location.href ='/signup';
+            })
         }
     });
 

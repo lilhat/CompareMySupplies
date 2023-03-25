@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
+    <title>Sign Up</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/ce98f0dc47.js" crossorigin="anonymous"></script>
@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<?php include_once("analyticstracking.php") ?>
     <div class="container">
         <nav class="navbar"></nav>
     </div>
@@ -28,12 +29,12 @@
                 <input type="email" class="input-box" id="email" placeholder="Email">
                 <input type="password" class="input-box" id="pwd" placeholder="Password">
                 <input type="password" class="input-box" id="confirm-pwd" placeholder="Confirm Password">
-                <p><span><input type="checkbox" id="terms-and-cond"></span> I agree to the <span class="link"><a href="#">terms of services</a></span></p>
+                <p><span><input type="checkbox" id="terms-and-cond"></span> I agree to the <span class="link"><a href="/tos">terms of services</a></span></p>
                 <button type="button" id="signUp" name="signUp" class="signup-btn">Register</button>
                 <hr>
                 <p class="or">OR</p>
                 <button type="button" class="facebook-btn">Login with Facebook</button>
-                <p>Already have an account? <a href="signin.php">Sign in here</a></p>
+                <p>Already have an account? <a href="/signin">Sign in here</a></p>
             </form>
 
         </div>
@@ -42,7 +43,6 @@
     <footer></footer>
     <script type="module" src="/js/nav.js"></script>
     <script type="module" src="/js/firebase.js"></script>
-
     <script src="/js/footer.js"></script>
 </body>
 

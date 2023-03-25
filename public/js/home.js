@@ -15,3 +15,29 @@ productContainers.forEach((item, i) => {
         item.scrollLeft -= containerWidth / 2;
     })
 })
+
+const urlParams = new URLSearchParams(window.location.search);
+const successMessage = urlParams.get('success');
+
+if (successMessage == "signin") {
+  showSuccess("Signed in successfully");
+}
+if (successMessage == "signup") {
+    showSuccess("Please verify your email");
+}
+if (successMessage == "delete"){
+    showSuccess("Account deleted")
+}
+
+function showSuccess(message) {
+    const successBox = document.querySelector('.success-box');
+    const successMsg = successBox.querySelector('.success-msg');
+  
+    successMsg.textContent = message;
+    successBox.classList.add('show');
+  
+    setTimeout(() => {
+      successBox.classList.remove('show');
+    }, 2500);
+}
+  

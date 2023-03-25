@@ -60,7 +60,7 @@ $maincategory = str_replace("''", "'", $maincategory);
 
 <head>
     <meta charset="utf-8" />
-    <title><?php echo $finalcategory ?></title>
+    <title>Compare <?php echo $finalcategory ?></title>
     <script>
         document.title = document.title.toLowerCase().replace(/\b(\w)/g, function(s) {
             return s.toUpperCase();
@@ -80,6 +80,7 @@ $maincategory = str_replace("''", "'", $maincategory);
 </head>
 
 <body>
+<?php include_once("analyticstracking.php") ?>
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <section class="product">
@@ -119,29 +120,29 @@ $maincategory = str_replace("''", "'", $maincategory);
                     <?php $maincategory = str_replace(' ', '_', str_replace('&', '+', $maincategory)); ?>
                     <div class="pagination">
                         <?php if ($current_page > 1) : ?>
-                            <a href="/<?php echo isset($maincategory) ? 'main_categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo $current_page - 1; ?>" class="prev">&laquo; Prev</a>
+                            <a href="/<?php echo isset($maincategory) ? 'main-categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo $current_page - 1; ?>" class="prev">&laquo; Prev</a>
                         <?php endif; ?>
                         <?php
                             $start_page = max(1, $current_page - 2);
                             $end_page = min($start_page + 4, ceil($total_products / $page_size));
                         ?>
                         <?php if ($start_page > 1) : ?>
-                            <a href="/<?php echo isset($maincategory) ? 'main_categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/1">1</a>
+                            <a href="/<?php echo isset($maincategory) ? 'main-categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/1">1</a>
                             <?php if ($start_page > 2) : ?>
                                 <span>...</span>
                             <?php endif; ?>
                         <?php endif; ?>
                         <?php for ($i = $start_page; $i <= $end_page; $i++) : ?>
-                            <a href="/<?php echo isset($maincategory) ? 'main_categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo $i; ?>" class="<?php echo $i == $current_page ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                            <a href="/<?php echo isset($maincategory) ? 'main-categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo $i; ?>" class="<?php echo $i == $current_page ? 'active' : ''; ?>"><?php echo $i; ?></a>
                         <?php endfor; ?>
                         <?php if ($end_page < ceil($total_products / $page_size)) : ?>
                             <?php if ($end_page < ceil($total_products / $page_size) - 1) : ?>
                                 <span>...</span>
                             <?php endif; ?>
-                            <a href="/<?php echo isset($maincategory) ? 'main_categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo ceil($total_products / $page_size); ?>"><?php echo ceil($total_products / $page_size); ?></a>
+                            <a href="/<?php echo isset($maincategory) ? 'main-categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo ceil($total_products / $page_size); ?>"><?php echo ceil($total_products / $page_size); ?></a>
                         <?php endif; ?>
                         <?php if ($current_page < ceil($total_products / $page_size)) : ?>
-                            <a href="/<?php echo isset($maincategory) ? 'main_categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo $current_page + 1; ?>" class="next-page">Next Page &raquo;</i></a>
+                            <a href="/<?php echo isset($maincategory) ? 'main-categories/' . $maincategory . '/' : 'categories/'; ?><?php echo isset($subcategory) ? $subcategory . '/' : ''; ?><?php echo isset($category) ? $category . '/' : ''; ?>page/<?php echo $current_page + 1; ?>" class="next-page">Next Page &raquo;</i></a>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

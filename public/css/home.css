@@ -9,7 +9,7 @@ form {
     width: 100vw;
     height: calc(100vh - 400px);
     min-height: 60vh;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)),url('../images/header-background.png');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)),url('../images/header-background-building-materials.png');
     background-size: cover;
     display: flex;
     justify-content: center;

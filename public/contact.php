@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title><?php echo $id ?></title>
+    <title>Contact</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<?php include_once("analyticstracking.php") ?>
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <div class="container">
@@ -26,26 +27,26 @@
                     <div class="contact-wrapper">
                         <div id="contact-form">
 
-                            <form id="contact-form-id" class="contact-form-class" method="post" action="contact-form-process.php">
+                            <form id="contact-form-id" class="contact-form-class" method="post" action="send-email.php">
 
                                 <div class="contact-form-group">
                                     <label for="Name" class="contact-label">Your name</label>
                                     <div class="contact-input-group">
-                                        <input type="text" id="Name" name="Name" class="contact-form-control" required>
+                                        <input type="text" id="name" name="name" class="contact-form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="contact-form-group">
                                     <label for="Email" class="contact-label">Your email address</label>
                                     <div class="contact-input-group">
-                                        <input type="email" id="Email" name="Email" class="contact-form-control" required>
+                                        <input type="email" id="email" name="email" class="contact-form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="contact-form-group">
                                     <label for="Message" class="contact-label">Your message</label>
                                     <div class="contact-input-group">
-                                        <textarea id="Message" name="Message" class="contact-form-control" rows="6" maxlength="3000" required></textarea>
+                                        <textarea id="message" name="message" class="contact-form-control" rows="6" maxlength="3000" required></textarea>
                                     </div>
                                 </div>
 

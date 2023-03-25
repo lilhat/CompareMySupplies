@@ -9,6 +9,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendEmailVerification,
   signOut
 } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
 import {
@@ -84,8 +85,13 @@ if (typeof signUp !== 'undefined') {
         })
           .then(() => {
             // Data saved successfully!
+            sendEmailVerification(auth.currentUser)
+              .then(() => {
+                // Email verification sent!
+                // ...
+              });
             isLoggedIn = true;
-            window.location.replace("/home");
+            window.location.replace("/home?success=signup");
           })
           .catch((error) => {
             // The write failed...
@@ -95,8 +101,9 @@ if (typeof signUp !== 'undefined') {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
-        showAlert(errorMessage);
+        if(errorMessage == "Firebase: Error (auth/email-already-in-use)."){
+          showAlert("Email already in use");
+        }
       });
 
   });
@@ -134,18 +141,21 @@ if (typeof signIn !== 'undefined') {
             .then(() => {
                 // Data saved successfully!
                 isLoggedIn = true;
-                window.location.replace("/home");
-  
+                window.location.replace("/home?success=signin");
             })
             .catch((error) => {
-                // The write failed...
-                showAlert(error);
+              if(errorMessage == "Firebase: Error (auth/user-not-found)."){
+                showAlert("User not found");
+              }
             });
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        showAlert(errorMessage);
+        console.log(errorMessage);
+        if(errorMessage == "Firebase: Error (auth/user-not-found)."){
+          showAlert("User not found");
+        }
     });
   
   
@@ -197,6 +207,7 @@ function showAlert(message) {
     alertBox.classList.remove('show');
   }, 2500);
 }
+
 
 
 

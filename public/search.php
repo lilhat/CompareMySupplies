@@ -38,6 +38,7 @@ if (isset($_GET['query'])) {
 </head>
 
 <body>
+<?php include_once("analyticstracking.php") ?>
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <section class="product">

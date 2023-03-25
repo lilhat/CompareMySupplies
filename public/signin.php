@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
+    <title>Sign In</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<?php include_once("analyticstracking.php") ?>
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <div class="signup-container">
@@ -23,7 +24,7 @@
             <p class="alert-msg">Error message</p>
         </div>
         <img src="images/loader.gif" class="loader" alt="">
-        <div class="sign-up-form">
+        <div class="sign-in-form">
             <img src="images/user.png">
             <h1>Sign In</h1>
             <form action="/home" method="post">
@@ -34,7 +35,7 @@
                 <hr>
                 <p class="or">OR</p>
                 <button type="button" class="facebook-btn">Login with Facebook</button>
-                <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
+                <p>Don't have an account? <a href="/signup">Sign up here</a></p>
             </form>
 
         </div>

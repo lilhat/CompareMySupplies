@@ -1,12 +1,22 @@
 /* Sign Up Styles */
-.sign-up-form {
+.sign-in-form {
     width:300px;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
     background: #fff;
     padding: 20px;
     margin: 8% auto 0;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 152px;
+}
+
+.sign-up-form {
+    width:300px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    background: #fff;
+    padding: 13px;
+    margin: 8% auto 0;
+    text-align: center;
+    margin-bottom: 51px;
 }
 
 .input-box {
@@ -18,12 +28,12 @@
     outline: none;
 }
 
-.sign-up-form h1{
+.sign-up-form h1, .sign-in-form h1{
     color: #333;
     margin-bottom: 30px;
 }
 
-.sign-up-form button{
+.sign-up-form button, .sign-in-form button{
     color:#fff;
     width: 100%;
     padding: 10px;
@@ -35,20 +45,20 @@
     cursor: pointer;
 }
 
-.sign-up-form a {
+.sign-up-form a, .sign-in-form a {
     text-decoration: none;
 }
 
-.sign-up-form hr {
+.sign-up-form hr, .sign-in-form hr {
     margin-top: 20px;
     width: 80%;
 }
-.sign-up-form .or {
+.sign-up-form .or, .sign-in-form .or {
     background: #fff;
     width: 30px;
     margin: -19px auto 10px;
 }
-.sign-up-form img {
+.sign-up-form img, .sign-in-form img {
     width: 70px;
     margin-top: -50px;
 }
@@ -56,8 +66,14 @@
 .signup-btn {
     background-color: #f7931e;
 }
+
 .facebook-btn {
     background-color: #3b5998;
+    display: none;
+}
+
+.or {
+    display: none;
 }
 
 input[type=submit]{
@@ -74,7 +90,7 @@ input[type=submit]{
 
 @media (max-width: 768px) {
 
-    .sign-up-form{
+    .sign-up-form, .sign-in-form{
         zoom: 80%;
     }
 }

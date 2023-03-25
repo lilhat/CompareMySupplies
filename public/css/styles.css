@@ -92,6 +92,7 @@ body {
     justify-content: center;
     position: relative;
     padding-top: 50px;
+    margin-bottom: 112px;
 }
 
 .profile-image-wrapper img {
@@ -105,13 +106,14 @@ body {
     padding-top: 20px;
     padding-left: 30px;
     padding-bottom: 150px;
+    margin-bottom: 132px;
 }
 
 .profile-content-wrapper h1 {
     color: #f7931e;
 }
 
-.profile-content-wrapper b1 {
+.profile-content-wrapper, .message-content-wrapper b1 {
     font-size: 20px;
 }
 
@@ -158,6 +160,71 @@ body {
     padding-bottom: 40px;
 }
 
+.account-content-wrapper {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 150px;
+    margin-bottom: 211px;
+}
+
+.text-wrapper{
+    display: flex;
+    top: 101px;
+    position: relative;
+}
+
+.account-details{
+    zoom: 140%;
+    width: 5px;
+    position: relative;
+    display: contents;
+}
+
+.account-content-wrapper input{
+    pointer-events: none;
+    opacity: 0.7;
+    zoom: 140%;
+}
+
+.account-content-wrapper, .message-content-wrapper h1 {
+    color: #f7931e;
+}
+
+.account-content-wrapper button {
+    width: fit-content;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #f7931e;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: 0.3s ease-in-out;
+    color: black;
+}
+
+.success-text{
+    width: 500px;
+    display: block;
+}
+
+.message-content-wrapper{
+    margin-left: 150px;
+    padding: 50px;
+    margin-bottom: 500px;
+}
+
+.notfound-content-wrapper{
+    display: block;
+    left: 722px;
+    position: relative;
+    margin-top: 150px;
+    padding: 50px;
+    margin-bottom: 375px;
+}
+
 
 @media (max-width: 768px) {
     body{
@@ -172,6 +239,10 @@ body {
 
     .two-column-wrapper{
         zoom: 67%;
+    }
+
+    .profile-content-wrapper{
+        padding-bottom: 64px;
     }
     .profile-image-wrapper img{
         display: none;
@@ -192,4 +263,28 @@ body {
         width: 60%;
     }
 
+    .message-content-wrapper{
+        padding: 6px;
+    }
+
+    .text-wrapper{
+        top: 128px;
+    }
+
+    .account-details{
+        zoom: 155%;
+        width: 5px;
+        position: relative;
+        display: contents;
+        padding-bottom: 5px;
+    }
+
+    .account-content-wrapper{
+        zoom: 120%;
+    }
+
+    .notfound-content-wrapper{
+        left: 0;
+        margin-bottom: 260px;
+    }
 }

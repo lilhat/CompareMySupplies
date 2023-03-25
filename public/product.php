@@ -28,6 +28,7 @@
             $category = $main['category'];
             $subcategory = $main['sub_category'];
             $maincategory = $main['main_category'];
+            $description = $main['description'];
         endforeach;
     }
 
@@ -43,7 +44,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title><?php echo $name?></title>
+    <title>Compare <?php echo $name?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -56,7 +57,7 @@
 
 </head>   
 <body>
-
+<?php include_once("analyticstracking.php") ?>
     <nav class="navbar"></nav>
     <div class="overlay"></div>
     <div class="return-links">
@@ -78,6 +79,8 @@
             <h2 class="product-brand"><?php echo $name?></h2>
             <span class="compare-price">Compare prices from </span>
             <span class="product-price"> £<?php echo number_format($price,2)?></span>
+            <br><br>
+            <span class="description"><?php echo $description ?></span> 
         </div>
     
     </section>

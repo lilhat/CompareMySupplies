@@ -4,6 +4,7 @@
 }
 #contact-form {
     display:block;
+    zoom: 93%;
 }
 
 .contact-form {
@@ -20,6 +21,7 @@
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     max-width: 100%;
+    
 }
 
 .contact-form-group {

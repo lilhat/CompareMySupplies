@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title><?php echo $id?></title>
+    <title>About</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
 
 </head>   
 <body>
+<?php include_once("analyticstracking.php") ?>
     <div class="overlay"></div>
     <nav class="navbar"></nav>
     <div class="container">
@@ -28,7 +29,13 @@
                 </div>
                 <div class="profile-content-wrapper">
                     <h1>About Us</h1>
-                    <b1 class="about-paragraph">Welcome to our price comparison website for construction supplies.<br><br>My name is Tahlil, and I am the founder of this website. As a final year computer science student, I wanted to create a platform that would help people find the best deals on everything you would need for construction.<br><br> To achieve this goal, I have teamed up with industry experts who have years of experience in the field. Together, we have developed a platform that provides accurate and up-to-date pricing information for a wide range of construction materials and supplies.<br><br> Our mission is to help you save time and money while ensuring that you get the best value for your investment. Thank you for choosing our website, and we hope you find our service helpful.</b1>
+                    <b1 class="about-paragraph">Welcome to our price comparison website for construction supplies.<br><br>
+                    My name is Tahlil, and I am the founder and sole developer of this website. As a final year computer science student, 
+                    I wanted to create a platform that would help people find the best deals on everything you would need for construction.<br><br>
+                     To achieve this goal, I have teamed up with industry experts who have years of experience in the field. 
+                     Together, we have developed a platform that provides accurate and up-to-date pricing information for a wide range of construction materials and supplies.
+                     <br><br> Our mission is to help you save time and money while ensuring that you get the best value for your investment. 
+                     Thank you for choosing our website, and we hope you find our service helpful.<br><br><strong>Please Note: The website is still in early stages of development, if you encounter any bugs kindly report them through our Contact Us page.</strong></b1>
                     <p class="signature">~ CompareMySupplies Team</p>
                 </div>
             </div>
