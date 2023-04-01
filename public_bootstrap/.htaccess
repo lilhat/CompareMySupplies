@@ -1,0 +1,74 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+RewriteRule ^home(/.*)?$ /index.php$1 [L]
+
+RewriteRule ^about$ /about.php [L]
+
+
+# Pagination
+RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&subcategory=$2&category=$3&page=$4 [QSA,L,B]
+
+# Pagination 2
+RewriteRule ^categories/([^/]+)/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&subcategory=$2&page=$3 [QSA,L,B]
+
+# Pagination 3
+RewriteRule ^categories/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&page=$2 [QSA,L,B]
+
+# Level 3 category
+RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)/?$ /categories.php?maincategory=$1&subcategory=$2&category=$3 [QSA,L,B]
+
+# Level 2 category
+RewriteRule ^categories/([^/]+)/([^/]+)/?$ /categories.php?maincategory=$1&subcategory=$2 [QSA,L,B]
+
+# Level 4 category
+RewriteRule ^categories/([^/]+)/?$ /categories.php?maincategory=$1 [QSA,L,B]
+
+
+
+
+
+
+# Rewrite product.php?product= as product/NAME
+RewriteRule ^product/([^/]+)$ /product.php?product=$1 [NE,QSA,L,B]
+
+RewriteCond %{QUERY_STRING} ^query=([^&]+)
+RewriteRule ^search/$ /search/%1? [L,R=301]
+
+RewriteRule ^search/([^/]+)/?$ /search.php?query=$1 [L]
+RewriteRule ^search/$ /search.php [L]
+
+# Rewrite search
+RewriteRule ^search/([^/]+)/page/(\d+)/?$ /search.php?query=$1&page=$2 [NE,QSA,L,B]
+
+# Rewrite signin
+RewriteRule ^signin$ /signin.php [L]
+
+# Rewrite signup
+RewriteRule ^signup$ /signup.php [L]
+
+# Rewrite contact
+RewriteRule ^contact$ /contact.php [L]
+
+# Rewrite faq
+RewriteRule ^faq$ /faq.php [L]
+
+# Rewrite tos
+RewriteRule ^tos$ /tos.php [L]
+
+# Rewrite privacy
+RewriteRule ^privacy$ /privacy.php [L]
+
+# Rewrite account
+RewriteRule ^account$ /account.php [L]
+
+
+# Rewrite contact process
+RewriteRule ^contact-process$ /contact-process.php [L]
+
+# Rewrite contact process
+RewriteRule ^contact-fail$ /contact-fail.php [L]
+
+ErrorDocument 404 /not-found.php
+
