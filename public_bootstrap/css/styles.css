@@ -3,6 +3,10 @@ body {
     font-weight: 300;
 }
 
+h2 {
+    text-transform: capitalize;
+}
+
 p {
     margin-bottom: 0rem;
     margin-top: -15px !important;
@@ -392,7 +396,7 @@ footer {
 
     footer {
         font-size: 13px;
-        align-items: flex-start!important;
+        align-items: flex-start !important;
     }
 
     #mobile-navbar {
@@ -492,7 +496,7 @@ footer {
     }
 
     .btn-link {
-        min-width: 80px!important;
+        min-width: 80px !important;
         width: 85px;
         height: 48px;
     }
@@ -636,7 +640,7 @@ footer {
     }
 
     .py-3 {
-        padding-bottom: 0rem!important;
+        padding-bottom: 0rem !important;
     }
 
     footer ul {
@@ -670,26 +674,26 @@ footer {
         position: relative;
         margin-bottom: 70px;
         width: 100vw;
-        padding-left: 10px!important;
-        padding-right: 10px!important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
     }
 
-    #table-img{
-        width: 65px!important;
-        height: 30px!important;
+    #table-img {
+        width: 65px !important;
+        height: 30px !important;
     }
 
     #table-btn {
-        font-size: 8px!important;
+        font-size: 8px !important;
         height: auto;
     }
 
     .table>:not(caption)>*>* {
-        padding: 1rem 0.4rem!important;
+        padding: 1rem 0.4rem !important;
     }
 
     .navbar-brand {
-        left: 19%;
+        left: 17%;
         position: relative;
         margin-left: 0;
     }
@@ -717,8 +721,8 @@ footer {
     }
 
     #nav-form {
-        right: 39px;
-    position: relative;
+        margin-right: auto;
+        position: relative;
     }
 
 
