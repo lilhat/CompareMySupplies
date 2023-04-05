@@ -81,11 +81,15 @@ $maincategory = str_replace("''", "'", $maincategory);
 </head>
 
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
+    <?php include_once("analyticstracking.php") ?>
+    <header class="mobile-header"></header>
+    <div class="overlay"></div>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
+    </header>
 
     <!-- Boxes -->
     <section class="p-5" id="category-boxes">
@@ -183,12 +187,16 @@ $maincategory = str_replace("''", "'", $maincategory);
 
     </section>
 
-
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top"></footer>
+    </div>
 
     <!-- <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.js"></script> -->
     <!-- MDB -->
     <script type="text/javascript" src="/vendor/mdbootstrap/js/mdb.min.js"></script>
     <script src="/js/nav.js"></script>
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/footer.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'></script>
 
     <!-- <script src="/js/search.js"></script> -->

@@ -47,11 +47,15 @@ if (isset($_GET['query'])) {
 </head>
 
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
+    <?php include_once("analyticstracking.php") ?>
+    <header class="mobile-header"></header>
+    <div class="overlay"></div>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
+    </header>
 
     <!-- Boxes -->
     <section class="p-5" id="category-boxes">
@@ -60,12 +64,12 @@ if (isset($_GET['query'])) {
                 <h2 class="mb-3" id="title">Search Result</h2>
             </div>
             <div class="d-flex justify-content-center align-items-center h-100">
-            <?php if ($prods && $search_query) : ?>
-                <div class="row text-center">
-                    <?php foreach ($prods as $prod) : ?>
-                        <?php $comps = $newObj1->get_First_Comparison($prod['id']) ?>
-                        <?php $total_products = $prod['total_count']; ?>
-                        <?php foreach ($comps as $comp) : ?>
+                <?php if ($prods && $search_query) : ?>
+                    <div class="row text-center">
+                        <?php foreach ($prods as $prod) : ?>
+                            <?php $comps = $newObj1->get_First_Comparison($prod['id']) ?>
+                            <?php $total_products = $prod['total_count']; ?>
+                            <?php foreach ($comps as $comp) : ?>
                                 <div class="col-lg-3 col-md-6 mb-4 p-5">
                                     <div class="card bg-light text-dark" style="width: 18rem;">
                                         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
@@ -135,7 +139,7 @@ if (isset($_GET['query'])) {
             <?php endif; ?>
 
         <?php elseif ($search_query) : ?>
-            <div class="row text-center">  
+            <div class="row text-center">
                 <h2 class="mb-3 pt-5">No results found for <span class="search-result"><?php echo $search_query ?></span></h2>
             </div>
         <?php else : ?>
@@ -147,12 +151,16 @@ if (isset($_GET['query'])) {
 
     </section>
 
-
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top"></footer>
+    </div>
 
     <!-- <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.js"></script> -->
     <!-- MDB -->
     <script type="text/javascript" src="/vendor/mdbootstrap/js/mdb.min.js"></script>
     <script src="/js/nav.js"></script>
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/footer.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'></script>
 
     <!-- <script src="/js/search.js"></script> -->

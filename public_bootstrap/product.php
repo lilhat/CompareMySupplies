@@ -42,7 +42,7 @@ $extras = $newObj4->get_Top();
 
 <head>
     <meta charset="utf-8" />
-    <title>UK's Top Building Materials And Supplies Comparison Site | Compare My Supplies</title>
+    <title>Compare <?php echo $name ?></title>
     <meta name="Description" content="Find and compare the best deals on building materials and supplies. 
     Compare prices from top UK suppliers to find the right products for your project. Save time and money with our easy-to-use platform.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +55,8 @@ $extras = $newObj4->get_Top();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/owl_carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/owl_carousel/owl.theme.default.css">
     <!-- MDB -->
     <link href="/vendor/mdbootstrap/css/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/styles.css">
@@ -63,13 +65,17 @@ $extras = $newObj4->get_Top();
 </head>
 
 <body>
+    <?php include_once("analyticstracking.php") ?>
+    <header class="mobile-header"></header>
+    <div class="overlay"></div>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
+    </header>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
-    <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
-
-    <div class="bg-primary">
+    <div class="bg-primary" id="links-section">
         <div class="container py-4">
             <!-- Breadcrumb -->
             <nav class="d-flex">
@@ -88,7 +94,7 @@ $extras = $newObj4->get_Top();
 
     <section class="py-5" id="product-section">
         <div class="container">
-            <div class="row gx-5">
+            <div class="row gx-5" id="image-section">
                 <aside class="col-lg-6" id="image-col">
                     <div class="border rounded-4 mb-3 d-flex justify-content-center" id="main-image">
                         <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image">
@@ -104,41 +110,43 @@ $extras = $newObj4->get_Top();
                     <!-- gallery-wrap .end// -->
                 </aside>
                 <main class="col-lg-6" id="product-column">
-                    <div class="ps-lg-3">
+                    <div class="ps-lg-3" id="product-details">
                         <div class="small mb-1" id="category-text"><?php echo $category ?></div>
                         <h1 class="display-6 fw-bolder text-dark"><?php echo $name ?></h1>
                         <div class="fs-5 mb-5">
-                            <span>Compare prices from <span class="text-bold">£<?php echo number_format($price, 2) ?></span></span>
+                            <span>Compare prices from <span class="fw-bold">£<?php echo number_format($price, 2) ?></span></span>
                         </div>
                         <!-- Table -->
-                        <table class="table table-hover align-middle mb-0 bg-white">
-                            <tbody>
-                                <?php foreach ($comps as $key => $comp) : ?>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms-3">
-                                                    <p class="text-muted mb-0"><?php echo $comp['name'] ?></p>
+                        <div class="ps-lg-3">
+                            <table class="table table-hover align-middle mb-0 bg-white">
+                                <tbody>
+                                    <?php foreach ($comps as $key => $comp) : ?>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ms-3">
+                                                        <p class="text-muted mb-0"><?php echo $comp['name'] ?></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="fs-6 fw-bold mb-1">£<?php echo number_format($comp['price'], 2) ?></p>
-                                        </td>
-                                        <td>
-                                            <img src="/images/suppliers/<?php echo $comp['source'] ?>.png" alt="" style="width: 100px; height: 45px" class="rounded-circle" />
-                                        </td>
-                                        <td>
-                                            <a href="<?php echo $comp['link'] ?>" target="_blank">
-                                                <button type="button" class="btn btn-link btn-outline-orange btn-sm btn-rounded">
-                                                    Go to supplier
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                            </td>
+                                            <td>
+                                                <p class="fs-6 fw-bold mb-1">£<?php echo number_format($comp['price'], 2) ?></p>
+                                            </td>
+                                            <td>
+                                                <img src="/images/suppliers/<?php echo $comp['source'] ?>.png" alt="" style="width: 100px; height: 45px" class="rounded-circle" id="table-img" />
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo $comp['link'] ?>" target="_blank">
+                                                    <button type="button" id="table-btn" class="btn btn-link btn-outline-orange btn-sm btn-rounded">
+                                                        Go to supplier
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </main>
                 <h3 class="main pt-5">Product Details</h3>
@@ -149,16 +157,56 @@ $extras = $newObj4->get_Top();
     </section>
 
     <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <h2 class="mb-3" id="title">Top Sellers</h2>
+                </div>
+                <div class="owl-carousel owl-theme">
+                    <?php $comps = $newObj->get_Top() ?>
+                    <?php foreach ($comps as $comp) : ?>
+                        <?php $extras = $newObj2->get_First_Comparison($comp['id']) ?>
+                        <?php foreach ($extras as $extra) : ?>
+                            <div class="item">
+                                <div class="col-lg-3 col-md-6 mb-4 p-5" id="carousel-products">
+                                    <div class="card bg-light text-dark" style="width: 18rem;">
+                                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                                            <a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $comp['name'])))) ?>">
+                                                <img src="<?php echo $comp['image'] ?>" class="card-img-top w-100" alt="materials-image">
+                                            </a>
+                                        </div>
 
+                                        <div class="card-body text-center">
+                                            <p class="card-text"><a href="/get-category.php?category=<?php echo urlencode(str_replace('/', '~', $comp['category'])) ?>" id="text-link"><?php echo $comp['category'] ?></a></p>
+                                            <h5 class="card-title mb-3"><a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $comp['name'])))) ?>" id="text-link"><?php echo $comp['name'] ?></a></h5>
+                                            <p class="card-text position-absolute" id="card-source">Cheapest from <a href="#" id="text-link"><?php echo $extra['source'] ?></a></p>
+                                            <h5 class="card-text top-50 position-absolute" id="card-price">£<?php echo number_format($extra['price'], 2) ?></h5>
+                                            <a href="/product/<?php echo urlencode(str_replace("'", "''", str_replace('+', '--', str_replace('/', '~', $comp['name'])))) ?>" class="btn btn-warning position-absolute translate-middle" id="compare-btn">Compare</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
     </section>
 
-
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top"></footer>
+    </div>
 
 
     <!-- <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.js"></script> -->
     <!-- MDB -->
     <script type="text/javascript" src="/vendor/mdbootstrap/js/mdb.min.js"></script>
     <script src="/js/nav.js"></script>
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/owl_carousel/owl.carousel.js"></script>
+    <script src="/js/carousel.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'></script>
 
     <!-- <script src="/js/search.js"></script> -->
