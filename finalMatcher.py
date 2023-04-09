@@ -44,7 +44,7 @@ def fuzzy_match(product_name, row_name, product_price, row_price):
     num_weight = 0
     word_weight = 0.8
     price_weight = 0.2
-    # calculate the partial ratio of the remaining parts of the names
+    # calculate the token set ratio of the remaining parts of the names
     word_ratio = fuzz.token_set_ratio(product_name.replace(product_number, ''), row_name.replace(row_number, ''))
 
     # calculate the ratio of the numbers in the product name and the row name

@@ -3,13 +3,13 @@ body {
     font-weight: 300;
 }
 
-h2 {
-    text-transform: capitalize;
-}
-
 p {
     margin-bottom: 0rem;
     margin-top: -15px !important;
+}
+
+h2 {
+    text-transform: capitalize;
 }
 
 #logo-navbar {
@@ -396,7 +396,7 @@ footer {
 
     footer {
         font-size: 13px;
-        align-items: flex-start !important;
+        align-items: flex-start!important;
     }
 
     #mobile-navbar {
@@ -427,7 +427,7 @@ footer {
     }
 
     .navbar-brand {
-        margin-left: 40px;
+        margin-left: auto;
     }
 
     #showcase {
@@ -496,7 +496,7 @@ footer {
     }
 
     .btn-link {
-        min-width: 80px !important;
+        min-width: 80px!important;
         width: 85px;
         height: 48px;
     }
@@ -640,12 +640,22 @@ footer {
     }
 
     .py-3 {
-        padding-bottom: 0rem !important;
+        padding-bottom: 0rem!important;
+    }
+    
+    #footer-left {
+        left: 12%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
     }
 
     footer ul {
-        margin-top: 16px;
         position: relative;
+        right: 26%;
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
     #footer-tos,
@@ -674,28 +684,27 @@ footer {
         position: relative;
         margin-bottom: 70px;
         width: 100vw;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
+        padding-left: 10px!important;
+        padding-right: 10px!important;
     }
 
-    #table-img {
-        width: 65px !important;
-        height: 30px !important;
+    #table-img{
+        width: 65px!important;
+        height: 30px!important;
     }
 
     #table-btn {
-        font-size: 8px !important;
+        font-size: 8px!important;
         height: auto;
     }
 
     .table>:not(caption)>*>* {
-        padding: 1rem 0.4rem !important;
+        padding: 1rem 0.4rem!important;
     }
 
     .navbar-brand {
-        left: 17%;
+        margin-right: auto;
         position: relative;
-        margin-left: 0;
     }
 
     #news-input {
@@ -727,4 +736,23 @@ footer {
 
 
 
+}
+
+@media(max-width: 389px) {
+    
+    #footer-left {
+        left: -15%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+    
+    footer ul {
+        position: relative;
+        right: 1%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    
 }
