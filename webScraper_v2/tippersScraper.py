@@ -38,7 +38,7 @@ def get_categories():
     # Variable i is the page number
     i = 1
 
-    for j in range(0, 5):
+    for j in range(0, len(department_links)):
         url_single = 'https://www.tippers.com' + department_links[j]
         urls.append(url_single)
 
@@ -92,7 +92,6 @@ def scrape_url(body):
         else:
             category_title = "N/A"
 
-        print(len(product_cards))
         product_list = []
         price_list = []
         link_list = []
@@ -100,7 +99,7 @@ def scrape_url(body):
         desc_list = []
         for product_card in product_cards:
             link = product_card.find('a')
-            full_url = "https://www.tippers.com/" + link['href']
+            full_url = "https://www.tippers.com" + link['href']
             new_url = full_url.split("[]")[0]
             link_list.append(new_url)
             desc_list.append(single_request(new_url))
@@ -131,8 +130,9 @@ def scrape_desc(body):
         product_desc = soup.find('div', {'class': 'accordion-inner'})
 
         if product_desc:
-            description = re.sub('^[\s]+|[\s]+$', '', product_desc.text)
-            description = re.sub('[\n\t]+', '', description)
+            description = re.sub('^[\s]+|[\s]+$', ' ', product_desc.text)
+            description = re.sub('[\n\t]+', ' ', description)
+            description = description.replace("\xa0", ' ')
         else:
             description = "N/A"
 

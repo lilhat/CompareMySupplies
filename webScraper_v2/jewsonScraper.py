@@ -13,31 +13,36 @@ urls = []
 
 
 def get_categories():
-    response = requests.get(
-        url='https://app.scrapingbee.com/api/v1/',
-        params={
-            'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
-            'url': 'https://jewson.co.uk/',
-            'render_js': 'false',
-        },
+    for _ in range(NUM_RETRIES):
+        response = requests.get(
+            url='https://app.scrapingbee.com/api/v1/',
+            params={
+                'api_key': 'N25JJBPDKWXCENSFCR66CALWK0CE0QHEUE2H82Y2S1RYM4RQGHC1LTMTCX7DIONSJFYSP2ONBX2L0SRI',
+                'url': 'https://jewson.co.uk/',
+                'render_js': 'false',
+            },
 
-    )
-    body = response.content
-    soup = BeautifulSoup(body, 'html.parser')
-    product_elements = soup.find_all('a', {'class': 'menu__link menu__sub-link'})
-    links = []
-    for product_element in product_elements:
-        links.append(product_element['href'])
+        )
+        if response.status_code == 200:
+            body = response.content
+            soup = BeautifulSoup(body, 'html.parser')
+            product_elements = soup.find_all('a', {'class': 'menu__link menu__sub-link'})
+            links = []
+            for product_element in product_elements:
+                links.append(product_element['href'])
 
-    department_links = [link for link in links if '/' in link]
-    print(department_links)
+            department_links = [link for link in links if '/' in link]
+            print(department_links)
 
-    # Variable i is the page number
-    i = 1
+            # Variable i is the page number
+            i = 1
 
-    for j in range(0, len(department_links)):
-        url_single = 'https://jewson.co.uk' + department_links[j]
-        urls.append(url_single)
+            for j in range(0, len(department_links)):
+                url_single = 'https://jewson.co.uk' + department_links[j]
+                urls.append(url_single)
+                break
+        else:
+            print("Error: " + str(response.status_code))
 
 
 def send_request(url):

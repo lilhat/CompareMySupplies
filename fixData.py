@@ -4,8 +4,8 @@ import urllib.parse
 
 # Open the input CSV file and create a new output file
 def fix_price():
-    with open('wickesProducts.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('wickes.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('productsnew2.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('productsnew3.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -76,8 +76,8 @@ def fix_price():
 
 
 def fix_source():
-    with open('database\\products2.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('database\\products1.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('output2.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('output3.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -140,6 +140,21 @@ def fix_image(csv_file_path):
             writer.writerow(row)
 
 
+def add_affiliate():
+    with open('comparisons.csv', 'r', encoding='utf-8-sig') as file:
+        reader = csv.DictReader(file)
+        rows = []
+        for row in reader:
+            if row['source'] == 'TP':
+                row['link'] += '?awc=16300_1681378749_1cb50d302aa4bca1ead92b46b8458c6f'
+            rows.append(row)
+
+    with open('comparisons.csv', 'w', newline='', encoding='utf-8-sig') as file:
+        writer = csv.DictWriter(file, fieldnames=reader.fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
 fix_price()
 # fix_source()
 # fix_image('products.csv')
+# add_affiliate()

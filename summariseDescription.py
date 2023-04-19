@@ -78,7 +78,7 @@ def summarize(text):
     return summary_text
 
 
-with open('database/products4.csv', 'r', encoding='utf-8-sig') as infile, open('productsnew.csv', 'w', newline='', encoding='utf-8-sig') as outfile:
+with open('productsnew.csv', 'r', encoding='utf-8-sig') as infile, open('productsnew2.csv', 'w', newline='', encoding='utf-8-sig') as outfile:
     reader = csv.DictReader(infile)
     writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
     writer.writeheader()
