@@ -59,4 +59,4 @@ def update_comparisons():
     df3.to_csv('updated.csv', index=False)
 
 # update_products()
-update_comparisons()
+# update_comparisons()

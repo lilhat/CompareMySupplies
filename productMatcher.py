@@ -59,6 +59,8 @@ def fuzzy_match(product_name, row_name, product_price, row_price):
                 word_ratio = 0
         except ValueError:
             num_ratio = 0
+        except ZeroDivisionError:
+            num_ratio = 0
 
     # preprocess the price values to remove non-numeric characters and convert to float
     product_prices = re.findall(number_pattern, product_price)

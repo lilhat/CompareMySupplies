@@ -2,11 +2,11 @@ import csv
 from rapidfuzz import fuzz,process
 
 
-def add_supplier():
+def add_supplier(filename):
     # Open new supplier file
-    with open('tpProducts.csv', 'r', encoding='utf-8-sig') as tp_file:
+    with open(filename, 'r', encoding='utf-8-sig') as tp_file:
 
-        # Read the file with csv reader
+        # Read the supplier file with csv reader
         file_reader = csv.DictReader(tp_file)
 
         # Open comparisons.csv file
@@ -20,7 +20,7 @@ def add_supplier():
             for cmp_row in cmp_reader:
                 cmp_products.add(cmp_row['name'])
 
-            # Open productsnew.csv file for writing
+            # Open products file for writing
             with open('productsnew.csv', 'a', newline='', encoding='utf-8-sig') as new_file:
 
                 # Define the header row
@@ -33,13 +33,13 @@ def add_supplier():
                 if new_file.tell() == 0:
                     new_writer.writeheader()
 
-                # Loop through each row in tpProducts.csv file
+                # Loop through each row in supplier file
                 for file_row in file_reader:
 
                     # Check if the product name is in comparisons.csv
                     if file_row['product'] not in cmp_products:
 
-                        # Write the row to productsnew.csv file
+                        # Write the row to products file
                         new_writer.writerow({'id': '',
                                               'name': file_row['product'],
                                               'image': file_row['image'],
@@ -74,7 +74,8 @@ def label_categories():
     for unmatched_row in unmatched_rows:
 
         # Try to match the unmatched row by name
-        name_matches = process.extract(unmatched_row['name'], [row['name'] for row in matched_rows], scorer=fuzz.token_set_ratio, score_cutoff=min_name_score, limit=None)
+        name_matches = process.extract(unmatched_row['name'], [row['name'] for row in matched_rows],
+                                       scorer=fuzz.token_set_ratio, score_cutoff=min_name_score, limit=None)
 
         # If there is at least one name match with a score above the minimum score
         if len(name_matches) > 0:
@@ -126,5 +127,5 @@ def label_categories():
         writer.writerows(rows)
 
 
-# add_supplier()
+# add_supplier('tpProducts.csv')
 # label_categories()

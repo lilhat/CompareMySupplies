@@ -4,9 +4,6 @@ import csv
 # Define the categories to keep
 def sort_data(target_categories, filename):
 
-    # define target categories as a list of lowercase strings
-
-
     # open the input file and create a new output file
     with open('database\\products.csv', 'r', newline='', encoding='utf-8-sig') as file:
         reader = csv.DictReader(file)
