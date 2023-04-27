@@ -58,6 +58,7 @@ Python libraries/modules:
 spaCy pipeline "en_core_web_lg" must also be downloaded and installed
 
 ### Steps
+(Note: May have to manually change products_new.csv back to products.csv after each file is executed, same with comparisons.csv)
 1. Run fixData.py on both products.csv and comparisons.csv
 2. Run sortData.py on products.csv
 3. Run combineData.py on subcategory CSV files to create main category files
