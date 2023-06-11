@@ -1,21 +1,11 @@
+DirectoryIndex index.php
+
 RewriteEngine On
 
 RewriteRule ^home(/.*)?$ /index.php$1 [L]
 
 RewriteRule ^about$ /about.php [L]
 
-
-# Level 3 category
-RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)$ /categories.php?maincategory=$1&subcategory=$2&category=$3 [QSA,L,B]
-
-# Level 2 category
-RewriteRule ^categories/([^/]+)/([^/]+)$ /categories.php?maincategory=$1&subcategory=$2 [QSA,L,B]
-
-# Level 4 category
-RewriteRule ^categories/([^/]+)/?$ /categories.php?category=$1 [QSA,L,B]
-
-# Level 1 category
-RewriteRule ^main-categories/([^/]+)$ /categories.php?maincategory=$1 [QSA,L,B]
 
 # Pagination
 RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&subcategory=$2&category=$3&page=$4 [QSA,L,B]
@@ -24,7 +14,19 @@ RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)/page/(\d+)/?$ /categories.php?ma
 RewriteRule ^categories/([^/]+)/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&subcategory=$2&page=$3 [QSA,L,B]
 
 # Pagination 3
-RewriteRule ^main-categories/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&page=$2 [QSA,L,B]
+RewriteRule ^categories/([^/]+)/page/(\d+)/?$ /categories.php?maincategory=$1&page=$2 [QSA,L,B]
+
+# Level 3 category
+RewriteRule ^categories/([^/]+)/([^/]+)/([^/]+)/?$ /categories.php?maincategory=$1&subcategory=$2&category=$3 [QSA,L,B]
+
+# Level 2 category
+RewriteRule ^categories/([^/]+)/([^/]+)/?$ /categories.php?maincategory=$1&subcategory=$2 [QSA,L,B]
+
+# Level 4 category
+RewriteRule ^categories/([^/]+)/?$ /categories.php?maincategory=$1 [QSA,L,B]
+
+
+
 
 
 

@@ -56,11 +56,11 @@ if (typeof signUp !== 'undefined') {
       return;
       // Don't continue running the code
     }
-    if (validate_password(password) == false || validate_password(confirm_password) == false){
+    if (validate_password(password) == false || validate_password(confirm_password) == false) {
       showAlert('Password must be over 6 characters');
       return;
     }
-    if (password != confirm_password){
+    if (password != confirm_password) {
       showAlert('Passwords must match');
       return;
     }
@@ -101,65 +101,84 @@ if (typeof signUp !== 'undefined') {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        if(errorMessage == "Firebase: Error (auth/email-already-in-use)."){
+        if (errorMessage == "Firebase: Error (auth/email-already-in-use).") {
           showAlert("Email already in use");
         }
       });
 
   });
 }
-  
+
 if (typeof signIn !== 'undefined') {
   signIn.addEventListener('click', (e) => {
 
     var email = document.getElementById('email').value;
     var password = document.getElementById('pwd').value;
-  
-  
+
+
     // Validate input fields
     if (validate_email(email) == false) {
       showAlert('Must be a valid email');
       return;
       // Don't continue running the code
     }
-    if (validate_password(password) == false){
+    if (validate_password(password) == false) {
       showAlert('Password must be over 6 characters');
       return;
     }
-  
+
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+      .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         // ...
-  
+
         // save log in details into real time database
         var lgDate = new Date();
         update(ref(database, 'users/' + user.uid), {
-            last_login: lgDate,
+          last_login: lgDate,
         })
-            .then(() => {
-                // Data saved successfully!
-                isLoggedIn = true;
-                window.location.replace("/home?success=signin");
-            })
-            .catch((error) => {
-              if(errorMessage == "Firebase: Error (auth/user-not-found)."){
-                showAlert("User not found");
-              }
-            });
-    })
-    .catch((error) => {
+          .then(() => {
+            // Data saved successfully!
+            isLoggedIn = true;
+            window.location.replace("/home?success=signin");
+          })
+          .catch((error) => {
+            if (errorMessage == "Firebase: Error (auth/user-not-found).") {
+              showAlert("User not found");
+            }
+          });
+      })
+      .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
-        if(errorMessage == "Firebase: Error (auth/user-not-found)."){
+        if (errorMessage == "Firebase: Error (auth/user-not-found).") {
           showAlert("User not found");
         }
-    });
-  
-  
+      });
+
+
   });
+}
+
+if (typeof newsSubmit !== 'undefined') {
+  newsSubmit.addEventListener('click', (e) => {
+    var email = document.getElementById('news-form').value;
+    set(ref(database, 'users/' + email.replaceAll(".", "")), {
+      email: email,
+      last_login: new Date(Date.now()).toString(),
+    })
+      .then(() => {
+        // Data saved successfully!
+        isLoggedIn = true;
+        alert("Success");
+        window.location.replace("/home");
+      })
+      .catch((error) => {
+        alert("Unsuccessful " + error.message);
+      })
+  })
 }
 
 function validate_email(email) {

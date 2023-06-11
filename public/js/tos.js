@@ -136,7 +136,7 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">
             </span></div>
         <div class="MsoNormal" style="line-height: 1;"><br></div>
         <div class="MsoNormal" data-custom-class="body_text" style="line-height: 1.5;"><span style="font-size:11.0pt;line-height:115%;font-family:Arial;
-Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">You can contact us by <bdt class="block-component"></bdt>phone at <bdt class="question">+447359331074</bdt>, email at <bdt class="question">contact@comparemysupplies.com</bdt>
+Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">You can contact us by <bdt class="block-component"></bdt>phone at <bdt class="question">+447359331074</bdt>, email at <bdt class="question">support@comparemysupplies.com</bdt>
                 <bdt class="block-component"></bdt>,<bdt class="statement-end-if-in-editor"></bdt> or by mail to <bdt class="question">148 High Street</bdt>
                 <bdt class="block-component"></bdt>, <bdt class="question">Royal Wootton Bassett</bdt>
                 <bdt class="block-component"></bdt>, <bdt class="question">Wiltshire</bdt>

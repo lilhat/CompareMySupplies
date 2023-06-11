@@ -1,24 +1,22 @@
 <?php
-Class dbObj{
-  /* Database connection start */
-        var $servername, $username, $password, $dbname, $port, $conn;
-  function __construct()
-  {
+class dbObj {
+  private $servername, $username, $password, $dbname, $port, $conn;
+
+  public function __construct() {
     $this->servername = "localhost";
-    $this->username = "postgres";
-    $this->password = "admin123";
-    $this->dbname = "products";
-    $this->port = "5432";
+    $this->database = "u603122697_public";
+    $this->username = "u603122697_admin";
+    $this->password = "LiLHaTGaming123!";
   }
-  function getConnstring() {
-    $con = pg_connect("host=".$this->servername." port=".$this->port." dbname=".$this->dbname." user=".$this->username." password=".$this->password."") or die("Connection failed: ".pg_last_error());
-    /* check connection */
-    if (pg_last_error()) {
-      printf("Connect failed: %s\n", pg_last_error());
-      exit();
-    } else {
-      $this->conn = $con;
+
+  public function getConnstring() {
+    $this->conn = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
+
+    // Check connection
+    if (!$this->conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
+
     return $this->conn;
   }
 }

@@ -2,23 +2,29 @@ const createFooter = () => {
     let footer = document.querySelector('footer');
 
     footer.innerHTML = `
-    <div class="footer-border">
-        <div class="footer-content">
-            <div class="footer-social-container">
-                <div class="footer-info-container">
-                    <span>@ CompareMySupplies 2023</span>
-                    <a href="/tos" class="social-link">Terms of Services</a>
-                    <a href="/privacy" class="social-link">Privacy Page</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/comparemysupplies/" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/CompareMySupplies/" class="social-link" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://twitter.com/CompareMySupply" class="social-link" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
+        
+    <div class="col-md-4 d-flex align-items-center" id="footer-left">
+        <span class="mb-3 mb-md-0 text-muted">© 2023 CompareMySupplies Ltd</span>
+        <span class="mb-3 mb-md-0 text-muted" id="footer-tos"><a href="/tos">Terms of Service</a></span>
+        <span class="mb-3 mb-md-0 text-muted" id="footer-mid"><i class="fa-regular fa-circle fa-2xs"></i></span>
+        <span class="mb-3 mb-md-0 text-muted" id="footer-privacy"><a href="/privacy">Privacy Policy</a></span>
     </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><!-- Facebook -->
+            <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="https://www.facebook.com/CompareMySupplies/" role="button" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li class="ms-3"><!-- Twitter -->
+            <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" href="https://twitter.com/CompareMySupply" role="button" target="_blank"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="ms-3"> <!-- Instagram -->
+            <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" href="https://www.instagram.com/comparemysupplies/" role="button" target="_blank"><i class="fab fa-instagram"></i></a>
+        </li>
+
+    </ul>
+      
     `;
+
 }
 
 createFooter();

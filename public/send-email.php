@@ -27,10 +27,10 @@ try {
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('contact@comparemysupplies.com', 'Mailer');
-    $mail->addAddress('contact@comparemysupplies.com', 'User');
+    $mail->setFrom('support@comparemysupplies.com', 'Mailer');
+    $mail->addAddress('support@comparemysupplies.com', 'User');
 
-    $mail->addReplyTo('contact@comparemysupplies.com', 'Reply');
+    $mail->addReplyTo('support@comparemysupplies.com', 'Reply');
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML

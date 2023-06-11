@@ -3,43 +3,63 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Contact</title>
+    <title>Message Failed</title>
+    <meta name="Description" content="Find and compare the best deals on building materials and supplies. 
+    Compare prices from top UK suppliers to find the right products for your project. Save time and money with our easy-to-use platform.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <!-- <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="/vendor/mdbootstrap/css/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ce98f0dc47.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <nav class="navbar"></nav>
+    <?php include_once("analyticstracking.php") ?>
+    <header class="mobile-header"></header>
     <div class="overlay"></div>
-    <div class="container">
-        <div class="contact-content-wrapper">
-                <div class="message-content-wrapper">
-                    <h1>Message failed</h1>
-                    <div class="contact-wrapper">
-                        <div id="contact-form">
-                            <b1 class="success-text">The message was unable to send.<br><br>Please verify all fields are correct and try again.</b1>
-                        </div>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="top-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="logo-navbar"></nav>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light" id="main-navbar"></nav>
+    </header>
 
-                    </div>
-
-                </div>
+    <div class="bg-light" id="main-content">
+        <div class="container py-4">
+            <div class="d-flex justify-content-center align-items-center">
+                <h1>Message failed</h1>
+            </div>
+            <b1 class="fs-5 mb-1 fw-300">Your message has not been sent. <br>Please try again.</b1>
 
 
         </div>
     </div>
-    <footer></footer>
-    <script type="module" src="/js/nav.js"></script>
-    <script type="module" src="/js/firebase.js"></script>
-    <script type="module" src="js/overlay.js"></script>
-    <script src="js/footer.js"></script>
+    </div>
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top"></footer>
+    </div>
+
+    <!-- <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.js"></script> -->
+    <!-- MDB -->
+    <script type="text/javascript" src="/vendor/mdbootstrap/js/mdb.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/sidenav.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/tos.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'></script>
+
+    <!-- <script src="/js/search.js"></script> -->
 </body>
 
 </html>

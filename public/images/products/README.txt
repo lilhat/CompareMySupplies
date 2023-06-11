@@ -1,0 +1,1 @@
+Product images have been taken out to keep file size below limit.
