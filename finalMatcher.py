@@ -6,7 +6,7 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
 # define the input file path
-input_file = 'bqMain.csv'
+input_file = 'productsnew.csv'
 
 # define the data folder path
 data_folder = 'data/'
@@ -21,10 +21,9 @@ with open(input_file, newline='', encoding='utf-8-sig') as csvfile:
     for row in reader:
         product = {
             'id': row['id'],
-            'product': row['product'],
+            'product': row['name'],
             'price': row['price'],
             'category': row['category'],
-            'link': row['link'],
             'image': row['image'],
             'description': row['description']
         }
@@ -47,15 +46,21 @@ def fuzzy_match(product_name, row_name, product_price, row_price):
     # calculate the token set ratio of the remaining parts of the names
     word_ratio = fuzz.token_set_ratio(product_name.replace(product_number, ''), row_name.replace(row_number, ''))
 
-    # calculate the ratio of the numbers in the product name and the row name
+    # calculate the percentage difference of the numbers in the product name and the row name
     if product_number and row_number:
-        num_ratio = fuzz.ratio(product_number, row_number)
-        if num_ratio == 100:
-            num_weight = 0.25
-            word_weight = 0.60
-            price_weight = 0.15
-        else:
-            word_ratio = 0
+        try:
+            num_ratio = (1 - (abs(float(product_number) - float(row_number)) / max(float(product_number),
+                                                                                   float(row_number)))) * 100
+            if num_ratio == 100:
+                num_weight = 0.25
+                word_weight = 0.60
+                price_weight = 0.15
+            else:
+                word_ratio = 0
+        except ValueError:
+            num_ratio = 0
+        except ZeroDivisionError:
+            num_ratio = 0
 
     # preprocess the price values to remove non-numeric characters and convert to float
     product_prices = re.findall(number_pattern, product_price)
@@ -114,7 +119,6 @@ with open(output_file, 'w', newline='', encoding='utf-8-sig') as csvfile:
                             row_name = row['product']
                             product_price = product['price']
                             row_price = row['price']
-                            product_desc = product['description']
                             match_found, score, num, word, price = fuzzy_match(product_name, row_name, product_price, row_price)
 
                             if match_found:

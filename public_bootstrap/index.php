@@ -192,14 +192,14 @@ $newObj2 = new Product();
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between py-3 my-4 border-top"></footer>
     </div>
+    
     <!-- MDB -->
     <script type="text/javascript" src="/vendor/mdbootstrap/js/mdb.min.js"></script>
     <script src="/js/nav.js"></script>
     <script src="/js/sidenav.js"></script>
     <script src="/js/footer.js"></script>
-    <script src="/js/carousel.js"></script>
-    <script type="module" src="/js/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="/js/firebase.js"></script>
     <script src="/owl_carousel/owl.carousel.js"></script>
     <script src="/js/carousel.js"></script>
     <script src="https://kit.fontawesome.com/fa1ecb41b8.js" crossorigin="anonymous"></script>

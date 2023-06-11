@@ -1056,48 +1056,50 @@ createSideNav();
 
 
 
+window.onload = function () {
 
-
-
-
-
-
-
-let buttons = document.querySelectorAll('.btn-toggle');
-buttons.forEach((button) => {
-    button.addEventListener('click', function () {
-        let icon = button.querySelector('i');
-        if (icon.classList.contains('fa-plus')) {
-            icon.classList.remove('fa-plus');
-            icon.classList.add('fa-minus');
-        } else {
-            icon.classList.remove('fa-minus');
-            icon.classList.add('fa-plus');
-        }
+    let buttons = document.querySelectorAll('.btn-toggle');
+    buttons.forEach((button) => {
+        button.addEventListener('click', function () {
+            let icon = button.querySelector('i');
+            if (icon.classList.contains('fa-plus')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        });
     });
-});
 
 
-let sections = document.querySelectorAll('section');
-let sideBtns = document.querySelectorAll('#side-btn');
-let overlay = document.querySelector('.overlay');
+    let sections = document.querySelectorAll('section');
+    let sideBtns = document.querySelectorAll('#side-btn');
+    let overlay = document.querySelector('.overlay');
 
-for (let i = 0; i < sideBtns.length; i++) {
-    sideBtns[i].addEventListener('click', function () {
-        if (this.getAttribute('aria-expanded') === 'true') {
-            overlay.style.display = 'block';
-        } else {
-            overlay.style.display = 'none';
-        }
-    });
-}
-
-document.addEventListener("click", function (event) {
-    var nav = document.getElementById("collapse-nav");
-    var button = document.getElementById("side-btn");
-    if (event.target !== nav && event.target !== button && nav.classList.contains("show")) {
-        if (!nav.contains(event.target)) {
-            button.click();
-        }
+    for (let i = 0; i < sideBtns.length; i++) {
+        sideBtns[i].addEventListener('click', function () {
+            if (this.getAttribute('aria-expanded') === 'true') {
+                overlay.style.display = 'block';
+            } else {
+                overlay.style.display = 'none';
+            }
+        });
     }
-});
+
+    document.addEventListener("click", function (event) {
+        var nav = document.getElementById("collapse-nav");
+        var button = document.getElementById("side-btn");
+        if (event.target !== nav && event.target !== button && nav.classList.contains("show")) {
+            if (!nav.contains(event.target)) {
+                button.click();
+            }
+        }
+    });
+
+};
+
+
+
+
+

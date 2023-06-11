@@ -8,14 +8,12 @@ import csv
 nlp = spacy.load('en_core_web_lg')
 punctuation = punctuation + '\n                 '
 
-def summarize(text):
+def summarise(text):
     # define the pattern to match
     pattern = r"(\w)([A-Z][a-z]+)"
     output_string = re.sub(pattern, r"\1. \2", text)
-    pattern2 = r"\b([A-Z][a-z]*)\. "
-    output_string = re.sub(pattern2, r"\1", output_string)
-    pattern3 = r"\b([A-Z][a-z]+[A-Z][a-z]*)\ "
-    words = re.findall(pattern3, output_string)
+    pattern2 = r"\b([A-Z][a-z]+[A-Z][a-z]*)\ "
+    words = re.findall(pattern2, output_string)
     split_words = []
     for word in words:
         new_words = re.findall(r'[A-Z][a-z]*', word)
@@ -32,10 +30,6 @@ def summarize(text):
     text = '. '.join(filtered_sentences)
     # Process the text with Spacy
     doc = nlp(text)
-
-    # Get the sentences in the document and join them with a period and a space
-    sentences = [sent.text.strip() for sent in doc.sents]
-    text = ". ".join(sentences)
 
     # Calculate the score for each sentence based on word frequency
     word_freq = {}
@@ -78,12 +72,12 @@ def summarize(text):
     return summary_text
 
 
-with open('database/products4.csv', 'r', encoding='utf-8-sig') as infile, open('productsnew.csv', 'w', newline='', encoding='utf-8-sig') as outfile:
+with open('productsnew4.csv', 'r', encoding='utf-8-sig') as infile, open('productsnew5.csv', 'w', newline='', encoding='utf-8-sig') as outfile:
     reader = csv.DictReader(infile)
     writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
     writer.writeheader()
 
     for row in reader:
-        summarized_desc = summarize(row['description'])
-        row['description'] = summarized_desc
+        summarised_desc = summarise(row['description'])
+        row['description'] = summarised_desc
         writer.writerow(row)

@@ -4,8 +4,8 @@ import urllib.parse
 
 # Open the input CSV file and create a new output file
 def fix_price():
-    with open('wickesProducts.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('wickes.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('database/productsnew4.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('database/productsnew5.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -28,44 +28,15 @@ def fix_price():
 
             if '-' in price:
                 # Handle price ranges
-                x, y = price.split('-')
-                x = x.strip()
-                y = y.strip()
+                price, y = price.split('-')
 
-                # Format the x and y values to have 2 decimal places
-                try:
-                    x = float(x)
-                    if x.is_integer():
-                        x = '{:.2f}'.format(x)
-                    else:
-                        x = '{:.2f}'.format(x)
-                except ValueError:
-                    pass
+            try:
+                price = price.strip()
+                price = float(price)
+                price = '{:.2f}'.format(price)
 
-                # try:
-                #     y = float(y)
-                #     if y.is_integer():
-                #         y = '{:.2f}'.format(y)
-                #     else:
-                #         y = '{:.2f}'.format(y)
-                # except ValueError:
-                #     pass
-
-                # Reconstruct the price range string
-                price = x
-            else:
-                # Handle single prices
-                try:
-                    price = price.strip()
-                    price = float(price)
-                    if price.is_integer():
-                        # Price has 0 decimal places
-                        price = '{:.2f}'.format(price)
-                    else:
-                        # Price has 1 or 2 decimal places
-                        price = '{:.2f}'.format(price)
-                except ValueError:
-                    pass
+            except ValueError:
+                pass
 
             # Replace the price value in the row with the cleaned-up value
             row[price_index] = price
@@ -76,8 +47,8 @@ def fix_price():
 
 
 def fix_source():
-    with open('database\\products2.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
-            open('database\\products1.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
+    with open('database/comparisons3.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
+            open('database/comparisons4.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
         reader = csv.reader(input_file)
         writer = csv.writer(output_file)
@@ -104,7 +75,7 @@ def fix_source():
             writer.writerow(row)
 
 
-def fix_image(csv_file_path):
+def fix_image():
     with open('products.csv', 'r', newline='', encoding='utf-8-sig') as input_file, \
             open('products1.csv', 'w', newline='', encoding='utf-8-sig') as output_file:
         # Create a CSV reader and writer
@@ -140,6 +111,21 @@ def fix_image(csv_file_path):
             writer.writerow(row)
 
 
-fix_price()
+def add_affiliate():
+    with open('database/comparisons4.csv', 'r', encoding='utf-8-sig') as file:
+        reader = csv.DictReader(file)
+        rows = []
+        for row in reader:
+            if row['source'] == 'TP':
+                row['link'] += '?awc=16300_1681378749_1cb50d302aa4bca1ead92b46b8458c6f'
+            rows.append(row)
+
+    with open('database/comparisons4.csv', 'w', newline='', encoding='utf-8-sig') as file:
+        writer = csv.DictWriter(file, fieldnames=reader.fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+# fix_price()
 # fix_source()
-# fix_image('products.csv')
+# fix_image()
+# add_affiliate()
